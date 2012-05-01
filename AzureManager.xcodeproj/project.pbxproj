@@ -15,8 +15,9 @@
 		8B5E8DA915505E2C00E74CC7 /* ServiceCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */; };
 		8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */; };
 		8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */; };
-		8B5E8DCD1550686100E74CC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */; };
-		8B5E8DD01550698200E74CC7 /* UIViewController+ShowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */; };
+		8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */; };
+		8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */; };
+		8B5E8E1D1550792B00E74CC7 /* libwatoolkitios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -24,7 +25,6 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
-		8B7D25A115503B77002370D1 /* libwatoolkitios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D259315503B77002370D1 /* libwatoolkitios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +42,23 @@
 		8B5E8DA715505E2C00E74CC7 /* WAConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAConfiguration.h; sourceTree = "<group>"; };
 		8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAConfiguration.m; sourceTree = "<group>"; };
 		8B5E8DAC15505E3A00E74CC7 /* Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
-		8B5E8DCB1550686100E74CC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		8B5E8DCE1550698200E74CC7 /* UIViewController+ShowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowLoader.h"; sourceTree = "<group>"; };
-		8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowLoader.m"; sourceTree = "<group>"; };
+		8B5E8E081550792B00E74CC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8B5E8E0A1550792B00E74CC7 /* UIViewController+ShowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowLoader.h"; sourceTree = "<group>"; };
+		8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowLoader.m"; sourceTree = "<group>"; };
+		8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwatoolkitios.a; sourceTree = "<group>"; };
+		8B5E8E0F1550792B00E74CC7 /* WAAuthenticationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthenticationCredential.h; sourceTree = "<group>"; };
+		8B5E8E101550792B00E74CC7 /* WABlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlob.h; sourceTree = "<group>"; };
+		8B5E8E111550792B00E74CC7 /* WABlobContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlobContainer.h; sourceTree = "<group>"; };
+		8B5E8E121550792B00E74CC7 /* WACloudAccessControlClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudAccessControlClient.h; sourceTree = "<group>"; };
+		8B5E8E131550792B00E74CC7 /* WACloudAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudAccessToken.h; sourceTree = "<group>"; };
+		8B5E8E141550792B00E74CC7 /* WACloudStorageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudStorageClient.h; sourceTree = "<group>"; };
+		8B5E8E151550792B00E74CC7 /* WAQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueue.h; sourceTree = "<group>"; };
+		8B5E8E161550792B00E74CC7 /* WAQueueMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueueMessage.h; sourceTree = "<group>"; };
+		8B5E8E171550792B00E74CC7 /* WAResultContinuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResultContinuation.h; sourceTree = "<group>"; };
+		8B5E8E181550792B00E74CC7 /* WATableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableEntity.h; sourceTree = "<group>"; };
+		8B5E8E191550792B00E74CC7 /* WATableFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableFetchRequest.h; sourceTree = "<group>"; };
+		8B5E8E1A1550792B00E74CC7 /* WAToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAToolkit.h; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,19 +70,6 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		8B7D259315503B77002370D1 /* libwatoolkitios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwatoolkitios.a; sourceTree = "<group>"; };
-		8B7D259515503B77002370D1 /* WAAuthenticationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthenticationCredential.h; sourceTree = "<group>"; };
-		8B7D259615503B77002370D1 /* WABlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlob.h; sourceTree = "<group>"; };
-		8B7D259715503B77002370D1 /* WABlobContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlobContainer.h; sourceTree = "<group>"; };
-		8B7D259815503B77002370D1 /* WACloudAccessControlClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudAccessControlClient.h; sourceTree = "<group>"; };
-		8B7D259915503B77002370D1 /* WACloudAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudAccessToken.h; sourceTree = "<group>"; };
-		8B7D259A15503B77002370D1 /* WACloudStorageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudStorageClient.h; sourceTree = "<group>"; };
-		8B7D259B15503B77002370D1 /* WAQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueue.h; sourceTree = "<group>"; };
-		8B7D259C15503B77002370D1 /* WAQueueMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueueMessage.h; sourceTree = "<group>"; };
-		8B7D259D15503B77002370D1 /* WAResultContinuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResultContinuation.h; sourceTree = "<group>"; };
-		8B7D259E15503B77002370D1 /* WATableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableEntity.h; sourceTree = "<group>"; };
-		8B7D259F15503B77002370D1 /* WATableFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableFetchRequest.h; sourceTree = "<group>"; };
-		8B7D25A015503B77002370D1 /* WAToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAToolkit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 				8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */,
 				8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */,
 				8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */,
-				8B7D25A115503B77002370D1 /* libwatoolkitios.a in Frameworks */,
+				8B5E8E1D1550792B00E74CC7 /* libwatoolkitios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,6 @@
 		8B5E8DA215505E2C00E74CC7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8B5E8DCA1550686100E74CC7 /* MBProgressHUD */,
 				8B5E8DAC15505E3A00E74CC7 /* Properties.h */,
 				8B5E8DA315505E2C00E74CC7 /* ServiceCall.h */,
 				8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */,
@@ -127,16 +126,53 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		8B5E8DCA1550686100E74CC7 /* MBProgressHUD */ = {
+		8B5E8E061550792B00E74CC7 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
-				8B5E8DCB1550686100E74CC7 /* MBProgressHUD.h */,
-				8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */,
-				8B5E8DCE1550698200E74CC7 /* UIViewController+ShowLoader.h */,
-				8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */,
+				8B5E8E071550792B00E74CC7 /* MBProgressHUD */,
+				8B5E8E0C1550792B00E74CC7 /* WAToolkit */,
+			);
+			path = ThirdPartyLibs;
+			sourceTree = "<group>";
+		};
+		8B5E8E071550792B00E74CC7 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E081550792B00E74CC7 /* MBProgressHUD.h */,
+				8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */,
+				8B5E8E0A1550792B00E74CC7 /* UIViewController+ShowLoader.h */,
+				8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */,
 			);
 			path = MBProgressHUD;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
+		};
+		8B5E8E0C1550792B00E74CC7 /* WAToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */,
+				8B5E8E0E1550792B00E74CC7 /* watoolkitios-lib */,
+			);
+			path = WAToolkit;
+			sourceTree = "<group>";
+		};
+		8B5E8E0E1550792B00E74CC7 /* watoolkitios-lib */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E0F1550792B00E74CC7 /* WAAuthenticationCredential.h */,
+				8B5E8E101550792B00E74CC7 /* WABlob.h */,
+				8B5E8E111550792B00E74CC7 /* WABlobContainer.h */,
+				8B5E8E121550792B00E74CC7 /* WACloudAccessControlClient.h */,
+				8B5E8E131550792B00E74CC7 /* WACloudAccessToken.h */,
+				8B5E8E141550792B00E74CC7 /* WACloudStorageClient.h */,
+				8B5E8E151550792B00E74CC7 /* WAQueue.h */,
+				8B5E8E161550792B00E74CC7 /* WAQueueMessage.h */,
+				8B5E8E171550792B00E74CC7 /* WAResultContinuation.h */,
+				8B5E8E181550792B00E74CC7 /* WATableEntity.h */,
+				8B5E8E191550792B00E74CC7 /* WATableFetchRequest.h */,
+				8B5E8E1A1550792B00E74CC7 /* WAToolkit.h */,
+			);
+			path = "watoolkitios-lib";
+			sourceTree = "<group>";
 		};
 		8B7D250E155028EC002370D1 = {
 			isa = PBXGroup;
@@ -169,6 +205,7 @@
 		8B7D2523155028ED002370D1 /* AzureManager */ = {
 			isa = PBXGroup;
 			children = (
+				8B5E8E061550792B00E74CC7 /* ThirdPartyLibs */,
 				8B5E8DA215505E2C00E74CC7 /* Configuration */,
 				8B7D252C155028ED002370D1 /* AppDelegate.h */,
 				8B7D252D155028ED002370D1 /* AppDelegate.m */,
@@ -179,7 +216,6 @@
 				8B5E8D9F15505C4100E74CC7 /* Storage Classes */,
 				8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */,
 				8B5E8DA115505C5200E74CC7 /* Management Classes */,
-				8B7D259215503B77002370D1 /* WAToolkit */,
 				8B7D2524155028ED002370D1 /* Supporting Files */,
 			);
 			path = AzureManager;
@@ -194,34 +230,6 @@
 				8B7D252B155028ED002370D1 /* AzureManager-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8B7D259215503B77002370D1 /* WAToolkit */ = {
-			isa = PBXGroup;
-			children = (
-				8B7D259315503B77002370D1 /* libwatoolkitios.a */,
-				8B7D259415503B77002370D1 /* watoolkitios-lib */,
-			);
-			path = WAToolkit;
-			sourceTree = SOURCE_ROOT;
-		};
-		8B7D259415503B77002370D1 /* watoolkitios-lib */ = {
-			isa = PBXGroup;
-			children = (
-				8B7D259515503B77002370D1 /* WAAuthenticationCredential.h */,
-				8B7D259615503B77002370D1 /* WABlob.h */,
-				8B7D259715503B77002370D1 /* WABlobContainer.h */,
-				8B7D259815503B77002370D1 /* WACloudAccessControlClient.h */,
-				8B7D259915503B77002370D1 /* WACloudAccessToken.h */,
-				8B7D259A15503B77002370D1 /* WACloudStorageClient.h */,
-				8B7D259B15503B77002370D1 /* WAQueue.h */,
-				8B7D259C15503B77002370D1 /* WAQueueMessage.h */,
-				8B7D259D15503B77002370D1 /* WAResultContinuation.h */,
-				8B7D259E15503B77002370D1 /* WATableEntity.h */,
-				8B7D259F15503B77002370D1 /* WATableFetchRequest.h */,
-				8B7D25A015503B77002370D1 /* WAToolkit.h */,
-			);
-			path = "watoolkitios-lib";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +304,8 @@
 				8B5E8DA915505E2C00E74CC7 /* ServiceCall.m in Sources */,
 				8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */,
 				8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */,
-				8B5E8DCD1550686100E74CC7 /* MBProgressHUD.m in Sources */,
-				8B5E8DD01550698200E74CC7 /* UIViewController+ShowLoader.m in Sources */,
+				8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */,
+				8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +384,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/WAToolkit\"",
+					"\"$(SRCROOT)/AzureManager/ThirdPartyLibs/WAToolkit\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -392,6 +401,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/WAToolkit\"",
+					"\"$(SRCROOT)/AzureManager/ThirdPartyLibs/WAToolkit\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
