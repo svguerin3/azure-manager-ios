@@ -53,7 +53,16 @@
 	self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 
+    [self initCredentials];
+    
     return YES;
+}
+
+- (void) initCredentials {
+    WAConfiguration *config = [WAConfiguration sharedConfiguration];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.authenticationCredential = [WAAuthenticationCredential credentialWithAzureServiceAccount:config.accountName 
+                                                                                               accessKey:config.accessKey];
 }
 
 + (void)bindAccessToken

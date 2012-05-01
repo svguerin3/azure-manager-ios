@@ -13,6 +13,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+- (void) initCredentials;
+
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) MainMenuVC *rootVC;

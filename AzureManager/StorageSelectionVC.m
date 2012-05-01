@@ -7,7 +7,7 @@
 //
 
 #import "StorageSelectionVC.h"
-
+#import "TablesListVC.h"
 
 @interface StorageSelectionVC ()
 
@@ -30,6 +30,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+}
+
+- (IBAction) tablesBtnPressed {
+    TablesListVC *aController = [[TablesListVC alloc] initWithNibName:@"TablesList" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
+}
+
+- (IBAction) blobDataBtnPressed {
+
+}
+
+- (IBAction) queuesBtnPressed {
     
 }
 

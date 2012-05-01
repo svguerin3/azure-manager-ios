@@ -7,5 +7,6 @@
 //
 
 // app constants
+#define MAXNUMROWS_TABLES          20
 
 // notifs

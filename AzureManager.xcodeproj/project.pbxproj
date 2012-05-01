@@ -18,6 +18,20 @@
 		8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */; };
 		8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */; };
 		8B5E8E1D1550792B00E74CC7 /* libwatoolkitios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */; };
+		8B5E8E2E15507D4F00E74CC7 /* WACloudStorageClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E2D15507D4F00E74CC7 /* WACloudStorageClientDelegate.m */; };
+		8B5E8E3615507E5D00E74CC7 /* TablesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */; };
+		8B5E8E3715507E5D00E74CC7 /* TablesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8E3515507E5D00E74CC7 /* TablesList.xib */; };
+		8B5E8E66155090BA00E74CC7 /* WASimpleBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E4A155090BA00E74CC7 /* WASimpleBase64.m */; };
+		8B5E8E67155090BA00E74CC7 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E4C155090BA00E74CC7 /* Logging.m */; };
+		8B5E8E68155090BA00E74CC7 /* WAAtomPubEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E50155090BA00E74CC7 /* WAAtomPubEntry.m */; };
+		8B5E8E69155090BA00E74CC7 /* WABlobParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E52155090BA00E74CC7 /* WABlobParser.m */; };
+		8B5E8E6A155090BA00E74CC7 /* WAContainerParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E54155090BA00E74CC7 /* WAContainerParser.m */; };
+		8B5E8E6B155090BA00E74CC7 /* WAQueueMessageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E56155090BA00E74CC7 /* WAQueueMessageParser.m */; };
+		8B5E8E6C155090BA00E74CC7 /* WAQueueParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E58155090BA00E74CC7 /* WAQueueParser.m */; };
+		8B5E8E6D155090BA00E74CC7 /* WAXMLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E5A155090BA00E74CC7 /* WAXMLHelper.m */; };
+		8B5E8E6E155090BA00E74CC7 /* WAAzureFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E5D155090BA00E74CC7 /* WAAzureFilterBuilder.m */; };
+		8B5E8E6F155090BA00E74CC7 /* WAPredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E5F155090BA00E74CC7 /* WAPredicateParser.m */; };
+		8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -59,6 +73,35 @@
 		8B5E8E181550792B00E74CC7 /* WATableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableEntity.h; sourceTree = "<group>"; };
 		8B5E8E191550792B00E74CC7 /* WATableFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATableFetchRequest.h; sourceTree = "<group>"; };
 		8B5E8E1A1550792B00E74CC7 /* WAToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAToolkit.h; sourceTree = "<group>"; };
+		8B5E8E2C15507D4F00E74CC7 /* WACloudStorageClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudStorageClientDelegate.h; sourceTree = "<group>"; };
+		8B5E8E2D15507D4F00E74CC7 /* WACloudStorageClientDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudStorageClientDelegate.m; sourceTree = "<group>"; };
+		8B5E8E3315507E5D00E74CC7 /* TablesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablesListVC.h; sourceTree = "<group>"; };
+		8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablesListVC.m; sourceTree = "<group>"; };
+		8B5E8E3515507E5D00E74CC7 /* TablesList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TablesList.xib; sourceTree = "<group>"; };
+		8B5E8E49155090BA00E74CC7 /* WASimpleBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASimpleBase64.h; sourceTree = "<group>"; };
+		8B5E8E4A155090BA00E74CC7 /* WASimpleBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASimpleBase64.m; sourceTree = "<group>"; };
+		8B5E8E4B155090BA00E74CC7 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		8B5E8E4C155090BA00E74CC7 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
+		8B5E8E4D155090BA00E74CC7 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		8B5E8E4F155090BA00E74CC7 /* WAAtomPubEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAtomPubEntry.h; sourceTree = "<group>"; };
+		8B5E8E50155090BA00E74CC7 /* WAAtomPubEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAtomPubEntry.m; sourceTree = "<group>"; };
+		8B5E8E51155090BA00E74CC7 /* WABlobParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlobParser.h; sourceTree = "<group>"; };
+		8B5E8E52155090BA00E74CC7 /* WABlobParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WABlobParser.m; sourceTree = "<group>"; };
+		8B5E8E53155090BA00E74CC7 /* WAContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAContainerParser.h; sourceTree = "<group>"; };
+		8B5E8E54155090BA00E74CC7 /* WAContainerParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAContainerParser.m; sourceTree = "<group>"; };
+		8B5E8E55155090BA00E74CC7 /* WAQueueMessageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueueMessageParser.h; sourceTree = "<group>"; };
+		8B5E8E56155090BA00E74CC7 /* WAQueueMessageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueueMessageParser.m; sourceTree = "<group>"; };
+		8B5E8E57155090BA00E74CC7 /* WAQueueParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueueParser.h; sourceTree = "<group>"; };
+		8B5E8E58155090BA00E74CC7 /* WAQueueParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueueParser.m; sourceTree = "<group>"; };
+		8B5E8E59155090BA00E74CC7 /* WAXMLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLHelper.h; sourceTree = "<group>"; };
+		8B5E8E5A155090BA00E74CC7 /* WAXMLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLHelper.m; sourceTree = "<group>"; };
+		8B5E8E5C155090BA00E74CC7 /* WAAzureFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAzureFilterBuilder.h; sourceTree = "<group>"; };
+		8B5E8E5D155090BA00E74CC7 /* WAAzureFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAzureFilterBuilder.m; sourceTree = "<group>"; };
+		8B5E8E5E155090BA00E74CC7 /* WAPredicateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPredicateParser.h; sourceTree = "<group>"; };
+		8B5E8E5F155090BA00E74CC7 /* WAPredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPredicateParser.m; sourceTree = "<group>"; };
+		8B5E8E60155090BA00E74CC7 /* WAAuthenticationCredential+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WAAuthenticationCredential+Private.h"; sourceTree = "<group>"; };
+		8B5E8E61155090BA00E74CC7 /* WACloudURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudURLRequest.h; sourceTree = "<group>"; };
+		8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudURLRequest.m; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +137,9 @@
 				8B5E8D9A15505C3B00E74CC7 /* StorageSelectionVC.h */,
 				8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */,
 				8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */,
+				8B5E8E3315507E5D00E74CC7 /* TablesListVC.h */,
+				8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */,
+				8B5E8E3515507E5D00E74CC7 /* TablesList.xib */,
 			);
 			name = "Storage Classes";
 			sourceTree = "<group>";
@@ -116,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				8B5E8DAC15505E3A00E74CC7 /* Properties.h */,
+				8B5E8E2C15507D4F00E74CC7 /* WACloudStorageClientDelegate.h */,
+				8B5E8E2D15507D4F00E74CC7 /* WACloudStorageClientDelegate.m */,
 				8B5E8DA315505E2C00E74CC7 /* ServiceCall.h */,
 				8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */,
 				8B5E8DA515505E2C00E74CC7 /* UIViewController+ShowError.h */,
@@ -129,6 +177,7 @@
 		8B5E8E061550792B00E74CC7 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				8B5E8E40155090BA00E74CC7 /* Private */,
 				8B5E8E071550792B00E74CC7 /* MBProgressHUD */,
 				8B5E8E0C1550792B00E74CC7 /* WAToolkit */,
 			);
@@ -172,6 +221,61 @@
 				8B5E8E1A1550792B00E74CC7 /* WAToolkit.h */,
 			);
 			path = "watoolkitios-lib";
+			sourceTree = "<group>";
+		};
+		8B5E8E40155090BA00E74CC7 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E48155090BA00E74CC7 /* Base64 */,
+				8B5E8E4B155090BA00E74CC7 /* Logging.h */,
+				8B5E8E4C155090BA00E74CC7 /* Logging.m */,
+				8B5E8E4D155090BA00E74CC7 /* NSString+URLEncode.h */,
+				8B5E8E4E155090BA00E74CC7 /* Parser */,
+				8B5E8E5B155090BA00E74CC7 /* PredicateConverter */,
+				8B5E8E60155090BA00E74CC7 /* WAAuthenticationCredential+Private.h */,
+				8B5E8E61155090BA00E74CC7 /* WACloudURLRequest.h */,
+				8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		8B5E8E48155090BA00E74CC7 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E49155090BA00E74CC7 /* WASimpleBase64.h */,
+				8B5E8E4A155090BA00E74CC7 /* WASimpleBase64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		8B5E8E4E155090BA00E74CC7 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E4F155090BA00E74CC7 /* WAAtomPubEntry.h */,
+				8B5E8E50155090BA00E74CC7 /* WAAtomPubEntry.m */,
+				8B5E8E51155090BA00E74CC7 /* WABlobParser.h */,
+				8B5E8E52155090BA00E74CC7 /* WABlobParser.m */,
+				8B5E8E53155090BA00E74CC7 /* WAContainerParser.h */,
+				8B5E8E54155090BA00E74CC7 /* WAContainerParser.m */,
+				8B5E8E55155090BA00E74CC7 /* WAQueueMessageParser.h */,
+				8B5E8E56155090BA00E74CC7 /* WAQueueMessageParser.m */,
+				8B5E8E57155090BA00E74CC7 /* WAQueueParser.h */,
+				8B5E8E58155090BA00E74CC7 /* WAQueueParser.m */,
+				8B5E8E59155090BA00E74CC7 /* WAXMLHelper.h */,
+				8B5E8E5A155090BA00E74CC7 /* WAXMLHelper.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		8B5E8E5B155090BA00E74CC7 /* PredicateConverter */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E5C155090BA00E74CC7 /* WAAzureFilterBuilder.h */,
+				8B5E8E5D155090BA00E74CC7 /* WAAzureFilterBuilder.m */,
+				8B5E8E5E155090BA00E74CC7 /* WAPredicateParser.h */,
+				8B5E8E5F155090BA00E74CC7 /* WAPredicateParser.m */,
+			);
+			path = PredicateConverter;
 			sourceTree = "<group>";
 		};
 		8B7D250E155028EC002370D1 = {
@@ -287,6 +391,7 @@
 				8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */,
 				8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */,
 				8B5E8D9E15505C3B00E74CC7 /* StorageSelection.xib in Resources */,
+				8B5E8E3715507E5D00E74CC7 /* TablesList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +411,19 @@
 				8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */,
 				8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */,
 				8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */,
+				8B5E8E2E15507D4F00E74CC7 /* WACloudStorageClientDelegate.m in Sources */,
+				8B5E8E3615507E5D00E74CC7 /* TablesListVC.m in Sources */,
+				8B5E8E66155090BA00E74CC7 /* WASimpleBase64.m in Sources */,
+				8B5E8E67155090BA00E74CC7 /* Logging.m in Sources */,
+				8B5E8E68155090BA00E74CC7 /* WAAtomPubEntry.m in Sources */,
+				8B5E8E69155090BA00E74CC7 /* WABlobParser.m in Sources */,
+				8B5E8E6A155090BA00E74CC7 /* WAContainerParser.m in Sources */,
+				8B5E8E6B155090BA00E74CC7 /* WAQueueMessageParser.m in Sources */,
+				8B5E8E6C155090BA00E74CC7 /* WAQueueParser.m in Sources */,
+				8B5E8E6D155090BA00E74CC7 /* WAXMLHelper.m in Sources */,
+				8B5E8E6E155090BA00E74CC7 /* WAAzureFilterBuilder.m in Sources */,
+				8B5E8E6F155090BA00E74CC7 /* WAPredicateParser.m in Sources */,
+				8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

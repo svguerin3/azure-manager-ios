@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StorageSelectionVC : UIViewController
+@class WACloudStorageClient;
+
+@interface StorageSelectionVC : UIViewController 
+
+- (IBAction) tablesBtnPressed;
+- (IBAction) blobDataBtnPressed;
+- (IBAction) queuesBtnPressed;
 
 @end
