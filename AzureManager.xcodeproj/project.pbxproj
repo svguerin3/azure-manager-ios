@@ -383,7 +383,6 @@
 				INFOPLIST_FILE = "AzureManager/AzureManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/WAToolkit\"",
 					"\"$(SRCROOT)/AzureManager/ThirdPartyLibs/WAToolkit\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -400,7 +399,6 @@
 				INFOPLIST_FILE = "AzureManager/AzureManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/WAToolkit\"",
 					"\"$(SRCROOT)/AzureManager/ThirdPartyLibs/WAToolkit\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
