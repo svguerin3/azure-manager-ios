@@ -10,6 +10,13 @@
 		8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8D92155043A200E74CC7 /* MainMenuVC.m */; };
 		8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */; };
 		8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */; };
+		8B5E8D9D15505C3B00E74CC7 /* StorageSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */; };
+		8B5E8D9E15505C3B00E74CC7 /* StorageSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */; };
+		8B5E8DA915505E2C00E74CC7 /* ServiceCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */; };
+		8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */; };
+		8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */; };
+		8B5E8DCD1550686100E74CC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */; };
+		8B5E8DD01550698200E74CC7 /* UIViewController+ShowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -25,6 +32,20 @@
 		8B5E8D92155043A200E74CC7 /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
 		8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPhone.xib; sourceTree = "<group>"; };
 		8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPad.xib; sourceTree = "<group>"; };
+		8B5E8D9A15505C3B00E74CC7 /* StorageSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageSelectionVC.h; sourceTree = "<group>"; };
+		8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageSelectionVC.m; sourceTree = "<group>"; };
+		8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageSelection.xib; sourceTree = "<group>"; };
+		8B5E8DA315505E2C00E74CC7 /* ServiceCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCall.h; sourceTree = "<group>"; };
+		8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCall.m; sourceTree = "<group>"; };
+		8B5E8DA515505E2C00E74CC7 /* UIViewController+ShowError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowError.h"; sourceTree = "<group>"; };
+		8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowError.m"; sourceTree = "<group>"; };
+		8B5E8DA715505E2C00E74CC7 /* WAConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAConfiguration.h; sourceTree = "<group>"; };
+		8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAConfiguration.m; sourceTree = "<group>"; };
+		8B5E8DAC15505E3A00E74CC7 /* Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
+		8B5E8DCB1550686100E74CC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8B5E8DCE1550698200E74CC7 /* UIViewController+ShowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowLoader.h"; sourceTree = "<group>"; };
+		8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowLoader.m"; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,6 +88,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B5E8D9F15505C4100E74CC7 /* Storage Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8D9A15505C3B00E74CC7 /* StorageSelectionVC.h */,
+				8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */,
+				8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */,
+			);
+			name = "Storage Classes";
+			sourceTree = "<group>";
+		};
+		8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Monitoring Classes";
+			sourceTree = "<group>";
+		};
+		8B5E8DA115505C5200E74CC7 /* Management Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Management Classes";
+			sourceTree = "<group>";
+		};
+		8B5E8DA215505E2C00E74CC7 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8DCA1550686100E74CC7 /* MBProgressHUD */,
+				8B5E8DAC15505E3A00E74CC7 /* Properties.h */,
+				8B5E8DA315505E2C00E74CC7 /* ServiceCall.h */,
+				8B5E8DA415505E2C00E74CC7 /* ServiceCall.m */,
+				8B5E8DA515505E2C00E74CC7 /* UIViewController+ShowError.h */,
+				8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */,
+				8B5E8DA715505E2C00E74CC7 /* WAConfiguration.h */,
+				8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		8B5E8DCA1550686100E74CC7 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8DCB1550686100E74CC7 /* MBProgressHUD.h */,
+				8B5E8DCC1550686100E74CC7 /* MBProgressHUD.m */,
+				8B5E8DCE1550698200E74CC7 /* UIViewController+ShowLoader.h */,
+				8B5E8DCF1550698200E74CC7 /* UIViewController+ShowLoader.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = SOURCE_ROOT;
+		};
 		8B7D250E155028EC002370D1 = {
 			isa = PBXGroup;
 			children = (
@@ -98,12 +169,16 @@
 		8B7D2523155028ED002370D1 /* AzureManager */ = {
 			isa = PBXGroup;
 			children = (
+				8B5E8DA215505E2C00E74CC7 /* Configuration */,
 				8B7D252C155028ED002370D1 /* AppDelegate.h */,
 				8B7D252D155028ED002370D1 /* AppDelegate.m */,
 				8B5E8D91155043A200E74CC7 /* MainMenuVC.h */,
 				8B5E8D92155043A200E74CC7 /* MainMenuVC.m */,
 				8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */,
 				8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */,
+				8B5E8D9F15505C4100E74CC7 /* Storage Classes */,
+				8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */,
+				8B5E8DA115505C5200E74CC7 /* Management Classes */,
 				8B7D259215503B77002370D1 /* WAToolkit */,
 				8B7D2524155028ED002370D1 /* Supporting Files */,
 			);
@@ -203,6 +278,7 @@
 				8B7D2528155028ED002370D1 /* InfoPlist.strings in Resources */,
 				8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */,
 				8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */,
+				8B5E8D9E15505C3B00E74CC7 /* StorageSelection.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +292,12 @@
 				8B7D252A155028ED002370D1 /* main.m in Sources */,
 				8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */,
 				8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */,
+				8B5E8D9D15505C3B00E74CC7 /* StorageSelectionVC.m in Sources */,
+				8B5E8DA915505E2C00E74CC7 /* ServiceCall.m in Sources */,
+				8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */,
+				8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */,
+				8B5E8DCD1550686100E74CC7 /* MBProgressHUD.m in Sources */,
+				8B5E8DD01550698200E74CC7 /* UIViewController+ShowLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +371,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AzureManager/AzureManager-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "AzureManager/AzureManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -304,6 +387,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AzureManager/AzureManager-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "AzureManager/AzureManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -3,36 +3,72 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/1/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "AppDelegate.h"
 
 #import "MainMenuVC.h"
+#import "WAConfiguration.h"
+#import "WACloudStorageClient.h"
+#import "WACloudAccessToken.h"
+#import "WACloudAccessControlClient.h"
+#import "WAAuthenticationCredential.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize rootVC = _rootVC;
+@synthesize authenticationCredential = _authenticationCredential;
+@synthesize use_proxy;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    WAConfiguration *config = [WAConfiguration sharedConfiguration];	
+	if(!config) {
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Configuration Error" 
+															message:@"You must update the ToolkitConfig section in the application's info.plist file before running the first time."
+														   delegate:self 
+												  cancelButtonTitle:@"Close" 
+												  otherButtonTitles:nil];
+		[alertView show];		
+		return YES;
+	}
+	
+	if(config.connectionType != WAConnectDirect) {
+		[WACloudStorageClient ignoreSSLErrorFor:config.proxyNamespace];
+	}
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MainMenuVC *root;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        root = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPhone" bundle:nil]; 
+        self.rootVC = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPhone" bundle:nil]; 
     } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        root = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPad" bundle:nil]; 
+        self.rootVC = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPad" bundle:nil]; 
     }
     
-	UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:root];
+	UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:self.rootVC];
     self.navigationController = nav;
 	self.window.rootViewController = nav;
-    
-    //self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
     return YES;
+}
+
++ (void)bindAccessToken
+{
+	WAConfiguration* config = [WAConfiguration sharedConfiguration];
+    
+	if(config.connectionType != WAConnectProxyACS) {
+		return;
+	}
+	
+	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	NSString *proxyURL = [config proxyURL];
+	WACloudAccessToken *sharedToken = [WACloudAccessControlClient sharedToken];
+
+    appDelegate.authenticationCredential = [WAAuthenticationCredential authenticateCredentialWithProxyURL:[NSURL URLWithString:proxyURL] accessToken:sharedToken];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
