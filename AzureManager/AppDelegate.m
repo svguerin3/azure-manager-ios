@@ -8,23 +8,29 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "MainMenuVC.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    MainMenuVC *root;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        root = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPhone" bundle:nil]; 
+    } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        root = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPad" bundle:nil]; 
     }
-    self.window.rootViewController = self.viewController;
+    
+	UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:root];
+    self.navigationController = nav;
+	self.window.rootViewController = nav;
+    
+    //self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

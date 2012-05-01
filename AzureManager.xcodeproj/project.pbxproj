@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8D92155043A200E74CC7 /* MainMenuVC.m */; };
+		8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */; };
+		8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
 		8B7D2528155028ED002370D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B7D2526155028ED002370D1 /* InfoPlist.strings */; };
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
-		8B7D2531155028ED002370D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2530155028ED002370D1 /* ViewController.m */; };
-		8B7D2534155028ED002370D1 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7D2532155028ED002370D1 /* ViewController_iPhone.xib */; };
-		8B7D2537155028ED002370D1 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7D2535155028ED002370D1 /* ViewController_iPad.xib */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
 		8B7D25A115503B77002370D1 /* libwatoolkitios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D259315503B77002370D1 /* libwatoolkitios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B5E8D91155043A200E74CC7 /* MainMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuVC.h; sourceTree = "<group>"; };
+		8B5E8D92155043A200E74CC7 /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
+		8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPhone.xib; sourceTree = "<group>"; };
+		8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPad.xib; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -31,10 +35,6 @@
 		8B7D252B155028ED002370D1 /* AzureManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AzureManager-Prefix.pch"; sourceTree = "<group>"; };
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8B7D252F155028ED002370D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8B7D2530155028ED002370D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8B7D2533155028ED002370D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		8B7D2536155028ED002370D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		8B7D259315503B77002370D1 /* libwatoolkitios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwatoolkitios.a; sourceTree = "<group>"; };
 		8B7D259515503B77002370D1 /* WAAuthenticationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthenticationCredential.h; sourceTree = "<group>"; };
@@ -98,13 +98,13 @@
 		8B7D2523155028ED002370D1 /* AzureManager */ = {
 			isa = PBXGroup;
 			children = (
-				8B7D259215503B77002370D1 /* WAToolkit */,
 				8B7D252C155028ED002370D1 /* AppDelegate.h */,
 				8B7D252D155028ED002370D1 /* AppDelegate.m */,
-				8B7D252F155028ED002370D1 /* ViewController.h */,
-				8B7D2530155028ED002370D1 /* ViewController.m */,
-				8B7D2532155028ED002370D1 /* ViewController_iPhone.xib */,
-				8B7D2535155028ED002370D1 /* ViewController_iPad.xib */,
+				8B5E8D91155043A200E74CC7 /* MainMenuVC.h */,
+				8B5E8D92155043A200E74CC7 /* MainMenuVC.m */,
+				8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */,
+				8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */,
+				8B7D259215503B77002370D1 /* WAToolkit */,
 				8B7D2524155028ED002370D1 /* Supporting Files */,
 			);
 			path = AzureManager;
@@ -201,8 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7D2528155028ED002370D1 /* InfoPlist.strings in Resources */,
-				8B7D2534155028ED002370D1 /* ViewController_iPhone.xib in Resources */,
-				8B7D2537155028ED002370D1 /* ViewController_iPad.xib in Resources */,
+				8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */,
+				8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +215,7 @@
 			files = (
 				8B7D252A155028ED002370D1 /* main.m in Sources */,
 				8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */,
-				8B7D2531155028ED002370D1 /* ViewController.m in Sources */,
+				8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,22 +228,6 @@
 				8B7D2527155028ED002370D1 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8B7D2532155028ED002370D1 /* ViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B7D2533155028ED002370D1 /* en */,
-			);
-			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		8B7D2535155028ED002370D1 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B7D2536155028ED002370D1 /* en */,
-			);
-			name = ViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -349,6 +333,7 @@
 				8B7D253C155028ED002370D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
