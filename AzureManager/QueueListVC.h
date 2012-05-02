@@ -1,5 +1,5 @@
 //
-//  BlobListVC.h
+//  QueueListVC.h
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WACloudStorageClient.h"
 
-@interface BlobListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface QueueListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
 @private
 	WACloudStorageClient *storageClient;
     NSMutableArray *_localStorageList;
@@ -25,3 +25,4 @@
 @property (nonatomic, retain) WABlobContainer *currContainer;
 
 @end
+

@@ -83,13 +83,6 @@
     self.resultContinuation = nil;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    storageClient.delegate = nil;
-    
-    [super viewWillDisappear:animated];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

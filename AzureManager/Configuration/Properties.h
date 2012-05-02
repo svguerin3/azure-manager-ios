@@ -11,5 +11,7 @@
 #define MAXNUMROWS_ENTITIES        20
 #define MAXNUMROWS_CONTAINERS      20
 #define MAXNUMROWS_BLOBS           20
+#define MAXNUMROWS_QUEUES          20
+#define MAXNUMROWS_QMESSAGES       100
 
 // notifs

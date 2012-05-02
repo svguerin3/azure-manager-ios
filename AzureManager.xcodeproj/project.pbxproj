@@ -40,6 +40,10 @@
 		8B7C16D4155187B7007D5A8C /* BlobList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16D2155187B7007D5A8C /* BlobList.xib */; };
 		8B7C16D815518A45007D5A8C /* BlobImageViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */; };
 		8B7C16D915518A45007D5A8C /* BlobImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16D715518A45007D5A8C /* BlobImageView.xib */; };
+		8B7C16DD15519113007D5A8C /* QueueListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16DB15519113007D5A8C /* QueueListVC.m */; };
+		8B7C16DE15519113007D5A8C /* QueueList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16DC15519113007D5A8C /* QueueList.xib */; };
+		8B7C16E215519476007D5A8C /* QMessageListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16E015519476007D5A8C /* QMessageListVC.m */; };
+		8B7C16E315519476007D5A8C /* QMessageList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16E115519476007D5A8C /* QMessageList.xib */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -122,6 +126,12 @@
 		8B7C16D515518A44007D5A8C /* BlobImageViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobImageViewVC.h; sourceTree = "<group>"; };
 		8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobImageViewVC.m; sourceTree = "<group>"; };
 		8B7C16D715518A45007D5A8C /* BlobImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobImageView.xib; sourceTree = "<group>"; };
+		8B7C16DA15519113007D5A8C /* QueueListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueListVC.h; sourceTree = "<group>"; };
+		8B7C16DB15519113007D5A8C /* QueueListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueListVC.m; sourceTree = "<group>"; };
+		8B7C16DC15519113007D5A8C /* QueueList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueueList.xib; sourceTree = "<group>"; };
+		8B7C16DF15519476007D5A8C /* QMessageListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMessageListVC.h; sourceTree = "<group>"; };
+		8B7C16E015519476007D5A8C /* QMessageListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMessageListVC.m; sourceTree = "<group>"; };
+		8B7C16E115519476007D5A8C /* QMessageList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMessageList.xib; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -314,6 +324,12 @@
 		8B5E8E7C1550993900E74CC7 /* Queues */ = {
 			isa = PBXGroup;
 			children = (
+				8B7C16DA15519113007D5A8C /* QueueListVC.h */,
+				8B7C16DB15519113007D5A8C /* QueueListVC.m */,
+				8B7C16DC15519113007D5A8C /* QueueList.xib */,
+				8B7C16DF15519476007D5A8C /* QMessageListVC.h */,
+				8B7C16E015519476007D5A8C /* QMessageListVC.m */,
+				8B7C16E115519476007D5A8C /* QMessageList.xib */,
 			);
 			name = Queues;
 			sourceTree = "<group>";
@@ -452,6 +468,8 @@
 				8B7C16CF1551843B007D5A8C /* ContainerList.xib in Resources */,
 				8B7C16D4155187B7007D5A8C /* BlobList.xib in Resources */,
 				8B7C16D915518A45007D5A8C /* BlobImageView.xib in Resources */,
+				8B7C16DE15519113007D5A8C /* QueueList.xib in Resources */,
+				8B7C16E315519476007D5A8C /* QMessageList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +506,8 @@
 				8B7C16CE1551843B007D5A8C /* ContainerListVC.m in Sources */,
 				8B7C16D3155187B7007D5A8C /* BlobListVC.m in Sources */,
 				8B7C16D815518A45007D5A8C /* BlobImageViewVC.m in Sources */,
+				8B7C16DD15519113007D5A8C /* QueueListVC.m in Sources */,
+				8B7C16E215519476007D5A8C /* QMessageListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

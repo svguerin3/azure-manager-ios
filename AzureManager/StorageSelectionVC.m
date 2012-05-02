@@ -9,6 +9,7 @@
 #import "StorageSelectionVC.h"
 #import "TablesListVC.h"
 #import "ContainerListVC.h"
+#import "QueueListVC.h"
 
 @interface StorageSelectionVC ()
 
@@ -44,7 +45,8 @@
 }
 
 - (IBAction) queuesBtnPressed {
-    
+    QueueListVC *aController = [[QueueListVC alloc] initWithNibName:@"QueueList" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)viewDidUnload

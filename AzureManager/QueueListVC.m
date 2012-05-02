@@ -1,22 +1,22 @@
 //
-//  BlobListVC.m
+//  QueueListVC.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "BlobListVC.h"
+#import "QueueListVC.h"
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
-#import "WABlob.h"
-#import "BlobImageViewVC.h"
+#import "WAQueue.h"
+#import "QMessageListVC.h"
 
-@interface BlobListVC ()
+@interface QueueListVC ()
 
 @end
 
-@implementation BlobListVC
+@implementation QueueListVC
 
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
@@ -28,7 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Blob List";
+        self.title = @"Queue List";
     }
     return self;
 }
@@ -70,8 +70,8 @@
 
 - (void)fetchData {
     [self showLoader:self.view];
-
-    [storageClient fetchBlobsWithContinuation:self.currContainer resultContinuation:self.resultContinuation maxResult:MAXNUMROWS_BLOBS];
+    
+    [storageClient fetchQueuesWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_QUEUES];
 }
 
 - (void)viewDidUnload
@@ -101,8 +101,8 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
-    cell.textLabel.text = currBlob.name;
+    WAQueue *currQueue = [self.localStorageList objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%i. %@", indexPath.row+1, currQueue.queueName];
     
 	return cell;
 }
@@ -112,8 +112,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    BlobImageViewVC *aController = [[BlobImageViewVC alloc] initWithNibName:@"BlobImageView" bundle:nil];
-    aController.currBlob = [self.localStorageList objectAtIndex:indexPath.row];
+    QMessageListVC *aController = [[QMessageListVC alloc] initWithNibName:@"QMessageList" bundle:nil];
+    aController.currQueue = [self.localStorageList objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:aController animated:YES];
     
     [self.mainTableView reloadData];
@@ -136,10 +136,10 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchBlobs:(NSArray *)blobs inContainer:(WABlobContainer *)container withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchQueues:(NSArray *)queues withResultContinuation:(WAResultContinuation *)resultContinuation
 {
     self.resultContinuation = resultContinuation;
-    [self.localStorageList addObjectsFromArray:blobs];
+    [self.localStorageList addObjectsFromArray:queues];
 	[self.mainTableView reloadData];
     [self hideLoader:self.view];
 }

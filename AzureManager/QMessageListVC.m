@@ -1,34 +1,34 @@
 //
-//  BlobListVC.m
+//  QMessageListVC.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "BlobListVC.h"
+#import "QMessageListVC.h"
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
 #import "WABlob.h"
-#import "BlobImageViewVC.h"
+#import "WAQueue.h"
 
-@interface BlobListVC ()
+@interface QMessageListVC ()
 
 @end
 
-@implementation BlobListVC
+@implementation QMessageListVC
 
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
-@synthesize currContainer = _currContainer;
+@synthesize currQueue = _currQueue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Blob List";
+        self.title = @"Message List";
     }
     return self;
 }
@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     
     storageClient = nil;
-    _localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_BLOBS];
+    _localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_QMESSAGES];
     
     // Tableview init code
     self.mainTableView.dataSource = self;
@@ -70,8 +70,8 @@
 
 - (void)fetchData {
     [self showLoader:self.view];
-
-    [storageClient fetchBlobsWithContinuation:self.currContainer resultContinuation:self.resultContinuation maxResult:MAXNUMROWS_BLOBS];
+    
+    [storageClient fetchQueueMessages:self.currQueue.queueName fetchCount:MAXNUMROWS_QMESSAGES];
 }
 
 - (void)viewDidUnload
@@ -96,13 +96,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 	
     cell.textLabel.numberOfLines = 0;
 	
-    WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
-    cell.textLabel.text = currBlob.name;
+    cell.textLabel.text = [[self.localStorageList objectAtIndex:indexPath.row] description];
     
 	return cell;
 }
@@ -112,10 +111,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    BlobImageViewVC *aController = [[BlobImageViewVC alloc] initWithNibName:@"BlobImageView" bundle:nil];
-    aController.currBlob = [self.localStorageList objectAtIndex:indexPath.row];
-    [[self navigationController] pushViewController:aController animated:YES];
-    
+
     [self.mainTableView reloadData];
 }
 
@@ -125,7 +121,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 40;
+	return 100;
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods
@@ -136,12 +132,12 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchBlobs:(NSArray *)blobs inContainer:(WABlobContainer *)container withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchQueueMessages:(NSArray *)queueMessages
 {
-    self.resultContinuation = resultContinuation;
-    [self.localStorageList addObjectsFromArray:blobs];
+    [self.localStorageList addObjectsFromArray:queueMessages];
+    NSLog(@"count: %i", [self.localStorageList count]);
 	[self.mainTableView reloadData];
-    [self hideLoader:self.view];
+    [self hideLoader:self.view];    
 }
 
 

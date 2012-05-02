@@ -36,11 +36,6 @@
     storageClient = nil;
     
     [self showLoader:self.view];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
@@ -50,13 +45,21 @@
     
 	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
     
+    //NSLog(@"blob desc: %@", self.currBlob.description);
+    
     NSString *contentType = [self.currBlob.properties objectForKey:WABlobPropertyKeyContentType];
     if ([contentType hasPrefix:@"image"]) {
         self.title = @"Blob Image";
 		[storageClient fetchBlobData:self.currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
+            //NSLog(@"got into block, error: %@", [error localizedDescription]);
+            //NSLog(@"img data len: %i", [imgData length]);
 			UIImage *blobImage = [UIImage imageWithData:imgData];
 			self.blobImgView.image = blobImage;
             [self hideLoader:self.view];
+            
+            if (error) {
+                [self showError:error];
+            }
 		}];
 	}
 }
