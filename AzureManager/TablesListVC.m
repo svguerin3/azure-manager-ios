@@ -9,7 +9,7 @@
 #import "TablesListVC.h"
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
-
+#import "EntitiesListVC.h"
 
 @interface TablesListVC ()
 
@@ -116,7 +116,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    EntitiesListVC *aController = [[EntitiesListVC alloc] initWithNibName:@"EntitiesList" bundle:nil];
+    aController.tableName = [self.localStorageList objectAtIndex:indexPath.row];
+    [[self navigationController] pushViewController:aController animated:YES];
     [self.mainTableView reloadData];
 }
 

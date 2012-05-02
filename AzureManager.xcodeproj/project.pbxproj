@@ -32,6 +32,8 @@
 		8B5E8E6E155090BA00E74CC7 /* WAAzureFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E5D155090BA00E74CC7 /* WAAzureFilterBuilder.m */; };
 		8B5E8E6F155090BA00E74CC7 /* WAPredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E5F155090BA00E74CC7 /* WAPredicateParser.m */; };
 		8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */; };
+		8B7C16C415517D8B007D5A8C /* EntitiesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */; };
+		8B7C16C515517D8B007D5A8C /* EntitiesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16C315517D8B007D5A8C /* EntitiesList.xib */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -102,6 +104,9 @@
 		8B5E8E60155090BA00E74CC7 /* WAAuthenticationCredential+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WAAuthenticationCredential+Private.h"; sourceTree = "<group>"; };
 		8B5E8E61155090BA00E74CC7 /* WACloudURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudURLRequest.h; sourceTree = "<group>"; };
 		8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudURLRequest.m; sourceTree = "<group>"; };
+		8B7C16C115517D8B007D5A8C /* EntitiesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntitiesListVC.h; sourceTree = "<group>"; };
+		8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntitiesListVC.m; sourceTree = "<group>"; };
+		8B7C16C315517D8B007D5A8C /* EntitiesList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntitiesList.xib; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -137,9 +142,9 @@
 				8B5E8D9A15505C3B00E74CC7 /* StorageSelectionVC.h */,
 				8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */,
 				8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */,
-				8B5E8E3315507E5D00E74CC7 /* TablesListVC.h */,
-				8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */,
-				8B5E8E3515507E5D00E74CC7 /* TablesList.xib */,
+				8B5E8E7B1550993200E74CC7 /* Tables */,
+				8B5E8E7D1550994000E74CC7 /* Blob */,
+				8B5E8E7C1550993900E74CC7 /* Queues */,
 			);
 			name = "Storage Classes";
 			sourceTree = "<group>";
@@ -278,6 +283,33 @@
 			path = PredicateConverter;
 			sourceTree = "<group>";
 		};
+		8B5E8E7B1550993200E74CC7 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E8E3315507E5D00E74CC7 /* TablesListVC.h */,
+				8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */,
+				8B5E8E3515507E5D00E74CC7 /* TablesList.xib */,
+				8B7C16C115517D8B007D5A8C /* EntitiesListVC.h */,
+				8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */,
+				8B7C16C315517D8B007D5A8C /* EntitiesList.xib */,
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
+		8B5E8E7C1550993900E74CC7 /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Queues;
+			sourceTree = "<group>";
+		};
+		8B5E8E7D1550994000E74CC7 /* Blob */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Blob;
+			sourceTree = "<group>";
+		};
 		8B7D250E155028EC002370D1 = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +424,7 @@
 				8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */,
 				8B5E8D9E15505C3B00E74CC7 /* StorageSelection.xib in Resources */,
 				8B5E8E3715507E5D00E74CC7 /* TablesList.xib in Resources */,
+				8B7C16C515517D8B007D5A8C /* EntitiesList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +457,7 @@
 				8B5E8E6E155090BA00E74CC7 /* WAAzureFilterBuilder.m in Sources */,
 				8B5E8E6F155090BA00E74CC7 /* WAPredicateParser.m in Sources */,
 				8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */,
+				8B7C16C415517D8B007D5A8C /* EntitiesListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
