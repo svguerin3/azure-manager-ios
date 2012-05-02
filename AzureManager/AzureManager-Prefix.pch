@@ -13,5 +13,6 @@
     #import <Foundation/Foundation.h>
     #import "Properties.h"
     #import "UIViewController+ShowLoader.h"
+    #import "UIViewController+ShowError.h"
 
 #endif

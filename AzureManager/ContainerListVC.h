@@ -1,15 +1,15 @@
 //
-//  TablesListVC.h
+//  ContainerListVC.h
 //  AzureManager
 //
-//  Created by Vincent Guerin on 5/1/12.
+//  Created by Vincent Guerin on 5/2/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "WACloudStorageClient.h"
 
-@interface TablesListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface ContainerListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
 @private
 	WACloudStorageClient *storageClient;
     NSMutableArray *_localStorageList;
@@ -24,3 +24,4 @@
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 
 @end
+

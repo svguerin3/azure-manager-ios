@@ -34,6 +34,12 @@
 		8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E62155090BA00E74CC7 /* WACloudURLRequest.m */; };
 		8B7C16C415517D8B007D5A8C /* EntitiesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */; };
 		8B7C16C515517D8B007D5A8C /* EntitiesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16C315517D8B007D5A8C /* EntitiesList.xib */; };
+		8B7C16CE1551843B007D5A8C /* ContainerListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16CC1551843B007D5A8C /* ContainerListVC.m */; };
+		8B7C16CF1551843B007D5A8C /* ContainerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16CD1551843B007D5A8C /* ContainerList.xib */; };
+		8B7C16D3155187B7007D5A8C /* BlobListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16D1155187B7007D5A8C /* BlobListVC.m */; };
+		8B7C16D4155187B7007D5A8C /* BlobList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16D2155187B7007D5A8C /* BlobList.xib */; };
+		8B7C16D815518A45007D5A8C /* BlobImageViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */; };
+		8B7C16D915518A45007D5A8C /* BlobImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7C16D715518A45007D5A8C /* BlobImageView.xib */; };
 		8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251D155028ED002370D1 /* UIKit.framework */; };
 		8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D251F155028ED002370D1 /* Foundation.framework */; };
 		8B7D2522155028ED002370D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D2521155028ED002370D1 /* CoreGraphics.framework */; };
@@ -107,6 +113,15 @@
 		8B7C16C115517D8B007D5A8C /* EntitiesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntitiesListVC.h; sourceTree = "<group>"; };
 		8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntitiesListVC.m; sourceTree = "<group>"; };
 		8B7C16C315517D8B007D5A8C /* EntitiesList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntitiesList.xib; sourceTree = "<group>"; };
+		8B7C16CB1551843B007D5A8C /* ContainerListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerListVC.h; sourceTree = "<group>"; };
+		8B7C16CC1551843B007D5A8C /* ContainerListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerListVC.m; sourceTree = "<group>"; };
+		8B7C16CD1551843B007D5A8C /* ContainerList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerList.xib; sourceTree = "<group>"; };
+		8B7C16D0155187B7007D5A8C /* BlobListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobListVC.h; sourceTree = "<group>"; };
+		8B7C16D1155187B7007D5A8C /* BlobListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobListVC.m; sourceTree = "<group>"; };
+		8B7C16D2155187B7007D5A8C /* BlobList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobList.xib; sourceTree = "<group>"; };
+		8B7C16D515518A44007D5A8C /* BlobImageViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobImageViewVC.h; sourceTree = "<group>"; };
+		8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobImageViewVC.m; sourceTree = "<group>"; };
+		8B7C16D715518A45007D5A8C /* BlobImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobImageView.xib; sourceTree = "<group>"; };
 		8B7D2519155028ED002370D1 /* AzureManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7D251D155028ED002370D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B7D251F155028ED002370D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,7 +158,7 @@
 				8B5E8D9B15505C3B00E74CC7 /* StorageSelectionVC.m */,
 				8B5E8D9C15505C3B00E74CC7 /* StorageSelection.xib */,
 				8B5E8E7B1550993200E74CC7 /* Tables */,
-				8B5E8E7D1550994000E74CC7 /* Blob */,
+				8B5E8E7D1550994000E74CC7 /* Blobs */,
 				8B5E8E7C1550993900E74CC7 /* Queues */,
 			);
 			name = "Storage Classes";
@@ -303,11 +318,20 @@
 			name = Queues;
 			sourceTree = "<group>";
 		};
-		8B5E8E7D1550994000E74CC7 /* Blob */ = {
+		8B5E8E7D1550994000E74CC7 /* Blobs */ = {
 			isa = PBXGroup;
 			children = (
+				8B7C16CB1551843B007D5A8C /* ContainerListVC.h */,
+				8B7C16CC1551843B007D5A8C /* ContainerListVC.m */,
+				8B7C16CD1551843B007D5A8C /* ContainerList.xib */,
+				8B7C16D0155187B7007D5A8C /* BlobListVC.h */,
+				8B7C16D1155187B7007D5A8C /* BlobListVC.m */,
+				8B7C16D2155187B7007D5A8C /* BlobList.xib */,
+				8B7C16D515518A44007D5A8C /* BlobImageViewVC.h */,
+				8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */,
+				8B7C16D715518A45007D5A8C /* BlobImageView.xib */,
 			);
-			name = Blob;
+			name = Blobs;
 			sourceTree = "<group>";
 		};
 		8B7D250E155028EC002370D1 = {
@@ -425,6 +449,9 @@
 				8B5E8D9E15505C3B00E74CC7 /* StorageSelection.xib in Resources */,
 				8B5E8E3715507E5D00E74CC7 /* TablesList.xib in Resources */,
 				8B7C16C515517D8B007D5A8C /* EntitiesList.xib in Resources */,
+				8B7C16CF1551843B007D5A8C /* ContainerList.xib in Resources */,
+				8B7C16D4155187B7007D5A8C /* BlobList.xib in Resources */,
+				8B7C16D915518A45007D5A8C /* BlobImageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +485,9 @@
 				8B5E8E6F155090BA00E74CC7 /* WAPredicateParser.m in Sources */,
 				8B5E8E70155090BA00E74CC7 /* WACloudURLRequest.m in Sources */,
 				8B7C16C415517D8B007D5A8C /* EntitiesListVC.m in Sources */,
+				8B7C16CE1551843B007D5A8C /* ContainerListVC.m in Sources */,
+				8B7C16D3155187B7007D5A8C /* BlobListVC.m in Sources */,
+				8B7C16D815518A45007D5A8C /* BlobImageViewVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@
     BOOL _fetchedResults;
 }
 
-- (void)fetchEntityData;
+- (void)fetchData;
 
 @property (nonatomic, retain) WAResultContinuation *resultContinuation;
 @property (nonatomic, retain) NSMutableArray *localStorageList;

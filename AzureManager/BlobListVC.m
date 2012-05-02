@@ -1,33 +1,34 @@
 //
-//  TablesListVC.m
+//  BlobListVC.m
 //  AzureManager
 //
-//  Created by Vincent Guerin on 5/1/12.
+//  Created by Vincent Guerin on 5/2/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "TablesListVC.h"
+#import "BlobListVC.h"
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
-#import "EntitiesListVC.h"
+#import "WABlob.h"
+#import "BlobImageViewVC.h"
 
-@interface TablesListVC ()
+@interface BlobListVC ()
 
 @end
 
-@implementation TablesListVC
+@implementation BlobListVC
 
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
+@synthesize currContainer = _currContainer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"List of Tables";
-        _fetchedResults = NO;
+        self.title = @"Blob List";
     }
     return self;
 }
@@ -38,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     
     storageClient = nil;
-    _localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_TABLES];
+    _localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_BLOBS];
     
     // Tableview init code
     self.mainTableView.dataSource = self;
@@ -58,7 +59,7 @@
 	if (storageClient) {
         storageClient.delegate = nil;
 	}
-
+    
 	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
 	storageClient.delegate = self;
 	
@@ -69,7 +70,8 @@
 
 - (void)fetchData {
     [self showLoader:self.view];
-    [storageClient fetchTablesWithContinuation:self.resultContinuation];
+
+    [storageClient fetchBlobsWithContinuation:self.currContainer resultContinuation:self.resultContinuation maxResult:MAXNUMROWS_BLOBS];
 }
 
 - (void)viewDidUnload
@@ -106,8 +108,9 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    cell.textLabel.text = [NSString stringWithFormat:@"%i. %@", indexPath.row+1, [self.localStorageList objectAtIndex:indexPath.row]];
-	
+    WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
+    cell.textLabel.text = currBlob.name;
+    
 	return cell;
 }
 
@@ -116,9 +119,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    EntitiesListVC *aController = [[EntitiesListVC alloc] initWithNibName:@"EntitiesList" bundle:nil];
-    aController.tableName = [self.localStorageList objectAtIndex:indexPath.row];
+    BlobImageViewVC *aController = [[BlobImageViewVC alloc] initWithNibName:@"BlobImageView" bundle:nil];
+    aController.currBlob = [self.localStorageList objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:aController animated:YES];
+    
     [self.mainTableView reloadData];
 }
 
@@ -139,18 +143,11 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchBlobs:(NSArray *)blobs inContainer:(WABlobContainer *)container withResultContinuation:(WAResultContinuation *)resultContinuation
 {
-    if (resultContinuation.nextTableKey == nil && !_fetchedResults) {
-        [self.localStorageList removeAllObjects];
-    } else {
-        _fetchedResults = YES;
-    }
-
     self.resultContinuation = resultContinuation;
-    [self.localStorageList addObjectsFromArray:tables];
+    [self.localStorageList addObjectsFromArray:blobs];
 	[self.mainTableView reloadData];
-    
     [self hideLoader:self.view];
 }
 

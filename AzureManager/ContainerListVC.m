@@ -1,21 +1,22 @@
 //
-//  TablesListVC.m
+//  ContainerListVC.m
 //  AzureManager
 //
-//  Created by Vincent Guerin on 5/1/12.
+//  Created by Vincent Guerin on 5/2/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "TablesListVC.h"
+#import "ContainerListVC.h"
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
-#import "EntitiesListVC.h"
+#import "WABlobContainer.h"
+#import "BlobListVC.h"
 
-@interface TablesListVC ()
+@interface ContainerListVC ()
 
 @end
 
-@implementation TablesListVC
+@implementation ContainerListVC
 
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
@@ -26,8 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"List of Tables";
-        _fetchedResults = NO;
+        self.title = @"Container List";
     }
     return self;
 }
@@ -58,7 +58,7 @@
 	if (storageClient) {
         storageClient.delegate = nil;
 	}
-
+    
 	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
 	storageClient.delegate = self;
 	
@@ -69,7 +69,7 @@
 
 - (void)fetchData {
     [self showLoader:self.view];
-    [storageClient fetchTablesWithContinuation:self.resultContinuation];
+    [storageClient fetchBlobContainersWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_CONTAINERS];
 }
 
 - (void)viewDidUnload
@@ -106,8 +106,9 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    cell.textLabel.text = [NSString stringWithFormat:@"%i. %@", indexPath.row+1, [self.localStorageList objectAtIndex:indexPath.row]];
-	
+    WABlobContainer *currContainer = [self.localStorageList objectAtIndex:indexPath.row];
+	cell.textLabel.text = currContainer.name;
+    
 	return cell;
 }
 
@@ -116,9 +117,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    EntitiesListVC *aController = [[EntitiesListVC alloc] initWithNibName:@"EntitiesList" bundle:nil];
-    aController.tableName = [self.localStorageList objectAtIndex:indexPath.row];
+    BlobListVC *aController = [[BlobListVC alloc] initWithNibName:@"BlobList" bundle:nil];
+    aController.currContainer = [self.localStorageList objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:aController animated:YES];
+    
     [self.mainTableView reloadData];
 }
 
@@ -139,18 +141,11 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchBlobContainers:(NSArray *)containers withResultContinuation:(WAResultContinuation *)resultContinuation
 {
-    if (resultContinuation.nextTableKey == nil && !_fetchedResults) {
-        [self.localStorageList removeAllObjects];
-    } else {
-        _fetchedResults = YES;
-    }
-
     self.resultContinuation = resultContinuation;
-    [self.localStorageList addObjectsFromArray:tables];
+    [self.localStorageList addObjectsFromArray:containers];
 	[self.mainTableView reloadData];
-    
     [self hideLoader:self.view];
 }
 

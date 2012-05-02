@@ -8,6 +8,7 @@
 
 #import "StorageSelectionVC.h"
 #import "TablesListVC.h"
+#import "ContainerListVC.h"
 
 @interface StorageSelectionVC ()
 
@@ -38,7 +39,8 @@
 }
 
 - (IBAction) blobDataBtnPressed {
-
+    ContainerListVC *aController = [[ContainerListVC alloc] initWithNibName:@"ContainerList" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (IBAction) queuesBtnPressed {

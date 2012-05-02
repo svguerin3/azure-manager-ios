@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "WAResultContinuation.h"
 #import "WATableFetchRequest.h"
+#import "WATableEntity.h"
 
 @interface EntitiesListVC ()
 
@@ -63,11 +64,11 @@
 	storageClient.delegate = self;
 	
     if (self.localStorageList.count == 0) {
-        [self fetchEntityData];
+        [self fetchData];
     }
 }
 
-- (void)fetchEntityData {
+- (void)fetchData {
     [self showLoader:self.view];
     WATableFetchRequest *fetchRequest = [WATableFetchRequest fetchRequestForTable:self.tableName];
     fetchRequest.resultContinuation = self.resultContinuation;
@@ -99,8 +100,9 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    cell.textLabel.text = [self.localStorageList objectAtIndex:indexPath.row];
-	
+    WATableEntity *currEntity = [self.localStorageList objectAtIndex:indexPath.row];
+	cell.textLabel.text = currEntity.description;
+    
 	return cell;
 }
 
@@ -110,7 +112,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+	[self.mainTableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -141,23 +143,17 @@
 
 - (void)storageClient:(WACloudStorageClient *)client didFailRequest:request withError:error
 {
-	NSLog(@"didFailRequest: %@", error);
+	[self showError:error];
     [self hideLoader:self.view];
 }
 
 - (void)storageClient:(WACloudStorageClient *)client didFetchEntities:(NSArray *)entities fromTableNamed:(NSString *)tableName withResultContinuation:(WAResultContinuation *)resultContinuation
 {
-    NSLog(@"got into didFetchEntities");
     self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:entities];    
 	[self.mainTableView reloadData];
     
     [self hideLoader:self.view];
-}
-
-- (void)storageClient:(WACloudStorageClient *)client didFetchQueueMessages:(NSArray *)queueMessages
-{
-    NSLog(@"got into didFetchQueueMessages");
 }
 
 @end
