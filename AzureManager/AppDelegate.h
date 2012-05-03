@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MainMenuVC;
+@class AccountSelectionVC;
 @class WAAuthenticationCredential;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;
-@property (nonatomic, retain) MainMenuVC *rootVC;
+@property (nonatomic, retain) AccountSelectionVC *rootVC;
 @property (nonatomic, retain) WAAuthenticationCredential *authenticationCredential;
 @property (assign) BOOL use_proxy;
 

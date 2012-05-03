@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "MainMenuVC.h"
+#import "AccountSelectionVC.h"
 #import "WAConfiguration.h"
 #import "WACloudStorageClient.h"
 #import "WACloudAccessToken.h"
@@ -43,9 +43,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.rootVC = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPhone" bundle:nil]; 
+        self.rootVC = [[AccountSelectionVC alloc] initWithNibName:@"AccountSelection_iPhone" bundle:nil]; 
     } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.rootVC = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPad" bundle:nil]; 
+        self.rootVC = [[AccountSelectionVC alloc] initWithNibName:@"AccountSelection_iPad" bundle:nil]; 
     }
     
 	UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:self.rootVC];

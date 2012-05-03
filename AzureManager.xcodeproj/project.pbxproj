@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B3D22721552F36200CCBE25 /* AccountSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */; };
+		8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */; };
+		8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */; };
+		8B3D227D1552F6A300CCBE25 /* AccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D227C1552F6A300CCBE25 /* AccountData.m */; };
 		8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8D92155043A200E74CC7 /* MainMenuVC.m */; };
 		8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */; };
 		8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */; };
@@ -54,6 +58,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectionVC.h; sourceTree = "<group>"; };
+		8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectionVC.m; sourceTree = "<group>"; };
+		8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSelection_iPhone.xib; sourceTree = "<group>"; };
+		8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSelection_iPad.xib; sourceTree = "<group>"; };
+		8B3D227B1552F6A300CCBE25 /* AccountData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountData.h; sourceTree = "<group>"; };
+		8B3D227C1552F6A300CCBE25 /* AccountData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountData.m; sourceTree = "<group>"; };
 		8B5E8D91155043A200E74CC7 /* MainMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuVC.h; sourceTree = "<group>"; };
 		8B5E8D92155043A200E74CC7 /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
 		8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPhone.xib; sourceTree = "<group>"; };
@@ -161,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B3D227E1552F6C000CCBE25 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				8B3D227B1552F6A300CCBE25 /* AccountData.h */,
+				8B3D227C1552F6A300CCBE25 /* AccountData.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		8B5E8D9F15505C4100E74CC7 /* Storage Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +404,10 @@
 				8B5E8DA215505E2C00E74CC7 /* Configuration */,
 				8B7D252C155028ED002370D1 /* AppDelegate.h */,
 				8B7D252D155028ED002370D1 /* AppDelegate.m */,
+				8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */,
+				8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */,
+				8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */,
+				8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */,
 				8B5E8D91155043A200E74CC7 /* MainMenuVC.h */,
 				8B5E8D92155043A200E74CC7 /* MainMenuVC.m */,
 				8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */,
@@ -392,6 +415,7 @@
 				8B5E8D9F15505C4100E74CC7 /* Storage Classes */,
 				8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */,
 				8B5E8DA115505C5200E74CC7 /* Management Classes */,
+				8B3D227E1552F6C000CCBE25 /* Objects */,
 				8B7D2524155028ED002370D1 /* Supporting Files */,
 			);
 			path = AzureManager;
@@ -470,6 +494,8 @@
 				8B7C16D915518A45007D5A8C /* BlobImageView.xib in Resources */,
 				8B7C16DE15519113007D5A8C /* QueueList.xib in Resources */,
 				8B7C16E315519476007D5A8C /* QMessageList.xib in Resources */,
+				8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */,
+				8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +534,8 @@
 				8B7C16D815518A45007D5A8C /* BlobImageViewVC.m in Sources */,
 				8B7C16DD15519113007D5A8C /* QueueListVC.m in Sources */,
 				8B7C16E215519476007D5A8C /* QMessageListVC.m in Sources */,
+				8B3D22721552F36200CCBE25 /* AccountSelectionVC.m in Sources */,
+				8B3D227D1552F6A300CCBE25 /* AccountData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
