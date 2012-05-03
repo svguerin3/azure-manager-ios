@@ -11,6 +11,10 @@
 		8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */; };
 		8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */; };
 		8B3D227D1552F6A300CCBE25 /* AccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D227C1552F6A300CCBE25 /* AccountData.m */; };
+		8B3D228C15530FF900CCBE25 /* NewAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D228A15530FF900CCBE25 /* NewAccountVC.m */; };
+		8B3D228D15530FF900CCBE25 /* NewAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D228B15530FF900CCBE25 /* NewAccount.xib */; };
+		8B3D22941553173200CCBE25 /* WAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D22931553173200CCBE25 /* WAConfig.m */; };
+		8B3D22AD155329CE00CCBE25 /* EntityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */; };
 		8B5E8D94155043A200E74CC7 /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8D92155043A200E74CC7 /* MainMenuVC.m */; };
 		8B5E8D97155043C600E74CC7 /* MainMenu_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */; };
 		8B5E8D99155044C500E74CC7 /* MainMenu_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */; };
@@ -64,6 +68,13 @@
 		8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSelection_iPad.xib; sourceTree = "<group>"; };
 		8B3D227B1552F6A300CCBE25 /* AccountData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountData.h; sourceTree = "<group>"; };
 		8B3D227C1552F6A300CCBE25 /* AccountData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountData.m; sourceTree = "<group>"; };
+		8B3D228915530FF900CCBE25 /* NewAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAccountVC.h; sourceTree = "<group>"; };
+		8B3D228A15530FF900CCBE25 /* NewAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountVC.m; sourceTree = "<group>"; };
+		8B3D228B15530FF900CCBE25 /* NewAccount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAccount.xib; sourceTree = "<group>"; };
+		8B3D22921553173200CCBE25 /* WAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAConfig.h; sourceTree = "<group>"; };
+		8B3D22931553173200CCBE25 /* WAConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAConfig.m; sourceTree = "<group>"; };
+		8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityTableViewCell.h; sourceTree = "<group>"; };
+		8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityTableViewCell.m; sourceTree = "<group>"; };
 		8B5E8D91155043A200E74CC7 /* MainMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuVC.h; sourceTree = "<group>"; };
 		8B5E8D92155043A200E74CC7 /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
 		8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu_iPhone.xib; sourceTree = "<group>"; };
@@ -77,7 +88,7 @@
 		8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowError.m"; sourceTree = "<group>"; };
 		8B5E8DA715505E2C00E74CC7 /* WAConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAConfiguration.h; sourceTree = "<group>"; };
 		8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAConfiguration.m; sourceTree = "<group>"; };
-		8B5E8DAC15505E3A00E74CC7 /* Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
+		8B5E8DAC15505E3A00E74CC7 /* Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Properties.h; path = Configuration/Properties.h; sourceTree = "<group>"; };
 		8B5E8E081550792B00E74CC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B5E8E0A1550792B00E74CC7 /* UIViewController+ShowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowLoader.h"; sourceTree = "<group>"; };
@@ -174,10 +185,26 @@
 		8B3D227E1552F6C000CCBE25 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */,
+				8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */,
 				8B3D227B1552F6A300CCBE25 /* AccountData.h */,
 				8B3D227C1552F6A300CCBE25 /* AccountData.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		8B3D228315530FBA00CCBE25 /* Account Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */,
+				8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */,
+				8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */,
+				8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */,
+				8B3D228915530FF900CCBE25 /* NewAccountVC.h */,
+				8B3D228A15530FF900CCBE25 /* NewAccountVC.m */,
+				8B3D228B15530FF900CCBE25 /* NewAccount.xib */,
+			);
+			name = "Account Classes";
 			sourceTree = "<group>";
 		};
 		8B5E8D9F15505C4100E74CC7 /* Storage Classes */ = {
@@ -210,7 +237,6 @@
 		8B5E8DA215505E2C00E74CC7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8B5E8DAC15505E3A00E74CC7 /* Properties.h */,
 				8B5E8E2C15507D4F00E74CC7 /* WACloudStorageClientDelegate.h */,
 				8B5E8E2D15507D4F00E74CC7 /* WACloudStorageClientDelegate.m */,
 				8B5E8DA315505E2C00E74CC7 /* ServiceCall.h */,
@@ -219,6 +245,8 @@
 				8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */,
 				8B5E8DA715505E2C00E74CC7 /* WAConfiguration.h */,
 				8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */,
+				8B3D22921553173200CCBE25 /* WAConfig.h */,
+				8B3D22931553173200CCBE25 /* WAConfig.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -402,16 +430,14 @@
 			children = (
 				8B5E8E061550792B00E74CC7 /* ThirdPartyLibs */,
 				8B5E8DA215505E2C00E74CC7 /* Configuration */,
+				8B5E8DAC15505E3A00E74CC7 /* Properties.h */,
 				8B7D252C155028ED002370D1 /* AppDelegate.h */,
 				8B7D252D155028ED002370D1 /* AppDelegate.m */,
-				8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */,
-				8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */,
-				8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */,
-				8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */,
 				8B5E8D91155043A200E74CC7 /* MainMenuVC.h */,
 				8B5E8D92155043A200E74CC7 /* MainMenuVC.m */,
 				8B5E8D96155043C600E74CC7 /* MainMenu_iPhone.xib */,
 				8B5E8D98155044C500E74CC7 /* MainMenu_iPad.xib */,
+				8B3D228315530FBA00CCBE25 /* Account Classes */,
 				8B5E8D9F15505C4100E74CC7 /* Storage Classes */,
 				8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */,
 				8B5E8DA115505C5200E74CC7 /* Management Classes */,
@@ -496,6 +522,7 @@
 				8B7C16E315519476007D5A8C /* QMessageList.xib in Resources */,
 				8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */,
 				8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */,
+				8B3D228D15530FF900CCBE25 /* NewAccount.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +563,9 @@
 				8B7C16E215519476007D5A8C /* QMessageListVC.m in Sources */,
 				8B3D22721552F36200CCBE25 /* AccountSelectionVC.m in Sources */,
 				8B3D227D1552F6A300CCBE25 /* AccountData.m in Sources */,
+				8B3D228C15530FF900CCBE25 /* NewAccountVC.m in Sources */,
+				8B3D22941553173200CCBE25 /* WAConfig.m in Sources */,
+				8B3D22AD155329CE00CCBE25 /* EntityTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

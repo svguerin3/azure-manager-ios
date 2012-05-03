@@ -7,10 +7,11 @@
 //
 
 #import "QMessageListVC.h"
-#import "AppDelegate.h"
 #import "WAResultContinuation.h"
 #import "WABlob.h"
 #import "WAQueue.h"
+#import "EntityTableViewCell.h"
+#import "WAQueueMessage.h"
 
 @interface QMessageListVC ()
 
@@ -53,14 +54,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
+
 	if (storageClient) {
         storageClient.delegate = nil;
 	}
     
-	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
+	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
 	storageClient.delegate = self;
 	
     if (self.localStorageList.count == 0) {
@@ -90,38 +89,78 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	NSUInteger count = fetchCount;
+    NSUInteger localCount = self.localStorageList.count;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) { 
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (count >= MAXNUMROWS_QMESSAGES &&
+        self.resultContinuation.nextPartitionKey != nil &&
+        self.resultContinuation.nextRowKey != nil) {
+        localCount += 1;
+    }
+    
+    return localCount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	static NSString* CellIdentifier = @"Cell2";
+    
+    EntityTableViewCell *cell = (EntityTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (indexPath.row != self.localStorageList.count) {
+        if (cell == nil) {
+            cell = [[EntityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        WAQueueMessage *queueMessage = [self.localStorageList objectAtIndex:indexPath.row];
+        [cell setKeysAndObjects:queueMessage, nil];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 	
-    cell.textLabel.numberOfLines = 0;
-	
-    cell.textLabel.text = [[self.localStorageList objectAtIndex:indexPath.row] description];
+    if (indexPath.row == self.localStorageList.count) {   
+        if (fetchCount == MAXNUMROWS_QMESSAGES) {
+            UITableViewCell *loadMoreCell = [tableView dequeueReusableCellWithIdentifier:@"LoadMore"];
+            if (loadMoreCell == nil) {
+                loadMoreCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LoadMore"];
+            }
+            
+            UILabel *loadMore =[[UILabel alloc] initWithFrame:CGRectMake(0,0,362,40)];
+            loadMore.textColor = [UIColor blackColor];
+            loadMore.highlightedTextColor = [UIColor darkGrayColor];
+            loadMore.backgroundColor = [UIColor clearColor];
+            loadMore.textAlignment = UITextAlignmentCenter;
+            loadMore.font = [UIFont boldSystemFontOfSize:20];
+            loadMore.text = @"Show more results...";
+            [loadMoreCell addSubview:loadMore];
+            return loadMoreCell;
+        }
+    }
     
 	return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	int count = 0;
+	
+    if (indexPath.row >= self.localStorageList.count) {
+        return 40;  
+    } else {
+		count = 7;
+	}
+	
+	return 12 + count * 25;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    [self.mainTableView reloadData];
-}
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.localStorageList count];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 100;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self.mainTableView reloadData];
+    
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods

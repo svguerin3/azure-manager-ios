@@ -14,13 +14,13 @@
  limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
+@interface EntityTableViewCell : UITableViewCell {
+@private
+	NSMutableArray* _subviews;
+}
 
-@interface UIViewController (ShowError)
-
-- (void)showError:(NSError *)error;
-- (void)showError:(NSError *)error withTitle:(NSString *)title;
-- (void)showGenericAlert:(NSString *)alertMsg withTitle:(NSString *)titleStr;
+- (void)setKeysAndObjects:(id)key, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

@@ -17,6 +17,7 @@
     NSMutableArray *_localStorageList;
     WAResultContinuation *_resultContinuation;
     BOOL _fetchedResults;
+    NSUInteger fetchCount;
 }
 
 - (void)fetchData;

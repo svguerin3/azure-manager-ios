@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "AccountSelectionVC.h"
-#import "WAConfiguration.h"
+#import "WAConfig.h"
 #import "WACloudStorageClient.h"
 #import "WACloudAccessToken.h"
 #import "WACloudAccessControlClient.h"
@@ -20,26 +20,40 @@
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize rootVC = _rootVC;
-@synthesize authenticationCredential = _authenticationCredential;
 @synthesize use_proxy;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    WAConfiguration *config = [WAConfiguration sharedConfiguration];	
-	if(!config) {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Configuration Error" 
-															message:@"You must update the ToolkitConfig section in the application's info.plist file before running the first time."
-														   delegate:self 
-												  cancelButtonTitle:@"Close" 
-												  otherButtonTitles:nil];
-		[alertView show];		
-		return YES;
-	}
-	
-	if(config.connectionType != WAConnectDirect) {
-		[WACloudStorageClient ignoreSSLErrorFor:config.proxyNamespace];
+@synthesize accountsList;
+@synthesize dataFilePathToAccountsList;
+
+- (id) init {   
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *pathToAccountsList = [documentsDirectory stringByAppendingPathComponent:@"accountslist.dat"];
+	[self setDataFilePathToAccountsList:pathToAccountsList];
+    
+    // check if .dat file exists in docs folder
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	if([fileManager fileExistsAtPath:dataFilePathToAccountsList]) {
+        NSLog(@"account data exists");
+		NSMutableData *theData;
+		NSKeyedUnarchiver *decoder;
+		NSMutableArray *tempArr;
+		
+		theData = [NSData dataWithContentsOfFile:dataFilePathToAccountsList];
+		decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:theData];
+		tempArr = [decoder decodeObjectForKey:@"accountslist"];
+		accountsList = tempArr;
+		[decoder finishDecoding];
+	} else { // didn't find it, so this is probably the first time the user is using the app
+        NSLog(@"account data does NOT exist, creating new");
+		accountsList = [[NSMutableArray alloc] init];
 	}
     
+	return self;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -52,32 +66,8 @@
     self.navigationController = nav;
 	self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
-
-    [self initCredentials];
     
     return YES;
-}
-
-- (void) initCredentials {
-    WAConfiguration *config = [WAConfiguration sharedConfiguration];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.authenticationCredential = [WAAuthenticationCredential credentialWithAzureServiceAccount:config.accountName 
-                                                                                               accessKey:config.accessKey];
-}
-
-+ (void)bindAccessToken
-{
-	WAConfiguration* config = [WAConfiguration sharedConfiguration];
-    
-	if(config.connectionType != WAConnectProxyACS) {
-		return;
-	}
-	
-	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	NSString *proxyURL = [config proxyURL];
-	WACloudAccessToken *sharedToken = [WACloudAccessControlClient sharedToken];
-
-    appDelegate.authenticationCredential = [WAAuthenticationCredential authenticateCredentialWithProxyURL:[NSURL URLWithString:proxyURL] accessToken:sharedToken];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -90,6 +80,8 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [self saveAndEncodeAppData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -105,6 +97,15 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveAndEncodeAppData];
+}
+
+- (void) saveAndEncodeAppData {
+    NSMutableData *theDataAccountsList = [NSMutableData data];
+	NSKeyedArchiver *encoderAccountsList = [[NSKeyedArchiver alloc] initForWritingWithMutableData:theDataAccountsList];
+	[encoderAccountsList encodeObject:accountsList forKey:@"accountslist"];
+	[encoderAccountsList finishEncoding]; 
+	[theDataAccountsList writeToFile:dataFilePathToAccountsList atomically:YES];
 }
 
 @end

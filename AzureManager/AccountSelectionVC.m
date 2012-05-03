@@ -7,6 +7,10 @@
 //
 
 #import "AccountSelectionVC.h"
+#import "MainMenuVC.h"
+#import "AppDelegate.h"
+#import "AccountData.h"
+#import "NewAccountVC.h"
 
 @interface AccountSelectionVC ()
 
@@ -21,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"Select an Account";
     }
     return self;
 }
@@ -37,6 +42,25 @@
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
 	self.mainTableView.backgroundColor = [UIColor clearColor];
+    
+    mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    UIBarButtonItem *plusBtn = [[UIBarButtonItem alloc] 
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                 target:self action:@selector(addBtnPressed)] ;
+	self.navigationItem.rightBarButtonItem = plusBtn;  
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
+    [self.navigationItem setLeftBarButtonItem:addButton];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.mainTableView reloadData];
+}
+
+- (void) addBtnPressed {
+    NewAccountVC *aController = [[NewAccountVC alloc] initWithNibName:@"NewAccount" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 #pragma mark - TableView delegate methods
@@ -54,15 +78,17 @@
 	
     // temporary for testing
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"My Account (from plist)";
+        cell.textLabel.text = @"Vincent Trial Account";
+    } else {
+        AccountData *currAcct = [mainDel.accountsList objectAtIndex:indexPath.row-1];
+        cell.textLabel.text = currAcct.accountName;    
     }
-    // end testing block
-	
+    
 	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
+	return 1 + [mainDel.accountsList count];;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,11 +100,64 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // temporary for testing
+    AccountData *currAcct = [[AccountData alloc] init];
+    
+    // THIS IS TEMPORARY FOR TESTING PURPOSES
     if (indexPath.row == 0) {
-        
+        currAcct.accountName = TEMP_ACCOUNTNAME;
+        currAcct.accessKey = TEMP_ACCESSKEY;
+    } else {
+        currAcct = [mainDel.accountsList objectAtIndex:indexPath.row-1];
     }
-    // end testing block
+    // END TESTING
+    
+    [[WAConfig sharedConfiguration] initCredentialsWithAccountName:currAcct.accountName withAccessKey:currAcct.accessKey];
+    
+    MainMenuVC *aController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        aController = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPhone" bundle:nil]; 
+    } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        aController = [[MainMenuVC alloc] initWithNibName:@"MainMenu_iPad" bundle:nil]; 
+    }    
+    [[self navigationController] pushViewController:aController animated:YES];
+    
+    [self.mainTableView reloadData];
+}
+
+- (IBAction) EditTable:(id)sender {
+	if(self.editing) {
+		[super setEditing:NO animated:NO]; 
+		[self.mainTableView setEditing:NO animated:YES];
+		[self.mainTableView reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+	} else {
+		[super setEditing:YES animated:YES]; 
+		[self.mainTableView setEditing:YES animated:YES];
+		[self.mainTableView reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Done"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+	}
+}
+
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (indexPath.row != 0) { // TEMPORARY STUFF
+            [mainDel.accountsList removeObjectAtIndex:indexPath.row-1];
+            [self.mainTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            [self showGenericAlert:@"" withTitle:@"Can't delete that one"];
+        }
+	}
+} 
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+	return NO;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {	
+    
 }
 
 - (void)viewDidUnload

@@ -8,7 +8,6 @@
 
 #import "BlobImageViewVC.h"
 #import "WABlob.h"
-#import "AppDelegate.h"
 
 @interface BlobImageViewVC ()
 
@@ -36,14 +35,12 @@
     storageClient = nil;
     
     [self showLoader:self.view];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
+
 	if (storageClient) {
         storageClient.delegate = nil;
 	}
     
-	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
+	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
     
     //NSLog(@"blob desc: %@", self.currBlob.description);
     

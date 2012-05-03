@@ -7,7 +7,6 @@
 //
 
 #import "TablesListVC.h"
-#import "AppDelegate.h"
 #import "WAResultContinuation.h"
 #import "EntitiesListVC.h"
 
@@ -52,14 +51,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
+
 	if (storageClient) {
         storageClient.delegate = nil;
 	}
 
-	storageClient = [WACloudStorageClient storageClientWithCredential:appDelegate.authenticationCredential];
+	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
 	storageClient.delegate = self;
 	
     if (self.localStorageList.count == 0) {

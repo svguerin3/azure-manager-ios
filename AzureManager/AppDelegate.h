@@ -11,14 +11,19 @@
 @class AccountSelectionVC;
 @class WAAuthenticationCredential;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    // storage fields
+	NSString *dataFilePathToAccountsList;
+    NSMutableArray *accountsList;
+}
 
-- (void) initCredentials;
+- (void) saveAndEncodeAppData;
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) AccountSelectionVC *rootVC;
-@property (nonatomic, retain) WAAuthenticationCredential *authenticationCredential;
+@property (nonatomic, retain) NSMutableArray *accountsList;
 @property (assign) BOOL use_proxy;
+@property (nonatomic, retain) NSString *dataFilePathToAccountsList;
 
 @end

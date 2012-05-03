@@ -67,5 +67,7 @@
 			<string>6PTagAWDBktbI96HQFUVHxyPMM3D/3MksJVlTNIIGKspEx4GOFAugGG3iyvdrzldbeFPftfN/pVPxdVvU+AIKw==</string>
 		</dict>
 	</dict>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
 </dict>
 </plist>

@@ -35,4 +35,13 @@
 	[alert show];
 }
 
+- (void)showGenericAlert:(NSString *)alertMsg withTitle:(NSString *)titleStr {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:titleStr
+													message:alertMsg
+												   delegate:nil 
+										  cancelButtonTitle:@"OK"
+										  otherButtonTitles:nil];
+	[alert show];
+}
+
 @end

@@ -14,4 +14,8 @@
 #define MAXNUMROWS_QUEUES          20
 #define MAXNUMROWS_QMESSAGES       100
 
+// HARD-CODED (Temporary) ACCOUNT INFO
+#define TEMP_ACCOUNTNAME        @"neudesictestvg1"
+#define TEMP_ACCESSKEY          @"6PTagAWDBktbI96HQFUVHxyPMM3D/3MksJVlTNIIGKspEx4GOFAugGG3iyvdrzldbeFPftfN/pVPxdVvU+AIKw=="
+
 // notifs

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AccountSelectionVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@class AppDelegate;
+
+@interface AccountSelectionVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    AppDelegate *mainDel;
+}
 
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 
