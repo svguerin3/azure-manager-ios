@@ -56,7 +56,7 @@
 
 #pragma mark - Methods
 
-- (void)setKeysAndObjects:(NSString*)key, ...
+/*- (void)setKeysAndObjects:(NSString*)key, ...
 {
 	va_list args;
 	va_start(args, key);
@@ -147,6 +147,112 @@
 		detail = [details objectAtIndex:n];
 		CGRect rc;
 
+		rc = CGRectMake(10, y, labelWidth, 22);
+		label.frame = rc;
+		
+		rc = CGRectMake(25 + labelWidth, y, width - labelWidth - 50, 22);
+		detail.frame = rc;
+        
+		y += 25;
+	}
+} */
+
+- (void)setKeysAndObjects:(NSString*)key, ...
+{
+	va_list args;
+	va_start(args, key);
+	
+	NSMutableArray* a = [NSMutableArray arrayWithCapacity:10];
+	
+    int propertyCount = 0;
+    
+	while (key) {
+		if ([key isKindOfClass:[WATableEntity class]]) {
+			WATableEntity *tableEntity = (WATableEntity*)key;
+			for (NSString *key in [tableEntity keys]) {
+				[a addObject:[KeyPair keyPairWithKey:key value:[tableEntity objectForKey:key]]];
+                propertyCount = [a count];
+			}
+		} else if([key isKindOfClass:[WAQueueMessage class]]) {
+			WAQueueMessage *queueMessage = (WAQueueMessage*)key;
+			[a addObject:[KeyPair keyPairWithKey:@"Message ID" value:[queueMessage messageId]]];
+			[a addObject:[KeyPair keyPairWithKey:@"Insertion Time" value:[queueMessage insertionTime]]];
+			[a addObject:[KeyPair keyPairWithKey:@"Expiration Time" value:[queueMessage expirationTime]]];
+			[a addObject:[KeyPair keyPairWithKey:@"Pop Receipt" value:[queueMessage popReceipt]]];
+			[a addObject:[KeyPair keyPairWithKey:@"Time Next Visible" value:[queueMessage timeNextVisible]]];
+            [a addObject:[KeyPair keyPairWithKey:@"Dequeue Count" value:[NSString stringWithFormat:@"%d", [queueMessage dequeueCount]]]];
+			[a addObject:[KeyPair keyPairWithKey:@"Message Text" value:[queueMessage messageText]]];
+		} else {
+			NSString *value = va_arg(args, NSString*);
+			[a addObject:[KeyPair keyPairWithKey:key value:value]];
+		}
+		
+		key = va_arg(args, NSString*);
+	}
+	
+	va_end(args);
+	
+	if(_subviews.count) {
+		for(UIView *view in _subviews) {
+			[view removeFromSuperview];
+		}
+		
+		[_subviews removeAllObjects];
+	}
+	
+	UIFont *labelFont = [UIFont boldSystemFontOfSize:12];
+	UIFont *detailFont = [UIFont systemFontOfSize:14];
+	NSInteger labelWidth = 0;
+	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:a.count];
+	NSMutableArray *details = [NSMutableArray arrayWithCapacity:a.count];
+	UILabel *label;
+	UILabel *detail;
+	UIColor *labelColor = [UIColor colorWithRed:3/15.0 green:6/15.0 blue:9/15.0 alpha:1.0];
+	
+    NSLog(@"checking for properties");
+	for (KeyPair* pair in a) {
+        NSLog(@"in keypair");
+		CGSize size = [pair.key sizeWithFont:labelFont forWidth:100 lineBreakMode:UILineBreakModeTailTruncation];
+		
+		if (size.width > labelWidth) {
+			labelWidth = size.width;
+		}
+		
+		label = [[UILabel alloc] initWithFrame:CGRectZero];
+		label.text = pair.key;
+		label.textColor = labelColor;
+		label.font = labelFont;
+		label.lineBreakMode = UILineBreakModeTailTruncation;
+		label.textAlignment = UITextAlignmentRight;
+		label.highlightedTextColor = [UIColor whiteColor];
+		
+		detail = [[UILabel alloc] initWithFrame:CGRectZero];
+		detail.text = pair.value;
+		detail.textColor = [UIColor blackColor];
+		detail.font = detailFont;
+		detail.minimumFontSize = 12;
+		detail.adjustsFontSizeToFitWidth = YES;
+		detail.lineBreakMode = UILineBreakModeTailTruncation;
+		detail.highlightedTextColor = [UIColor whiteColor];
+		
+		[_subviews addObject:label];
+		[_subviews addObject:detail];
+		[labels addObject:label];
+		[details addObject:detail];
+		
+		[self.contentView addSubview:label];
+		[self.contentView addSubview:detail];
+	}
+	
+	NSInteger y = 7;
+    
+	int width = (self.accessoryType == UITableViewCellAccessoryDisclosureIndicator) ? 275 : 295;
+	
+	for (int n = 0; n < labels.count; n++) {
+		label = [labels objectAtIndex:n];
+		detail = [details objectAtIndex:n];
+		CGRect rc;
+        
 		rc = CGRectMake(10, y, labelWidth, 22);
 		label.frame = rc;
 		
