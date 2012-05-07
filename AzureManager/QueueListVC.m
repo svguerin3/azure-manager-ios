@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "QueueListVC.h"
@@ -21,6 +21,7 @@
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
 @synthesize currContainer = _currContainer;
+@synthesize tableSearchData = _tableSearchData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +47,18 @@
 	((UIScrollView *)self.mainTableView).delegate = self;
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
-	self.mainTableView.backgroundColor = [UIColor clearColor];
+	self.mainTableView.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
+    self.tableSearchData = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,10 +77,52 @@
     }
 }
 
+- (void) infoBtnPressed {
+    
+}
+
 - (void)fetchData {
     [self showLoader:self.view];
     
     [storageClient fetchQueuesWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_QUEUES];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+    [self filterTheList:@""];
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+	
+    [self filterTheList:searchBar.text];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self filterTheList:searchBar.text];
+}
+
+- (void) filterTheList:(NSString *)filterText {
+    [self.tableSearchData removeAllObjects];
+    
+    if ([filterText length] > 0) {
+        for (WAQueue *currQueue in self.localStorageList) {
+            NSRange range = [[currQueue.queueName uppercaseString] rangeOfString:[filterText uppercaseString]];
+            if (range.location != NSNotFound) {
+                [self.tableSearchData addObject:currQueue];
+            }  
+        }
+    } else { // filter empty
+        [self.tableSearchData addObjectsFromArray:self.localStorageList];
+    }
+    [self.mainTableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -80,6 +134,7 @@
     self.mainTableView = nil;
     self.localStorageList = nil;
     self.resultContinuation = nil;
+    self.tableSearchData = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -98,8 +153,8 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    WAQueue *currQueue = [self.localStorageList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%i. %@", indexPath.row+1, currQueue.queueName];
+    WAQueue *currQueue = [self.tableSearchData objectAtIndex:indexPath.row];
+    cell.textLabel.text = currQueue.queueName;
     
 	return cell;
 }
@@ -118,11 +173,11 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.localStorageList count];
+	return [self.tableSearchData count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 40;
+	return 45;
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods
@@ -137,6 +192,7 @@
 {
     self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:queues];
+    [self.tableSearchData addObjectsFromArray:queues];
 	[self.mainTableView reloadData];
     [self hideLoader:self.view];
 }

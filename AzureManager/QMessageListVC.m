@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "QMessageListVC.h"
@@ -49,6 +49,11 @@
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
 	self.mainTableView.backgroundColor = [UIColor clearColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -174,7 +179,6 @@
 - (void)storageClient:(WACloudStorageClient *)client didFetchQueueMessages:(NSArray *)queueMessages
 {
     [self.localStorageList addObjectsFromArray:queueMessages];
-    NSLog(@"count: %i", [self.localStorageList count]);
 	[self.mainTableView reloadData];
     [self hideLoader:self.view];    
 }

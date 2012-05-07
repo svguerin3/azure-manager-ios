@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/1/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "TablesListVC.h"
@@ -19,6 +19,7 @@
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
+@synthesize tableSearchData = _tableSearchData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,11 +46,18 @@
 	((UIScrollView *)self.mainTableView).delegate = self;
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
-	self.mainTableView.backgroundColor = [UIColor clearColor];
+	self.mainTableView.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
     
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
     [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
+    self.tableSearchData = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,11 +94,50 @@
     self.mainTableView = nil;
     self.localStorageList = nil;
     self.resultContinuation = nil;
+    self.tableSearchData = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+    [self filterTheList:@""];
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+	
+    [self filterTheList:searchBar.text];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self filterTheList:searchBar.text];
+}
+
+- (void) filterTheList:(NSString *)filterText {
+    [self.tableSearchData removeAllObjects];
+    
+    if ([filterText length] > 0) {
+        for (NSString *currTableName in self.localStorageList) {
+            NSRange range = [[currTableName uppercaseString] rangeOfString:[filterText uppercaseString]];
+            if (range.location != NSNotFound) {
+                [self.tableSearchData addObject:currTableName];
+            }  
+        }
+    } else { // filter empty
+        [self.tableSearchData addObjectsFromArray:self.localStorageList];
+    }
+    [self.mainTableView reloadData];
 }
 
 #pragma mark - TableView delegate methods
@@ -106,7 +153,7 @@
 	
     cell.textLabel.numberOfLines = 0;
 	
-    cell.textLabel.text = [NSString stringWithFormat:@"%i. %@", indexPath.row+1, [self.localStorageList objectAtIndex:indexPath.row]];
+    cell.textLabel.text = [self.tableSearchData objectAtIndex:indexPath.row]; // this is just a list of nsstrings
 	
 	return cell;
 }
@@ -124,11 +171,11 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.localStorageList count];
+	return [self.tableSearchData count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 40;
+	return 45;
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods
@@ -143,12 +190,15 @@
 {
     if (resultContinuation.nextTableKey == nil && !_fetchedResults) {
         [self.localStorageList removeAllObjects];
+        [self.tableSearchData removeAllObjects];
     } else {
         _fetchedResults = YES;
     }
 
     self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:tables];
+    [self.tableSearchData addObjectsFromArray:tables];
+
 	[self.mainTableView reloadData];
     
     [self hideLoader:self.view];

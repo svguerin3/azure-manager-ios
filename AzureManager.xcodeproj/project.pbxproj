@@ -24,7 +24,7 @@
 		8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA615505E2C00E74CC7 /* UIViewController+ShowError.m */; };
 		8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8DA815505E2C00E74CC7 /* WAConfiguration.m */; };
 		8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */; };
-		8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */; };
+		8B5E8E1C1550792B00E74CC7 /* UIViewController+UIElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E0B1550792B00E74CC7 /* UIViewController+UIElements.m */; };
 		8B5E8E1D1550792B00E74CC7 /* libwatoolkitios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */; };
 		8B5E8E2E15507D4F00E74CC7 /* WACloudStorageClientDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E2D15507D4F00E74CC7 /* WACloudStorageClientDelegate.m */; };
 		8B5E8E3615507E5D00E74CC7 /* TablesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E8E3415507E5D00E74CC7 /* TablesListVC.m */; };
@@ -91,8 +91,8 @@
 		8B5E8DAC15505E3A00E74CC7 /* Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Properties.h; path = Configuration/Properties.h; sourceTree = "<group>"; };
 		8B5E8E081550792B00E74CC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		8B5E8E0A1550792B00E74CC7 /* UIViewController+ShowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowLoader.h"; sourceTree = "<group>"; };
-		8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowLoader.m"; sourceTree = "<group>"; };
+		8B5E8E0A1550792B00E74CC7 /* UIViewController+UIElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIElements.h"; sourceTree = "<group>"; };
+		8B5E8E0B1550792B00E74CC7 /* UIViewController+UIElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIElements.m"; sourceTree = "<group>"; };
 		8B5E8E0D1550792B00E74CC7 /* libwatoolkitios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwatoolkitios.a; sourceTree = "<group>"; };
 		8B5E8E0F1550792B00E74CC7 /* WAAuthenticationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthenticationCredential.h; sourceTree = "<group>"; };
 		8B5E8E101550792B00E74CC7 /* WABlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlob.h; sourceTree = "<group>"; };
@@ -266,8 +266,8 @@
 			children = (
 				8B5E8E081550792B00E74CC7 /* MBProgressHUD.h */,
 				8B5E8E091550792B00E74CC7 /* MBProgressHUD.m */,
-				8B5E8E0A1550792B00E74CC7 /* UIViewController+ShowLoader.h */,
-				8B5E8E0B1550792B00E74CC7 /* UIViewController+ShowLoader.m */,
+				8B5E8E0A1550792B00E74CC7 /* UIViewController+UIElements.h */,
+				8B5E8E0B1550792B00E74CC7 /* UIViewController+UIElements.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -541,7 +541,7 @@
 				8B5E8DAA15505E2C00E74CC7 /* UIViewController+ShowError.m in Sources */,
 				8B5E8DAB15505E2C00E74CC7 /* WAConfiguration.m in Sources */,
 				8B5E8E1B1550792B00E74CC7 /* MBProgressHUD.m in Sources */,
-				8B5E8E1C1550792B00E74CC7 /* UIViewController+ShowLoader.m in Sources */,
+				8B5E8E1C1550792B00E74CC7 /* UIViewController+UIElements.m in Sources */,
 				8B5E8E2E15507D4F00E74CC7 /* WACloudStorageClientDelegate.m in Sources */,
 				8B5E8E3615507E5D00E74CC7 /* TablesListVC.m in Sources */,
 				8B5E8E66155090BA00E74CC7 /* WASimpleBase64.m in Sources */,

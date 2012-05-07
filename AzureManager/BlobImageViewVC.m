@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "BlobImageViewVC.h"
@@ -59,6 +59,11 @@
             }
 		}];
 	}
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
 }
 
 - (void)viewDidUnload

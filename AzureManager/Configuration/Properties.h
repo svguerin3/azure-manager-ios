@@ -7,7 +7,7 @@
 //
 
 // app constants
-#define MAXNUMROWS_TABLES          20
+#define MAXNUMROWS_TABLES          100
 #define MAXNUMROWS_ENTITIES        20
 #define MAXNUMROWS_CONTAINERS      20
 #define MAXNUMROWS_BLOBS           20

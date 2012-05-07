@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/3/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "AccountSelectionVC.h"
@@ -50,8 +50,10 @@
                                  target:self action:@selector(addBtnPressed)] ;
 	self.navigationItem.rightBarButtonItem = plusBtn;  
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
-    [self.navigationItem setLeftBarButtonItem:addButton];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                                        target:nil
+                                                                                        action:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -78,7 +80,7 @@
 	
     // temporary for testing
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Vincent Trial Account";
+        cell.textLabel.text = @"Account from Properties File";
     } else {
         AccountData *currAcct = [mainDel.accountsList objectAtIndex:indexPath.row-1];
         cell.textLabel.text = currAcct.accountName;    

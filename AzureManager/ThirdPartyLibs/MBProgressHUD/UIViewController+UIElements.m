@@ -1,15 +1,15 @@
 //
-//  UIViewController+ShowLoader.m
+//  UIViewController+UIElements.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/1/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
-#import "UIViewController+ShowLoader.h"
+#import "UIViewController+UIElements.h"
 #import "MBProgressHUD.h"
 
-@implementation UIViewController (ShowLoader)
+@implementation UIViewController (UIElements)
 
 - (void) showLoader:(UIView *)theView {
     [MBProgressHUD showHUDAddedTo:theView animated:YES];

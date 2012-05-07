@@ -42,6 +42,11 @@
 	((UIScrollView *)self.mainTableView).delegate = self;
 	self.mainTableView.scrollEnabled = NO;
 	self.mainTableView.backgroundColor = [UIColor clearColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
 }
 
 - (void)fetchData {

@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/2/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "ContainerListVC.h"
@@ -20,6 +20,7 @@
 @synthesize resultContinuation = _resultContinuation;
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
+@synthesize tableSearchData = _tableSearchData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +46,22 @@
 	((UIScrollView *)self.mainTableView).delegate = self;
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
-	self.mainTableView.backgroundColor = [UIColor clearColor];
+	self.mainTableView.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
+    self.tableSearchData = [[NSMutableArray alloc] init];
+}
+
+- (void) infoBtnPressed {
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +85,44 @@
     [storageClient fetchBlobContainersWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_CONTAINERS];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+    [self filterTheList:@""];
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+	
+    [self filterTheList:searchBar.text];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self filterTheList:searchBar.text];
+}
+
+- (void) filterTheList:(NSString *)filterText {
+    [self.tableSearchData removeAllObjects];
+    
+    if ([filterText length] > 0) {
+        for (WABlobContainer *currContainer in self.localStorageList) {
+            NSRange range = [[currContainer.name uppercaseString] rangeOfString:[filterText uppercaseString]];
+            if (range.location != NSNotFound) {
+                [self.tableSearchData addObject:currContainer];
+            }  
+        }
+    } else { // filter empty
+        [self.tableSearchData addObjectsFromArray:self.localStorageList];
+    }
+    [self.mainTableView reloadData];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -78,6 +132,7 @@
     self.mainTableView = nil;
     self.localStorageList = nil;
     self.resultContinuation = nil;
+    self.tableSearchData = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -116,11 +171,11 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.localStorageList count];
+	return [self.tableSearchData count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 40;
+	return 45;
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods
@@ -135,6 +190,7 @@
 {
     self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:containers];
+    [self.tableSearchData addObjectsFromArray:containers];
 	[self.mainTableView reloadData];
     [self hideLoader:self.view];
 }

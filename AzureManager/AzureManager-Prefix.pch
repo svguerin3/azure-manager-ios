@@ -12,7 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "Properties.h"
-    #import "UIViewController+ShowLoader.h"
+    #import "UIViewController+UIElements.h"
     #import "UIViewController+ShowError.h"
     #import "WAConfig.h"
 #endif
