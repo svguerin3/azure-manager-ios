@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"List of Tables";
+        self.title = @"Tables";
         _fetchedResults = NO;
     }
     return self;
@@ -46,6 +46,10 @@
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
 	self.mainTableView.backgroundColor = [UIColor clearColor];
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,6 +66,10 @@
     if (self.localStorageList.count == 0) {
         [self fetchData];
     }
+}
+
+- (void) infoBtnPressed {
+    
 }
 
 - (void)fetchData {
