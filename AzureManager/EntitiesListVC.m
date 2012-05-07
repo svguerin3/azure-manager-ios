@@ -22,13 +22,14 @@
 @synthesize localStorageList = _localStorageList;
 @synthesize mainTableView = _mainTableView;
 @synthesize tableName = _tableName;
+@synthesize queryBtn = _queryBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Entities List";
+        
     }
     return self;
 }
@@ -47,12 +48,18 @@
 	((UIScrollView *)self.mainTableView).delegate = self;
 	self.mainTableView.scrollEnabled = YES;
 	self.mainTableView.showsVerticalScrollIndicator = YES;
-	self.mainTableView.backgroundColor = [UIColor clearColor];
+	self.mainTableView.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
                                                                             action:nil];
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
+    self.title = self.tableName;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +76,10 @@
     if (self.localStorageList.count == 0) {
         [self fetchData];
     }
+}
+
+- (void) infoBtnPressed {
+    
 }
 
 - (void)fetchData {
@@ -139,6 +150,20 @@
 	return cell;
 }
 
+- (IBAction)viewTypeFilterBtnPressed:(id)sender {
+    UISegmentedControl *currControl = (UISegmentedControl *)sender;
+    
+    if (currControl.selectedSegmentIndex == listViewIndex) {
+        
+    } else if (currControl.selectedSegmentIndex == jsonViewIndex) {
+        
+    }
+}
+
+- (IBAction)queryBtnPressed {
+    
+}
+
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,6 +203,7 @@
     self.localStorageList = nil;
     self.resultContinuation = nil;
     self.tableName = nil;
+    self.queryBtn = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

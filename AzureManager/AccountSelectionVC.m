@@ -62,7 +62,10 @@
 
 - (void) addBtnPressed {
     NewAccountVC *aController = [[NewAccountVC alloc] initWithNibName:@"NewAccount" bundle:nil];
-    [[self navigationController] pushViewController:aController animated:YES];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:
+                                             aController];
+    //[[self navigationController] pushViewController:aController animated:YES];
+    [self presentModalViewController:navController animated:YES];
 }
 
 #pragma mark - TableView delegate methods

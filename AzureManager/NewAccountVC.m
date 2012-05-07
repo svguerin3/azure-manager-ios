@@ -24,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"Add Account";
     }
     return self;
 }
@@ -33,10 +34,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:nil
-                                                                            action:nil];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                 target:self action:@selector(cancelBtnPresent)];
+    self.navigationItem.leftBarButtonItem = cancelBtn;
+}
+
+- (void) cancelBtnPresent {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction) addAccountBtnPressed {
@@ -47,7 +52,7 @@
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.accountsList addObject:newData];
-        [[self navigationController] popViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
     } else {
         [self showGenericAlert:@"Error" withTitle:@"Please fill in both fields"];
     }    

@@ -59,6 +59,7 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
+		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +452,7 @@
 		8B7D2524155028ED002370D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1C0595615586D2900E2A6C4 /* Images */,
 				8B7D2525155028ED002370D1 /* AzureManager-Info.plist */,
 				8B7D2526155028ED002370D1 /* InfoPlist.strings */,
 				8B7D2529155028ED002370D1 /* main.m */,
@@ -457,6 +460,14 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		C1C0595615586D2900E2A6C4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C1C0595715586D2900E2A6C4 /* BtnBG_03.png */,
+			);
+			path = Images;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -523,6 +534,7 @@
 				8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */,
 				8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */,
 				8B3D228D15530FF900CCBE25 /* NewAccount.xib in Resources */,
+				C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
