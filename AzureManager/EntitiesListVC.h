@@ -9,10 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WACloudStorageClient.h"
 
-typedef enum ListTypeSelInd {
-	listViewIndex = 0,
-	jsonViewIndex
-} ListTypeSelInd;
 
 @interface EntitiesListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
 @private
@@ -21,6 +17,7 @@ typedef enum ListTypeSelInd {
     WAResultContinuation *_resultContinuation;
     BOOL _fetchedResults;
     NSUInteger fetchCount;
+    BOOL objViewSelected;
 }
 
 - (void)fetchData;

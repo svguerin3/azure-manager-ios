@@ -10,7 +10,10 @@
 
 @class WATableEntity;
 
-@interface EntityDetailVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EntityDetailVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@private
+    BOOL objViewSelected;
+}
 
 - (IBAction)viewTypeFilterBtnPressed:(id)sender;
 

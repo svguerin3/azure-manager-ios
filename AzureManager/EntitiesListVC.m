@@ -115,21 +115,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString* CellIdentifier = @"Cell2";
-    
     EntityTableViewCell *cell = (EntityTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     if (indexPath.row != self.localStorageList.count) {
-        if (cell == nil) {
-            cell = [[EntityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        
         WATableEntity *entity = [self.localStorageList objectAtIndex:indexPath.row];
-        [cell setKeysAndObjects:@"PartitionKey", [entity partitionKey], @"RowKey", [entity rowKey], entity, nil];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    }
-	
-    if (indexPath.row == self.localStorageList.count) {   
+        if (objViewSelected) {
+            UITableViewCell *objCell = [tableView dequeueReusableCellWithIdentifier:@"ObjCell"];
+            if (objCell == nil) {
+                objCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ObjCell"];
+            }
+            objCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            objCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            objCell.textLabel.text = [NSString stringWithFormat:@"%@", [entity description]];
+            objCell.textLabel.font = [UIFont boldSystemFontOfSize:12];
+            objCell.textLabel.numberOfLines = 0;
+            return objCell;
+        } else {
+            if (cell == nil) {
+                cell = [[EntityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            [cell setKeysAndObjects:@"PartitionKey", [entity partitionKey], @"RowKey", [entity rowKey], entity, nil];
+        }
+    } else if (indexPath.row == self.localStorageList.count) {   
         if (fetchCount == MAXNUMROWS_ENTITIES) {
             UITableViewCell *loadMoreCell = [tableView dequeueReusableCellWithIdentifier:@"LoadMore"];
             if (loadMoreCell == nil) {
@@ -155,10 +164,11 @@
     UISegmentedControl *currControl = (UISegmentedControl *)sender;
     
     if (currControl.selectedSegmentIndex == listViewIndex) {
-        
-    } else if (currControl.selectedSegmentIndex == jsonViewIndex) {
-        
+        objViewSelected = NO;
+    } else if (currControl.selectedSegmentIndex == objViewIndex) {
+        objViewSelected = YES;
     }
+    [self.mainTableView reloadData];
 }
 
 - (IBAction)queryBtnPressed {
@@ -173,13 +183,20 @@
 	
     if (indexPath.row >= self.localStorageList.count) {
         return 40;  
+    } else if (objViewSelected) {
+        WATableEntity *entity = [self.localStorageList objectAtIndex:indexPath.row];
+        NSString *objDataStr = [entity description];
+        CGSize labelSize = CGSizeMake(200.0, 20.0);
+        if ([objDataStr length] > 0) {
+            labelSize = [objDataStr sizeWithFont: [UIFont boldSystemFontOfSize: 12.0] constrainedToSize: CGSizeMake(labelSize.width, 1000) lineBreakMode: UILineBreakModeWordWrap];
+        }
+        return labelSize.height;
     } else {
 		//WATableEntity *entity = [self.localStorageList objectAtIndex:indexPath.row];
 		//count = entity.keys.count + 2;
-        count = 3; // hard-code 3 for now
+        count = 3;
+        return 12 + count * 25;
 	}
-	
-	return 12 + count * 25;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

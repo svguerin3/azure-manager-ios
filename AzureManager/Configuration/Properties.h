@@ -6,6 +6,11 @@
 //  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
+typedef enum ListTypeSelInd {
+	listViewIndex = 0,
+	objViewIndex
+} ListTypeSelInd;
+
 // app constants
 #define MAXNUMROWS_TABLES          100
 #define MAXNUMROWS_ENTITIES        20

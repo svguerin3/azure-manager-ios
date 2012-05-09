@@ -52,7 +52,14 @@
 }
 
 - (IBAction)viewTypeFilterBtnPressed:(id)sender {
+    UISegmentedControl *currControl = (UISegmentedControl *)sender;
     
+    if (currControl.selectedSegmentIndex == listViewIndex) {
+        objViewSelected = NO;
+    } else if (currControl.selectedSegmentIndex == objViewIndex) {
+        objViewSelected = YES;
+    }
+    [self.mainTableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -91,13 +98,22 @@
     if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    cell.textLabel.numberOfLines = 2;
-    
-    NSString *currEntityPropertyKeyStr = [self.currEntity.keys objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-    cell.textLabel.text = [NSString stringWithFormat:@"key: %@\nval: %@", currEntityPropertyKeyStr, [self.currEntity objectForKey:currEntityPropertyKeyStr]];
+    if (objViewSelected) {
+        NSString *currPropertyKey = [self.currEntity.keys objectAtIndex:indexPath.row];
+        NSDictionary *propertyDict = [NSDictionary dictionaryWithObject:[self.currEntity objectForKey:currPropertyKey] 
+                                                                 forKey:currPropertyKey];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [propertyDict description]];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:12];
+        cell.textLabel.numberOfLines = 0;
+    } else {
+        NSString *currEntityPropertyKeyStr = [self.currEntity.keys objectAtIndex:indexPath.row];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+        cell.textLabel.text = [NSString stringWithFormat:@"key: %@\nval: %@", currEntityPropertyKeyStr, [self.currEntity objectForKey:currEntityPropertyKeyStr]];
+        cell.textLabel.numberOfLines = 2;
+    }
     
 	return cell;
 }
@@ -106,6 +122,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (objViewSelected) {
+        NSString *currPropertyKey = [self.currEntity.keys objectAtIndex:indexPath.row];
+        NSDictionary *propertyDict = [NSDictionary dictionaryWithObject:[self.currEntity objectForKey:currPropertyKey] 
+                                                                 forKey:currPropertyKey];
+        NSString *objDataStr = [propertyDict description];
+        CGSize labelSize = CGSizeMake(200.0, 20.0);
+        if ([objDataStr length] > 0) {
+            labelSize = [objDataStr sizeWithFont: [UIFont boldSystemFontOfSize: 12.0] constrainedToSize: CGSizeMake(labelSize.width, 1000) lineBreakMode: UILineBreakModeWordWrap];
+        }
+        return labelSize.height;
+    }
 	return 50;
 }
 
