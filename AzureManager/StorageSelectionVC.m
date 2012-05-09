@@ -88,7 +88,7 @@
         }
     } else if (indexPath.row == 1) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = @"stats";
+        cell.textLabel.text = @"(statistics will go here)";
     }
     
 	return cell;

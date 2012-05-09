@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */; };
+		8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B18E931155A0EF700E2DAA0 /* PropertyList.xib */; };
 		8B3D22721552F36200CCBE25 /* AccountSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */; };
 		8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */; };
 		8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */; };
@@ -59,10 +61,15 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
+		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
+		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B18E92F155A0EF700E2DAA0 /* PropertyListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyListVC.h; sourceTree = "<group>"; };
+		8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyListVC.m; sourceTree = "<group>"; };
+		8B18E931155A0EF700E2DAA0 /* PropertyList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyList.xib; sourceTree = "<group>"; };
 		8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectionVC.h; sourceTree = "<group>"; };
 		8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectionVC.m; sourceTree = "<group>"; };
 		8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSelection_iPhone.xib; sourceTree = "<group>"; };
@@ -165,6 +172,9 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
+		8BE91699155A00D000B48D92 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
+		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -366,6 +376,12 @@
 				8B7C16C115517D8B007D5A8C /* EntitiesListVC.h */,
 				8B7C16C215517D8B007D5A8C /* EntitiesListVC.m */,
 				8B7C16C315517D8B007D5A8C /* EntitiesList.xib */,
+				8BE91698155A00D000B48D92 /* EntityDetailVC.h */,
+				8BE91699155A00D000B48D92 /* EntityDetailVC.m */,
+				8BE9169A155A00D000B48D92 /* EntityDetail.xib */,
+				8B18E92F155A0EF700E2DAA0 /* PropertyListVC.h */,
+				8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */,
+				8B18E931155A0EF700E2DAA0 /* PropertyList.xib */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -535,6 +551,8 @@
 				8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */,
 				8B3D228D15530FF900CCBE25 /* NewAccount.xib in Resources */,
 				C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */,
+				8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */,
+				8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +596,8 @@
 				8B3D228C15530FF900CCBE25 /* NewAccountVC.m in Sources */,
 				8B3D22941553173200CCBE25 /* WAConfig.m in Sources */,
 				8B3D22AD155329CE00CCBE25 /* EntityTableViewCell.m in Sources */,
+				8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */,
+				8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

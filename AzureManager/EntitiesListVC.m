@@ -11,6 +11,7 @@
 #import "WATableFetchRequest.h"
 #import "WATableEntity.h"
 #import "EntityTableViewCell.h"
+#import "EntityDetailVC.h"
 
 @interface EntitiesListVC ()
 
@@ -173,8 +174,9 @@
     if (indexPath.row >= self.localStorageList.count) {
         return 40;  
     } else {
-		WATableEntity *entity = [self.localStorageList objectAtIndex:indexPath.row];
-		count = entity.keys.count + 2;
+		//WATableEntity *entity = [self.localStorageList objectAtIndex:indexPath.row];
+		//count = entity.keys.count + 2;
+        count = 3; // hard-code 3 for now
 	}
 	
 	return 12 + count * 25;
@@ -189,8 +191,17 @@
                               withRowAnimation:UITableViewScrollPositionBottom];
         [tableView endUpdates];
         [self fetchData];
+    } else {
+        WATableEntity *currEntity = [self.localStorageList objectAtIndex:indexPath.row];
+        if ([currEntity.keys count] > 0) {
+            EntityDetailVC *aController = [[EntityDetailVC alloc] initWithNibName:@"EntityDetail" bundle:nil];
+            aController.currEntity = currEntity;
+            [[self navigationController] pushViewController:aController animated:YES];
+        } else {
+            [self showGenericAlert:@"No properties found for this entity" withTitle:@""];
+        }
     }
-    [self.mainTableView reloadData];
+    [tableView reloadData];
 }
 
 - (void)viewDidUnload

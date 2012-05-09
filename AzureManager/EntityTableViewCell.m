@@ -170,7 +170,7 @@
 		if ([key isKindOfClass:[WATableEntity class]]) {
 			WATableEntity *tableEntity = (WATableEntity*)key;
 			for (NSString *key in [tableEntity keys]) {
-				[a addObject:[KeyPair keyPairWithKey:key value:[tableEntity objectForKey:key]]];
+				//[a addObject:[KeyPair keyPairWithKey:key value:[tableEntity objectForKey:key]]]; // SVG Comment out
                 propertyCount = [a count];
 			}
 		} else if([key isKindOfClass:[WAQueueMessage class]]) {
@@ -200,6 +200,10 @@
 		[_subviews removeAllObjects];
 	}
 	
+    //if ([a count] == 2) { // has no Properties
+        [a addObject:[KeyPair keyPairWithKey:@"# Properties" value:[NSString stringWithFormat:@"%i", propertyCount]]];
+    //}
+    
 	UIFont *labelFont = [UIFont boldSystemFontOfSize:12];
 	UIFont *detailFont = [UIFont systemFontOfSize:14];
 	NSInteger labelWidth = 0;
@@ -208,10 +212,9 @@
 	UILabel *label;
 	UILabel *detail;
 	UIColor *labelColor = [UIColor colorWithRed:3/15.0 green:6/15.0 blue:9/15.0 alpha:1.0];
-	
-    NSLog(@"checking for properties");
-	for (KeyPair* pair in a) {
-        NSLog(@"in keypair");
+    
+	for (int i=0; i<[a count]; i++) {
+        KeyPair *pair = [a objectAtIndex:i];
 		CGSize size = [pair.key sizeWithFont:labelFont forWidth:100 lineBreakMode:UILineBreakModeTailTruncation];
 		
 		if (size.width > labelWidth) {
@@ -219,7 +222,7 @@
 		}
 		
 		label = [[UILabel alloc] initWithFrame:CGRectZero];
-		label.text = pair.key;
+        label.text = pair.key;
 		label.textColor = labelColor;
 		label.font = labelFont;
 		label.lineBreakMode = UILineBreakModeTailTruncation;
@@ -227,7 +230,7 @@
 		label.highlightedTextColor = [UIColor whiteColor];
 		
 		detail = [[UILabel alloc] initWithFrame:CGRectZero];
-		detail.text = pair.value;
+        detail.text = pair.value;
 		detail.textColor = [UIColor blackColor];
 		detail.font = detailFont;
 		detail.minimumFontSize = 12;
