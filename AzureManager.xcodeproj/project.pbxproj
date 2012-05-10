@@ -64,11 +64,17 @@
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
 		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
-		C167AA8B155C053A00D6564A /* SelectQueryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA89155C053A00D6564A /* SelectQueryVC.xib */; };
-		C167AA90155C056300D6564A /* CreateQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA8E155C056300D6564A /* CreateQueryVC.m */; };
-		C167AA91155C056300D6564A /* CreateQueryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA8F155C056300D6564A /* CreateQueryVC.xib */; };
+		C167AA8B155C053A00D6564A /* SelectQuery.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA89155C053A00D6564A /* SelectQuery.xib */; };
 		C167AA95155C057000D6564A /* AddKeysVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA93155C057000D6564A /* AddKeysVC.m */; };
-		C167AA96155C057000D6564A /* AddKeysVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA94155C057000D6564A /* AddKeysVC.xib */; };
+		C167AA96155C057000D6564A /* AddKeys.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA94155C057000D6564A /* AddKeys.xib */; };
+		C167AA9E155C13F000D6564A /* IsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C167AA9C155C13F000D6564A /* IsSelected.png */; };
+		C167AA9F155C13F000D6564A /* NotSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C167AA9D155C13F000D6564A /* NotSelected.png */; };
+		C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAAF155C221300D6564A /* QueryDetailsVC.m */; };
+		C167AAB2155C221400D6564A /* QueryDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AAB0155C221400D6564A /* QueryDetails.xib */; };
+		C167AAB8155C23D900D6564A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C167AAB7155C23D900D6564A /* QuartzCore.framework */; };
+		C167AAC1155C26BC00D6564A /* WAQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC0155C26BC00D6564A /* WAQueryModel.m */; };
+		C167AAC4155C26C600D6564A /* WAKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC3155C26C600D6564A /* WAKeyModel.m */; };
+		C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
@@ -183,13 +189,21 @@
 		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
 		C167AA87155C053A00D6564A /* SelectQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectQueryVC.h; sourceTree = "<group>"; };
 		C167AA88155C053A00D6564A /* SelectQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectQueryVC.m; sourceTree = "<group>"; };
-		C167AA89155C053A00D6564A /* SelectQueryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectQueryVC.xib; sourceTree = "<group>"; };
-		C167AA8D155C056300D6564A /* CreateQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateQueryVC.h; sourceTree = "<group>"; };
-		C167AA8E155C056300D6564A /* CreateQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateQueryVC.m; sourceTree = "<group>"; };
-		C167AA8F155C056300D6564A /* CreateQueryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQueryVC.xib; sourceTree = "<group>"; };
+		C167AA89155C053A00D6564A /* SelectQuery.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectQuery.xib; sourceTree = "<group>"; };
 		C167AA92155C057000D6564A /* AddKeysVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddKeysVC.h; sourceTree = "<group>"; };
 		C167AA93155C057000D6564A /* AddKeysVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddKeysVC.m; sourceTree = "<group>"; };
-		C167AA94155C057000D6564A /* AddKeysVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddKeysVC.xib; sourceTree = "<group>"; };
+		C167AA94155C057000D6564A /* AddKeys.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddKeys.xib; sourceTree = "<group>"; };
+		C167AA9C155C13F000D6564A /* IsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IsSelected.png; sourceTree = "<group>"; };
+		C167AA9D155C13F000D6564A /* NotSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotSelected.png; sourceTree = "<group>"; };
+		C167AAAE155C221300D6564A /* QueryDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryDetailsVC.h; sourceTree = "<group>"; };
+		C167AAAF155C221300D6564A /* QueryDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryDetailsVC.m; sourceTree = "<group>"; };
+		C167AAB0155C221400D6564A /* QueryDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryDetails.xib; sourceTree = "<group>"; };
+		C167AAB7155C23D900D6564A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C167AABF155C26BC00D6564A /* WAQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueryModel.h; sourceTree = "<group>"; };
+		C167AAC0155C26BC00D6564A /* WAQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueryModel.m; sourceTree = "<group>"; };
+		C167AAC2155C26C600D6564A /* WAKeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAKeyModel.h; sourceTree = "<group>"; };
+		C167AAC3155C26C600D6564A /* WAKeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAKeyModel.m; sourceTree = "<group>"; };
+		C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone-plus-sign-icon.jpg"; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C167AAB8155C23D900D6564A /* QuartzCore.framework in Frameworks */,
 				8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */,
 				8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */,
 				8B7D2520155028ED002370D1 /* Foundation.framework in Frameworks */,
@@ -212,10 +227,14 @@
 		8B3D227E1552F6C000CCBE25 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */,
-				8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */,
 				8B3D227B1552F6A300CCBE25 /* AccountData.h */,
 				8B3D227C1552F6A300CCBE25 /* AccountData.m */,
+				8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */,
+				8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */,
+				C167AABF155C26BC00D6564A /* WAQueryModel.h */,
+				C167AAC0155C26BC00D6564A /* WAQueryModel.m */,
+				C167AAC2155C26C600D6564A /* WAKeyModel.h */,
+				C167AAC3155C26C600D6564A /* WAKeyModel.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -451,6 +470,7 @@
 		8B7D251C155028ED002370D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C167AAB7155C23D900D6564A /* QuartzCore.framework */,
 				8B7D256C15503879002370D1 /* libxml2.2.dylib */,
 				8B7D251D155028ED002370D1 /* UIKit.framework */,
 				8B7D251F155028ED002370D1 /* Foundation.framework */,
@@ -498,13 +518,13 @@
 			children = (
 				C167AA87155C053A00D6564A /* SelectQueryVC.h */,
 				C167AA88155C053A00D6564A /* SelectQueryVC.m */,
-				C167AA89155C053A00D6564A /* SelectQueryVC.xib */,
-				C167AA8D155C056300D6564A /* CreateQueryVC.h */,
-				C167AA8E155C056300D6564A /* CreateQueryVC.m */,
-				C167AA8F155C056300D6564A /* CreateQueryVC.xib */,
+				C167AA89155C053A00D6564A /* SelectQuery.xib */,
+				C167AAAE155C221300D6564A /* QueryDetailsVC.h */,
+				C167AAAF155C221300D6564A /* QueryDetailsVC.m */,
+				C167AAB0155C221400D6564A /* QueryDetails.xib */,
 				C167AA92155C057000D6564A /* AddKeysVC.h */,
 				C167AA93155C057000D6564A /* AddKeysVC.m */,
-				C167AA94155C057000D6564A /* AddKeysVC.xib */,
+				C167AA94155C057000D6564A /* AddKeys.xib */,
 			);
 			name = "Query Classes";
 			sourceTree = "<group>";
@@ -512,6 +532,9 @@
 		C1C0595615586D2900E2A6C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */,
+				C167AA9C155C13F000D6564A /* IsSelected.png */,
+				C167AA9D155C13F000D6564A /* NotSelected.png */,
 				C1C0595715586D2900E2A6C4 /* BtnBG_03.png */,
 			);
 			path = Images;
@@ -585,9 +608,12 @@
 				C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */,
 				8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */,
 				8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */,
-				C167AA8B155C053A00D6564A /* SelectQueryVC.xib in Resources */,
-				C167AA91155C056300D6564A /* CreateQueryVC.xib in Resources */,
-				C167AA96155C057000D6564A /* AddKeysVC.xib in Resources */,
+				C167AA8B155C053A00D6564A /* SelectQuery.xib in Resources */,
+				C167AA96155C057000D6564A /* AddKeys.xib in Resources */,
+				C167AA9E155C13F000D6564A /* IsSelected.png in Resources */,
+				C167AA9F155C13F000D6564A /* NotSelected.png in Resources */,
+				C167AAB2155C221400D6564A /* QueryDetails.xib in Resources */,
+				C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,8 +660,10 @@
 				8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */,
 				8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */,
 				C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */,
-				C167AA90155C056300D6564A /* CreateQueryVC.m in Sources */,
 				C167AA95155C057000D6564A /* AddKeysVC.m in Sources */,
+				C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */,
+				C167AAC1155C26BC00D6564A /* WAQueryModel.m in Sources */,
+				C167AAC4155C26C600D6564A /* WAKeyModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,11 +23,16 @@
 @synthesize use_proxy;
 
 @synthesize accountsList;
+@synthesize queriesList;
+
 @synthesize dataFilePathToAccountsList;
+@synthesize dataFilePathToQueriesList;
 
 - (id) init {   
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    // INIT ACCOUNTS INFO FROM STORAGE
 	NSString *pathToAccountsList = [documentsDirectory stringByAppendingPathComponent:@"accountslist.dat"];
 	[self setDataFilePathToAccountsList:pathToAccountsList];
     
@@ -47,6 +52,27 @@
 	} else { // didn't find it, so this is probably the first time the user is using the app
         NSLog(@"account data does NOT exist, creating new");
 		accountsList = [[NSMutableArray alloc] init];
+	}
+    
+    // INIT QUERIES INFO FROM STORAGE
+    NSString *pathToQueriesList = [documentsDirectory stringByAppendingPathComponent:@"querieslist.dat"];
+	[self setDataFilePathToQueriesList:pathToQueriesList];
+    
+    // check if .dat file exists in docs folder
+	if([fileManager fileExistsAtPath:dataFilePathToQueriesList]) {
+        NSLog(@"queries data exists");
+		NSMutableData *theData;
+		NSKeyedUnarchiver *decoder;
+		NSMutableArray *tempArr;
+		
+		theData = [NSData dataWithContentsOfFile:dataFilePathToQueriesList];
+		decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:theData];
+		tempArr = [decoder decodeObjectForKey:@"querieslist"];
+		queriesList = tempArr;
+		[decoder finishDecoding];
+	} else { // didn't find it, so this is probably the first time the user is using the app
+        NSLog(@"queries data does NOT exist, creating new");
+		queriesList = [[NSMutableArray alloc] init];
 	}
     
 	return self;
@@ -106,6 +132,12 @@
 	[encoderAccountsList encodeObject:accountsList forKey:@"accountslist"];
 	[encoderAccountsList finishEncoding]; 
 	[theDataAccountsList writeToFile:dataFilePathToAccountsList atomically:YES];
+    
+    NSMutableData *theDataQueriesList = [NSMutableData data];
+	NSKeyedArchiver *encoderQueriesList = [[NSKeyedArchiver alloc] initForWritingWithMutableData:theDataQueriesList];
+	[encoderQueriesList encodeObject:accountsList forKey:@"querieslist"];
+	[encoderQueriesList finishEncoding]; 
+	[theDataQueriesList writeToFile:dataFilePathToQueriesList atomically:YES];
 }
 
 @end

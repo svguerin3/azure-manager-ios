@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectQueryVC : UIViewController
+@class AppDelegate;
+
+@interface SelectQueryVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    AppDelegate *mainDel;
+    int querySelectedIndex;
+}
+
+@property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 
 @end

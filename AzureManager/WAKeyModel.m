@@ -1,13 +1,13 @@
 //
-//  CreateQueryVC.h
+//  WAKeyModel.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/10/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WAKeyModel.h"
 
-@interface CreateQueryVC : UIViewController
+@implementation WAKeyModel
 
 @end

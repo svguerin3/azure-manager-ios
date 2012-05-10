@@ -12,6 +12,7 @@
 #import "WATableEntity.h"
 #import "EntityTableViewCell.h"
 #import "EntityDetailVC.h"
+#import "SelectQueryVC.h"
 
 @interface EntitiesListVC ()
 
@@ -172,7 +173,8 @@
 }
 
 - (IBAction)queryBtnPressed {
-    
+    SelectQueryVC *aController = [[SelectQueryVC alloc] initWithNibName:@"SelectQuery" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 #pragma mark - Table view delegate

@@ -23,4 +23,6 @@ typedef enum ListTypeSelInd {
 #define TEMP_ACCOUNTNAME        @"neudesictestvg1"
 #define TEMP_ACCESSKEY          @"6PTagAWDBktbI96HQFUVHxyPMM3D/3MksJVlTNIIGKspEx4GOFAugGG3iyvdrzldbeFPftfN/pVPxdVvU+AIKw=="
 
+#define PADDING_FOR_SELECTION_CELLS     @"       "
+
 // notifs
