@@ -72,9 +72,9 @@
 		C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAAF155C221300D6564A /* QueryDetailsVC.m */; };
 		C167AAB2155C221400D6564A /* QueryDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AAB0155C221400D6564A /* QueryDetails.xib */; };
 		C167AAB8155C23D900D6564A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C167AAB7155C23D900D6564A /* QuartzCore.framework */; };
-		C167AAC1155C26BC00D6564A /* WAQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC0155C26BC00D6564A /* WAQueryModel.m */; };
-		C167AAC4155C26C600D6564A /* WAKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC3155C26C600D6564A /* WAKeyModel.m */; };
+		C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC0155C26BC00D6564A /* WAQuery.m */; };
 		C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */; };
+		C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AACC155C4BF100D6564A /* WAQueryKey.m */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
@@ -199,11 +199,11 @@
 		C167AAAF155C221300D6564A /* QueryDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryDetailsVC.m; sourceTree = "<group>"; };
 		C167AAB0155C221400D6564A /* QueryDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryDetails.xib; sourceTree = "<group>"; };
 		C167AAB7155C23D900D6564A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C167AABF155C26BC00D6564A /* WAQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueryModel.h; sourceTree = "<group>"; };
-		C167AAC0155C26BC00D6564A /* WAQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueryModel.m; sourceTree = "<group>"; };
-		C167AAC2155C26C600D6564A /* WAKeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAKeyModel.h; sourceTree = "<group>"; };
-		C167AAC3155C26C600D6564A /* WAKeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAKeyModel.m; sourceTree = "<group>"; };
+		C167AABF155C26BC00D6564A /* WAQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQuery.h; sourceTree = "<group>"; };
+		C167AAC0155C26BC00D6564A /* WAQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQuery.m; sourceTree = "<group>"; };
 		C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone-plus-sign-icon.jpg"; sourceTree = "<group>"; };
+		C167AACB155C4BF100D6564A /* WAQueryKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueryKey.h; sourceTree = "<group>"; };
+		C167AACC155C4BF100D6564A /* WAQueryKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueryKey.m; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,10 +231,10 @@
 				8B3D227C1552F6A300CCBE25 /* AccountData.m */,
 				8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */,
 				8B3D22AC155329CE00CCBE25 /* EntityTableViewCell.m */,
-				C167AABF155C26BC00D6564A /* WAQueryModel.h */,
-				C167AAC0155C26BC00D6564A /* WAQueryModel.m */,
-				C167AAC2155C26C600D6564A /* WAKeyModel.h */,
-				C167AAC3155C26C600D6564A /* WAKeyModel.m */,
+				C167AABF155C26BC00D6564A /* WAQuery.h */,
+				C167AAC0155C26BC00D6564A /* WAQuery.m */,
+				C167AACB155C4BF100D6564A /* WAQueryKey.h */,
+				C167AACC155C4BF100D6564A /* WAQueryKey.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -662,8 +662,8 @@
 				C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */,
 				C167AA95155C057000D6564A /* AddKeysVC.m in Sources */,
 				C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */,
-				C167AAC1155C26BC00D6564A /* WAQueryModel.m in Sources */,
-				C167AAC4155C26C600D6564A /* WAKeyModel.m in Sources */,
+				C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */,
+				C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

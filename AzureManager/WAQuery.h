@@ -1,5 +1,5 @@
 //
-//  WAQueryModel.h
+//  WAQuery.h
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/10/12.
@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WAQueryModel : NSObject
+@interface WAQuery : NSObject
 
 @property (nonatomic, retain) NSMutableArray *listOfKeys;
+@property (nonatomic, retain) NSString *queryName;
 
 @end

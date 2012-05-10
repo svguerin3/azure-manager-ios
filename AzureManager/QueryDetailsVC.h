@@ -7,15 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WAQueryModel.h"
+#import "WAQuery.h"
 
-@interface QueryDetailsVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@class AppDelegate;
+
+@interface QueryDetailsVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+    AppDelegate *mainDel;
+    int keySelectedIndex;
+}
 
 - (void) lowerKeyboard;
 
 @property (nonatomic, retain) IBOutlet UITextField *queryNameField;
 @property (nonatomic, retain) IBOutlet UITextView *filterTextView;
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
-@property (nonatomic, retain) WAQueryModel *currQuery;
+@property (nonatomic, retain) WAQuery *currQuery;
+@property BOOL isAddView;
 
 @end

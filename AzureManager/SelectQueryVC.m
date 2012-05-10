@@ -54,9 +54,13 @@
     mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self.mainTableView reloadData];
+}
+
 - (void) addBtnPressed {
     QueryDetailsVC *aController = [[QueryDetailsVC alloc] initWithNibName:@"QueryDetails" bundle:nil];
-    aController.title = @"Create Query";
+    aController.isAddView = YES;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
     [self presentModalViewController:navController animated:YES];
 }
@@ -70,6 +74,7 @@
     if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         for (UIView *subView in cell.subviews) {
             if ([subView isKindOfClass:[UIButton class]]) {
@@ -80,6 +85,10 @@
 	
     if (indexPath.row == 0) {
         cell.textLabel.text = [NSString stringWithFormat:@"%@Default", PADDING_FOR_SELECTION_CELLS];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        WAQuery *currQuery = [mainDel.queriesList objectAtIndex:indexPath.row-1];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@%@", PADDING_FOR_SELECTION_CELLS, currQuery.queryName];
     }
     
     UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -88,7 +97,7 @@
     } else {
         [selBtn setBackgroundImage:[UIImage imageNamed:@"NotSelected.png"] forState:UIControlStateNormal];
     }
-    selBtn.frame = CGRectMake(5, 8, 30, 30);
+    selBtn.frame = CGRectMake(8, 10, 25, 25);
     selBtn.tag = indexPath.row;
     [selBtn addTarget:self action:@selector(selectionBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [cell addSubview:selBtn];
@@ -98,6 +107,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    QueryDetailsVC *aController = [[QueryDetailsVC alloc] initWithNibName:@"QueryDetails" bundle:nil];
+    aController.currQuery = [mainDel.queriesList objectAtIndex:indexPath.row-1];
+    aController.isAddView = NO;
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
