@@ -63,6 +63,12 @@
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
+		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
+		C167AA8B155C053A00D6564A /* SelectQueryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA89155C053A00D6564A /* SelectQueryVC.xib */; };
+		C167AA90155C056300D6564A /* CreateQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA8E155C056300D6564A /* CreateQueryVC.m */; };
+		C167AA91155C056300D6564A /* CreateQueryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA8F155C056300D6564A /* CreateQueryVC.xib */; };
+		C167AA95155C057000D6564A /* AddKeysVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA93155C057000D6564A /* AddKeysVC.m */; };
+		C167AA96155C057000D6564A /* AddKeysVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA94155C057000D6564A /* AddKeysVC.xib */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +181,15 @@
 		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
 		8BE91699155A00D000B48D92 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
+		C167AA87155C053A00D6564A /* SelectQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectQueryVC.h; sourceTree = "<group>"; };
+		C167AA88155C053A00D6564A /* SelectQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectQueryVC.m; sourceTree = "<group>"; };
+		C167AA89155C053A00D6564A /* SelectQueryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectQueryVC.xib; sourceTree = "<group>"; };
+		C167AA8D155C056300D6564A /* CreateQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateQueryVC.h; sourceTree = "<group>"; };
+		C167AA8E155C056300D6564A /* CreateQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateQueryVC.m; sourceTree = "<group>"; };
+		C167AA8F155C056300D6564A /* CreateQueryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQueryVC.xib; sourceTree = "<group>"; };
+		C167AA92155C057000D6564A /* AddKeysVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddKeysVC.h; sourceTree = "<group>"; };
+		C167AA93155C057000D6564A /* AddKeysVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddKeysVC.m; sourceTree = "<group>"; };
+		C167AA94155C057000D6564A /* AddKeysVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddKeysVC.xib; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -382,6 +397,7 @@
 				8B18E92F155A0EF700E2DAA0 /* PropertyListVC.h */,
 				8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */,
 				8B18E931155A0EF700E2DAA0 /* PropertyList.xib */,
+				C167AA97155C057200D6564A /* Query Classes */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -477,6 +493,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C167AA97155C057200D6564A /* Query Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C167AA87155C053A00D6564A /* SelectQueryVC.h */,
+				C167AA88155C053A00D6564A /* SelectQueryVC.m */,
+				C167AA89155C053A00D6564A /* SelectQueryVC.xib */,
+				C167AA8D155C056300D6564A /* CreateQueryVC.h */,
+				C167AA8E155C056300D6564A /* CreateQueryVC.m */,
+				C167AA8F155C056300D6564A /* CreateQueryVC.xib */,
+				C167AA92155C057000D6564A /* AddKeysVC.h */,
+				C167AA93155C057000D6564A /* AddKeysVC.m */,
+				C167AA94155C057000D6564A /* AddKeysVC.xib */,
+			);
+			name = "Query Classes";
+			sourceTree = "<group>";
+		};
 		C1C0595615586D2900E2A6C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +585,9 @@
 				C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */,
 				8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */,
 				8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */,
+				C167AA8B155C053A00D6564A /* SelectQueryVC.xib in Resources */,
+				C167AA91155C056300D6564A /* CreateQueryVC.xib in Resources */,
+				C167AA96155C057000D6564A /* AddKeysVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +633,9 @@
 				8B3D22AD155329CE00CCBE25 /* EntityTableViewCell.m in Sources */,
 				8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */,
 				8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */,
+				C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */,
+				C167AA90155C056300D6564A /* CreateQueryVC.m in Sources */,
+				C167AA95155C057000D6564A /* AddKeysVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
