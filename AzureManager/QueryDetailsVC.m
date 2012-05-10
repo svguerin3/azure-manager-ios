@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "WAQuery.h"
 #import "AppDelegate.h"
+#import "AddKeysVC.h"
+#import "WAQueryKey.h"
 
 @interface QueryDetailsVC ()
 
@@ -53,7 +55,6 @@
         self.navigationItem.rightBarButtonItem = doneBtn;	
         
         self.currQuery = [[WAQuery alloc] init];
-        [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
     } else {
         self.title = @"Edit Query";
     }
@@ -65,6 +66,10 @@
         self.queryNameField.text = self.currQuery.queryName;
         self.filterTextView.text = self.currQuery.filterStr;
     }
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.mainTableView reloadData];
 }
 
 - (void) cancelBtnPressed {
@@ -123,6 +128,13 @@
         } else {
             [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
         }
+    } else {
+        WAQueryKey *currKey = [self.currQuery.listOfKeys objectAtIndex:[sender tag]-1];
+        if ([currKey.keySelected boolValue]) {
+            [currKey setKeySelected:[NSNumber numberWithBool:NO]];
+        } else {
+            [currKey setKeySelected:[NSNumber numberWithBool:YES]];
+        }
     }
     [self.mainTableView reloadData];
 }
@@ -133,17 +145,17 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) { 
+    //if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    } else {
+    /*} else {
         for (UIView *subView in cell.subviews) {
             if ([subView isKindOfClass:[UIButton class]]) {
                 [subView removeFromSuperview]; // draw the buttons from scratch for now
             }
         }
-    }
+    }*/
     
     UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     selBtn.frame = CGRectMake(19, 11, 25, 25);
@@ -168,7 +180,15 @@
         addImageView.image = [UIImage imageNamed:@"iphone-plus-sign-icon.jpg"];
         [cell addSubview:addImageView];
     } else { // Custom key rows
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        WAQueryKey *currKey = [self.currQuery.listOfKeys objectAtIndex:indexPath.row-1];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@%@", PADDING_FOR_SELECTION_CELLS, currKey.keyText];
+        [cell addSubview:selBtn];
+        
+        if ([currKey.keySelected boolValue]) {
+            [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
+        } else {
+            [selBtn setBackgroundImage:SELECTED_NO_CELL_IMAGE forState:UIControlStateNormal];
+        }
         [cell addSubview:selBtn];
     }
 	
@@ -183,7 +203,10 @@
     [self lowerKeyboard];
     
     if (indexPath.row == (1 + 1 + [self.currQuery.listOfKeys count])-1) { // add key
-                                                                                           
+        AddKeysVC *aController = [[AddKeysVC alloc] initWithNibName:@"AddKeys" bundle:nil];
+        aController.currQuery = self.currQuery;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
+        [self presentModalViewController:navController animated:YES];
     }
     
     [self.mainTableView reloadData];

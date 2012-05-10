@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WAQuery.h"
 
 @interface AddKeysVC : UIViewController
+
+@property (nonatomic, retain) IBOutlet UITextField *keyTextField;
+@property (nonatomic, retain) WAQuery *currQuery;
 
 @end

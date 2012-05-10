@@ -15,6 +15,13 @@
 @synthesize allKeysSelected;
 @synthesize filterStr;
 
+- (id) init {
+    [self setAllKeysSelected:[NSNumber numberWithBool:YES]];
+    listOfKeys = [[NSMutableArray alloc] init];
+    
+    return self;
+}
+
 - (id) initWithCoder:(NSCoder *)coder {
 	listOfKeys = [coder decodeObjectForKey:@"listOfKeys"];
 	queryName = [coder decodeObjectForKey:@"queryName"];
