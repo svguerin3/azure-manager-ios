@@ -51,6 +51,8 @@
                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                   target:self action:@selector(doneBtnPressed)];
         self.navigationItem.rightBarButtonItem = doneBtn;	
+        
+        [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
     } else {
         self.title = @"Edit Query";
     }
@@ -60,6 +62,7 @@
     
     if (self.currQuery) {
         self.queryNameField.text = self.currQuery.queryName;
+        self.filterTextView.text = self.currQuery.filterStr;
     }
 }
 
@@ -72,9 +75,8 @@
         if (isAddView) {
             WAQuery *newQuery = [[WAQuery alloc] init];
             newQuery.queryName = self.queryNameField.text;
-            NSLog(@"count1: %i", [mainDel.queriesList count]);
+            newQuery.filterStr = self.filterTextView.text;
             [mainDel.queriesList addObject:newQuery];
-            NSLog(@"count2: %i", [mainDel.queriesList count]);
         }
         
         [self dismissModalViewControllerAnimated:YES];
@@ -115,7 +117,13 @@
 }
 
 - (void) selectionBtnPressed:(id)sender {
-    keySelectedIndex = [sender tag];
+    if ([sender tag] == 0) {
+        if ([self.currQuery.allKeysSelected boolValue]) {
+            [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:NO]];
+        } else {
+            [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
+        }
+    }
     [self.mainTableView reloadData];
 }
 
@@ -138,11 +146,6 @@
     }
     
     UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (keySelectedIndex == indexPath.row) {
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"isSelected.png"] forState:UIControlStateNormal];
-    } else {
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"NotSelected.png"] forState:UIControlStateNormal];
-    }
     selBtn.frame = CGRectMake(19, 11, 25, 25);
     selBtn.tag = indexPath.row;
     [selBtn addTarget:self action:@selector(selectionBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -150,6 +153,12 @@
     if (indexPath.row == 0) { // "All Keys" row
         cell.textLabel.text = [NSString stringWithFormat:@"%@ALL Keys", PADDING_FOR_SELECTION_CELLS];
         cell.backgroundColor = [UIColor colorWithRed:.92 green:.92 blue:.92 alpha:1];
+        
+        if ([self.currQuery.allKeysSelected boolValue]) {
+            [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
+        } else {
+            [selBtn setBackgroundImage:SELECTED_NO_CELL_IMAGE forState:UIControlStateNormal];
+        }
         [cell addSubview:selBtn];
     } else if (indexPath.row == (1 + 1 + [self.currQuery.listOfKeys count])-1) { // "Add Key" row
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -161,7 +170,6 @@
     } else { // Custom key rows
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         [cell addSubview:selBtn];
-        
     }
 	
 	return cell;

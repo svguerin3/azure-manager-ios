@@ -13,7 +13,6 @@
 
 @interface QueryDetailsVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
     AppDelegate *mainDel;
-    int keySelectedIndex;
 }
 
 - (void) lowerKeyboard;

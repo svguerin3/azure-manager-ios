@@ -93,9 +93,9 @@
     
     UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     if (querySelectedIndex == indexPath.row) {
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"isSelected.png"] forState:UIControlStateNormal];
+        [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
     } else {
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"NotSelected.png"] forState:UIControlStateNormal];
+        [selBtn setBackgroundImage:SELECTED_NO_CELL_IMAGE forState:UIControlStateNormal];
     }
     selBtn.frame = CGRectMake(8, 10, 25, 25);
     selBtn.tag = indexPath.row;

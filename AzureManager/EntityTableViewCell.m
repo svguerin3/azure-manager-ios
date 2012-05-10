@@ -170,8 +170,7 @@
 		if ([key isKindOfClass:[WATableEntity class]]) {
 			WATableEntity *tableEntity = (WATableEntity*)key;
 			for (NSString *key in [tableEntity keys]) {
-				//[a addObject:[KeyPair keyPairWithKey:key value:[tableEntity objectForKey:key]]]; // SVG Comment out
-                propertyCount = [a count];
+				propertyCount++;
 			}
 		} else if([key isKindOfClass:[WAQueueMessage class]]) {
 			WAQueueMessage *queueMessage = (WAQueueMessage*)key;
@@ -200,9 +199,7 @@
 		[_subviews removeAllObjects];
 	}
 	
-    //if ([a count] == 2) { // has no Properties
-        [a addObject:[KeyPair keyPairWithKey:@"# Properties" value:[NSString stringWithFormat:@"%i", propertyCount]]];
-    //}
+    [a addObject:[KeyPair keyPairWithKey:@"# Properties" value:[NSString stringWithFormat:@"%i", propertyCount]]];
     
 	UIFont *labelFont = [UIFont boldSystemFontOfSize:12];
 	UIFont *detailFont = [UIFont systemFontOfSize:14];

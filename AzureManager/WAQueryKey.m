@@ -10,4 +10,19 @@
 
 @implementation WAQueryKey
 
+@synthesize keyName;
+@synthesize keySelected;
+
+- (id) initWithCoder:(NSCoder *)coder {
+	keyName = [coder decodeObjectForKey:@"keyName"];
+	keySelected = [coder decodeObjectForKey:@"keySelected"];
+	
+	return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+	[encoder encodeObject:keyName forKey:@"keyName"];
+	[encoder encodeObject:keySelected forKey:@"keySelected"];
+}
+
 @end
