@@ -133,9 +133,10 @@
 	[encoderAccountsList finishEncoding]; 
 	[theDataAccountsList writeToFile:dataFilePathToAccountsList atomically:YES];
     
+    NSLog(@"saving queriesListCount: %i", [queriesList count]);
     NSMutableData *theDataQueriesList = [NSMutableData data];
 	NSKeyedArchiver *encoderQueriesList = [[NSKeyedArchiver alloc] initForWritingWithMutableData:theDataQueriesList];
-	[encoderQueriesList encodeObject:accountsList forKey:@"querieslist"];
+	[encoderQueriesList encodeObject:queriesList forKey:@"querieslist"];
 	[encoderQueriesList finishEncoding]; 
 	[theDataQueriesList writeToFile:dataFilePathToQueriesList atomically:YES];
 }

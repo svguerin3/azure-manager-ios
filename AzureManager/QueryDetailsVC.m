@@ -52,6 +52,7 @@
                                   target:self action:@selector(doneBtnPressed)];
         self.navigationItem.rightBarButtonItem = doneBtn;	
         
+        self.currQuery = [[WAQuery alloc] init];
         [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
     } else {
         self.title = @"Edit Query";
@@ -73,10 +74,9 @@
 - (void) doneBtnPressed {
     if ([self.queryNameField.text length] > 0) {
         if (isAddView) {
-            WAQuery *newQuery = [[WAQuery alloc] init];
-            newQuery.queryName = self.queryNameField.text;
-            newQuery.filterStr = self.filterTextView.text;
-            [mainDel.queriesList addObject:newQuery];
+            self.currQuery.queryName = self.queryNameField.text;
+            self.currQuery.filterStr = self.filterTextView.text;
+            [mainDel.queriesList addObject:self.currQuery];
         }
         
         [self dismissModalViewControllerAnimated:YES];
