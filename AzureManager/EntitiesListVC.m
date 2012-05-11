@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "WAConfig.h"
 #import "WAQuery.h"
+#import "WAQueryKey.h"
 
 @interface EntitiesListVC ()
 
@@ -76,22 +77,43 @@
         currQuerySelected = [mainDel.queriesList objectAtIndex:[WAConfig sharedConfiguration].querySelectedIndex-1];
         
         [self.queryBtn setTitle:currQuerySelected.queryName forState:UIControlStateNormal];
-    }
-    
-	if (storageClient) {
-        storageClient.delegate = nil;
-	}
-    
-	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
-	storageClient.delegate = self;
-	
-    if (self.localStorageList.count == 0) {
-        [self fetchData];
+        [self filterResultsBasedOnQuery];
+    } else { // use default query
+        [self.queryBtn setTitle:@"Default Query" forState:UIControlStateNormal];
+        [self.localStorageList removeAllObjects];
+        if (storageClient) {
+            storageClient.delegate = nil;
+        }
+        
+        storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+        storageClient.delegate = self;
+        
+        //if (self.localStorageList.count == 0) {
+            [self fetchData];
+        //}
     }
 }
 
 - (void) infoBtnPressed {
     
+}
+
+- (void) filterResultsBasedOnQuery {
+    if ([currQuerySelected.allKeysSelected boolValue]) { // sort by keys
+        
+    } else { // filter by keys
+        NSMutableArray *newResultsArr = [[NSMutableArray alloc] init];
+        for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
+            for (WATableEntity *currEntity in self.localStorageList) {
+                if ([currEntity.partitionKey isEqualToString:currKey.keyText]) {
+                    [newResultsArr addObject:currEntity];
+                }
+            }
+        }
+        [self.localStorageList removeAllObjects];
+        self.localStorageList = [NSMutableArray arrayWithArray:newResultsArr];
+        [self.mainTableView reloadData];
+    }
 }
 
 - (void)fetchData {

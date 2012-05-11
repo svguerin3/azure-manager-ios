@@ -138,6 +138,20 @@
             [currKey setKeySelected:[NSNumber numberWithBool:YES]];
         }
     }
+    
+    // check to make sure something was selected
+    BOOL atLeastOneKeySelected = NO;
+    for (WAQueryKey *currKey in self.currQuery.listOfKeys) {
+        if ([currKey.keySelected boolValue]) {
+            atLeastOneKeySelected = YES;
+        }
+    }
+    
+    if (![self.currQuery.allKeysSelected boolValue] && !atLeastOneKeySelected) {
+        [self.currQuery setAllKeysSelected:[NSNumber numberWithBool:YES]];
+        [self showGenericAlert:@"At least one key must be selected." withTitle:@""];
+    }
+    
     [self.mainTableView reloadData];
 }
 

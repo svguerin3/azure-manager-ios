@@ -25,6 +25,7 @@
 - (void)fetchData;
 - (IBAction)viewTypeFilterBtnPressed:(id)sender;
 - (IBAction)queryBtnPressed;
+- (void) filterResultsBasedOnQuery;
 
 @property (nonatomic, retain) WAResultContinuation *resultContinuation;
 @property (nonatomic, retain) NSMutableArray *localStorageList;
