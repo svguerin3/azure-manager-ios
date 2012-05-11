@@ -73,6 +73,10 @@
     [self.mainTableView reloadData];
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+    self.currQuery.filterStr = self.filterTextView.text;
+}
+
 - (void) cancelBtnPressed {
     [self dismissModalViewControllerAnimated:YES];
 }

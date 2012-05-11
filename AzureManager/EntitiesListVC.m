@@ -71,13 +71,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+        
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
+        if ([self.localStorageList count] == 0) {
+            [self fetchData];
+        }
         AppDelegate *mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         currQuerySelected = [mainDel.queriesList objectAtIndex:[WAConfig sharedConfiguration].querySelectedIndex-1];
         
         [self.queryBtn setTitle:currQuerySelected.queryName forState:UIControlStateNormal];
-        [self filterResultsBasedOnQuery];
     } else { // use default query
         [self.queryBtn setTitle:@"Default Query" forState:UIControlStateNormal];
         [self.localStorageList removeAllObjects];
@@ -86,12 +88,9 @@
         }
         
         storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
-        storageClient.delegate = self;
-        
-        //if (self.localStorageList.count == 0) {
-            [self fetchData];
-        //}
+        storageClient.delegate = self;  
     }
+    [self fetchData];
 }
 
 - (void) infoBtnPressed {
@@ -99,17 +98,41 @@
 }
 
 - (void) filterResultsBasedOnQuery {
-    if ([currQuerySelected.allKeysSelected boolValue]) { // sort by keys
-        
-    } else { // filter by keys
+    if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
         NSMutableArray *newResultsArr = [[NSMutableArray alloc] init];
-        for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
+        
+        NSLog(@"filterStr: %@", currQuerySelected.filterStr);
+        
+        // first filter by query filterText on Properties
+        NSMutableArray *filteredArr = [[NSMutableArray alloc] init];
+        if ([currQuerySelected.filterStr length] > 0) {
             for (WATableEntity *currEntity in self.localStorageList) {
-                if ([currEntity.partitionKey isEqualToString:currKey.keyText]) {
-                    [newResultsArr addObject:currEntity];
+                for (NSString *currPropertyKey in currEntity.keys) {
+                    NSRange range = [[currPropertyKey uppercaseString] rangeOfString:[currQuerySelected.filterStr uppercaseString]];
+                    if (range.location != NSNotFound && ![newResultsArr containsObject:currEntity]) {
+                        [filteredArr addObject:currEntity];
+                    }
+                }
+            }
+        } else {
+            filteredArr = [NSMutableArray arrayWithArray:self.localStorageList];
+        }
+        
+        NSLog(@"filteredArr: %@", filteredArr);
+        
+        // now either sort, or filter, based on which keys were selected
+        if ([currQuerySelected.allKeysSelected boolValue]) { // sort by keys
+            
+        } else { // filter by keys
+            for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
+                for (WATableEntity *currEntity in filteredArr) {
+                    if ([currEntity.partitionKey isEqualToString:currKey.keyText]) {
+                        [newResultsArr addObject:currEntity];
+                    }
                 }
             }
         }
+        
         [self.localStorageList removeAllObjects];
         self.localStorageList = [NSMutableArray arrayWithArray:newResultsArr];
         [self.mainTableView reloadData];
@@ -289,6 +312,8 @@
 	[self.mainTableView reloadData];
     
     [self hideLoader:self.view];
+    
+    [self filterResultsBasedOnQuery];
 }
 
 @end
