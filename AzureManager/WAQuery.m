@@ -35,7 +35,7 @@
 	[encoder encodeObject:listOfKeys forKey:@"listOfKeys"];
 	[encoder encodeObject:queryName forKey:@"queryName"];
     [encoder encodeObject:allKeysSelected forKey:@"allKeysSelected"];
-    [encoder encodeObject:filterStr forKey:@"allKeysSelected"];
+    [encoder encodeObject:filterStr forKey:@"filterStr"];
 }
 
 @end
