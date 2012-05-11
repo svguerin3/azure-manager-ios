@@ -9,6 +9,7 @@
 #import "SelectQueryVC.h"
 #import "QueryDetailsVC.h"
 #import "AppDelegate.h"
+#import "WAConfig.h"
 
 @interface SelectQueryVC ()
 
@@ -50,6 +51,8 @@
 								   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
 								   target:self action:@selector(addBtnPressed)];
 	self.navigationItem.rightBarButtonItem = addButton;	
+    
+    querySelectedIndex = [WAConfig sharedConfiguration].querySelectedIndex;
     
     mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
@@ -131,7 +134,7 @@
 }
 
 - (void) selectionBtnPressed:(id)sender {
-    querySelectedIndex = [sender tag];
+    querySelectedIndex = [WAConfig sharedConfiguration].querySelectedIndex = [sender tag];
     [self.mainTableView reloadData];
 }
 

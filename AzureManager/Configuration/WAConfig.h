@@ -14,7 +14,9 @@
 
 + (WAConfig *)sharedConfiguration;
 - (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
-    
+  
+// session vars
 @property (nonatomic, retain) WAAuthenticationCredential *authenticationCredential;
+@property int querySelectedIndex;
 
 @end

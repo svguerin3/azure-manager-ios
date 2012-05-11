@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WACloudStorageClient.h"
 
+@class WAQuery;
 
 @interface EntitiesListVC : UIViewController <WACloudStorageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
 @private
@@ -18,6 +19,7 @@
     BOOL _fetchedResults;
     NSUInteger fetchCount;
     BOOL objViewSelected;
+    WAQuery *currQuerySelected;
 }
 
 - (void)fetchData;

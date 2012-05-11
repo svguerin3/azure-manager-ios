@@ -18,6 +18,7 @@
 
 @implementation WAConfiguration
 
+
 + (WAConfiguration*)sharedConfiguration
 {
 	static dispatch_once_t once;

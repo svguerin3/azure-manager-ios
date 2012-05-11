@@ -13,6 +13,9 @@
 #import "EntityTableViewCell.h"
 #import "EntityDetailVC.h"
 #import "SelectQueryVC.h"
+#import "AppDelegate.h"
+#import "WAConfig.h"
+#import "WAQuery.h"
 
 @interface EntitiesListVC ()
 
@@ -68,6 +71,13 @@
 {
     [super viewWillAppear:animated];
 
+    if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
+        AppDelegate *mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        currQuerySelected = [mainDel.queriesList objectAtIndex:[WAConfig sharedConfiguration].querySelectedIndex-1];
+        
+        [self.queryBtn setTitle:currQuerySelected.queryName forState:UIControlStateNormal];
+    }
+    
 	if (storageClient) {
         storageClient.delegate = nil;
 	}

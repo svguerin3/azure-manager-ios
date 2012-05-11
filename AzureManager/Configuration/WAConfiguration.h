@@ -37,6 +37,8 @@ typedef enum {
 @property (readonly) NSString *ACSNamespace;
 @property (readonly) NSString *ACSRealm;
 
+
+
 + (WAConfiguration *)sharedConfiguration;
 
 - (NSString *)proxyURL;

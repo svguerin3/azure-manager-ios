@@ -12,6 +12,7 @@
 @implementation WAConfig
 
 @synthesize authenticationCredential;
+@synthesize querySelectedIndex;
 
 + (WAConfig*)sharedConfiguration
 {
