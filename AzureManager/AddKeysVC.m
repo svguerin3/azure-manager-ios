@@ -16,8 +16,9 @@
 
 @implementation AddKeysVC
 
-@synthesize keyTextField = _keyTextField;
 @synthesize currQuery = _currQuery;
+@synthesize mainTableView = _mainTableView;
+@synthesize entitiesArr = _entitiesArr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,35 +34,67 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
-                                  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                  target:self action:@selector(cancelBtnPressed)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
     
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                 target:self action:@selector(doneBtnPressed)];
     self.navigationItem.rightBarButtonItem = doneBtn;	
-}
-
-- (void) cancelBtnPressed {
-    [self dismissModalViewControllerAnimated:YES];
+    
+    NSLog(@"entites count: %i", [self.entitiesArr count]);
 }
 
 - (void) doneBtnPressed {
-    if ([self.keyTextField.text length] > 0) {
-        WAQueryKey *newKey = [[WAQueryKey alloc] init];
-        newKey.keyText = self.keyTextField.text;
-        
-        NSLog(@"count1: %i", [self.currQuery.listOfKeys count]);
-        [self.currQuery.listOfKeys addObject:newKey];
-        NSLog(@"count2: %i", [self.currQuery.listOfKeys count]);
-        
-        [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - TableView delegate methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) { 
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
-        [self showGenericAlert:@"Please enter text for this key" withTitle:@""];
+        for (UIView *subView in cell.subviews) {
+            if ([subView isKindOfClass:[UIButton class]]) {
+                [subView removeFromSuperview]; // draw the buttons from scratch for now
+            }
+        }
     }
+	    
+    /*UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    if (querySelectedIndex == indexPath.row) {
+        [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
+    } else {
+        [selBtn setBackgroundImage:SELECTED_NO_CELL_IMAGE forState:UIControlStateNormal];
+    }
+    selBtn.frame = CGRectMake(8, 10, 25, 25);
+    selBtn.tag = indexPath.row;
+    [selBtn addTarget:self action:@selector(selectionBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:selBtn]; */
+	
+	return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.mainTableView reloadData];
+}
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [self.entitiesArr count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 45;
 }
 
 - (void)viewDidUnload
@@ -69,9 +102,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    
-    self.keyTextField = nil;
+
     self.currQuery = nil;
+    self.entitiesArr = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

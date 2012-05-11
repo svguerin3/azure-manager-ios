@@ -24,6 +24,7 @@
 @synthesize currQuery;
 @synthesize queryNameField = _queryNameField;
 @synthesize isAddView;
+@synthesize entitiesArr = _entitiesArr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,6 +100,7 @@
     self.filterTextView = nil;
     self.mainTableView = nil;
     self.queryNameField = nil;
+    self.entitiesArr = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -205,6 +207,7 @@
     if (indexPath.row == (1 + 1 + [self.currQuery.listOfKeys count])-1) { // add key
         AddKeysVC *aController = [[AddKeysVC alloc] initWithNibName:@"AddKeys" bundle:nil];
         aController.currQuery = self.currQuery;
+        aController.entitiesArr = self.entitiesArr;
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
         [self presentModalViewController:navController animated:YES];
     }

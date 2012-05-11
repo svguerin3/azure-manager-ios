@@ -18,6 +18,7 @@
 @implementation SelectQueryVC
 
 @synthesize mainTableView = _mainTableView;
+@synthesize entitiesArr = _entitiesArr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -116,6 +117,7 @@
     QueryDetailsVC *aController = [[QueryDetailsVC alloc] initWithNibName:@"QueryDetails" bundle:nil];
     aController.currQuery = [mainDel.queriesList objectAtIndex:indexPath.row-1];
     aController.isAddView = NO;
+    aController.entitiesArr = self.entitiesArr;
     [[self navigationController] pushViewController:aController animated:YES];
 }
 
@@ -145,6 +147,7 @@
     // e.g. self.myOutlet = nil;
     
     self.mainTableView = nil;
+    self.entitiesArr = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

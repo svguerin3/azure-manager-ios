@@ -22,5 +22,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 @property (nonatomic, retain) WAQuery *currQuery;
 @property BOOL isAddView;
+@property (nonatomic, retain) IBOutlet NSArray *entitiesArr;
 
 @end

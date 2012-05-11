@@ -16,5 +16,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
+@property (nonatomic, retain) IBOutlet NSArray *entitiesArr;
 
 @end

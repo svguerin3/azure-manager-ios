@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "WAQuery.h"
 
-@interface AddKeysVC : UIViewController
+@interface AddKeysVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) IBOutlet UITextField *keyTextField;
 @property (nonatomic, retain) WAQuery *currQuery;
+@property (nonatomic, retain) IBOutlet UITableView *mainTableView;
+@property (nonatomic, retain) IBOutlet NSArray *entitiesArr;
 
 @end

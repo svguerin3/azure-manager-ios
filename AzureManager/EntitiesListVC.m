@@ -184,6 +184,7 @@
 
 - (IBAction)queryBtnPressed {
     SelectQueryVC *aController = [[SelectQueryVC alloc] initWithNibName:@"SelectQuery" bundle:nil];
+    aController.entitiesArr = self.localStorageList;
     [[self navigationController] pushViewController:aController animated:YES];
 }
 
