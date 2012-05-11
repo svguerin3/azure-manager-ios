@@ -64,6 +64,7 @@
 
 - (void) addBtnPressed {
     QueryDetailsVC *aController = [[QueryDetailsVC alloc] initWithNibName:@"QueryDetails" bundle:nil];
+    aController.entitiesArr = self.entitiesArr;
     aController.isAddView = YES;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
     [self presentModalViewController:navController animated:YES];

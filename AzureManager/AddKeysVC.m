@@ -9,6 +9,7 @@
 #import "AddKeysVC.h"
 #import "WAQueryKey.h"
 #import "WAQuery.h"
+#import "WATableEntity.h"
 
 @interface AddKeysVC ()
 
@@ -25,7 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Add Key";
+        self.title = @"Add Keys";
     }
     return self;
 }
@@ -38,13 +39,47 @@
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc]
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                 target:self action:@selector(doneBtnPressed)];
-    self.navigationItem.rightBarButtonItem = doneBtn;	
+    self.navigationItem.rightBarButtonItem = doneBtn;
     
-    NSLog(@"entites count: %i", [self.entitiesArr count]);
+    // group together keys
+    uniqueEntitiesArr = [[NSMutableArray alloc] init];
+    for (WATableEntity *currEntity in self.entitiesArr) {
+        if (![uniqueEntitiesArr containsObject:currEntity.partitionKey]) {
+            [uniqueEntitiesArr addObject:currEntity.partitionKey];
+        }
+    }
 }
 
 - (void) doneBtnPressed {
+    for (int i=0; i<[uniqueEntitiesArr count]; i++) {
+        if (keySelected[i]) {
+            if (![self keyAlreadyExists:[uniqueEntitiesArr objectAtIndex:i]]) { 
+                WAQueryKey *newKey = [[WAQueryKey alloc] init];
+                newKey.keyText = [uniqueEntitiesArr objectAtIndex:i];
+                newKey.keySelected = [NSNumber numberWithBool:NO];
+                [self.currQuery.listOfKeys addObject:newKey];
+            }
+        }
+    }
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (BOOL) keyAlreadyExists:(NSString *)keyStr {
+    for (WAQueryKey *currKey in self.currQuery.listOfKeys) {
+        if ([currKey.keyText isEqualToString:keyStr]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void) selectionBtnPressed:(id)sender {
+    if (keySelected[[sender tag]]) {
+        keySelected[[sender tag]] = NO;
+    } else {
+        keySelected[[sender tag]] = YES;
+    }
+    [self.mainTableView reloadData];
 }
 
 #pragma mark - TableView delegate methods
@@ -55,7 +90,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         for (UIView *subView in cell.subviews) {
@@ -65,8 +99,8 @@
         }
     }
 	    
-    /*UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (querySelectedIndex == indexPath.row) {
+    UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    if (keySelected[indexPath.row]) {
         [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
     } else {
         [selBtn setBackgroundImage:SELECTED_NO_CELL_IMAGE forState:UIControlStateNormal];
@@ -74,8 +108,10 @@
     selBtn.frame = CGRectMake(8, 10, 25, 25);
     selBtn.tag = indexPath.row;
     [selBtn addTarget:self action:@selector(selectionBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [cell addSubview:selBtn]; */
-	
+    [cell addSubview:selBtn];
+
+    cell.textLabel.text = [NSString stringWithFormat:@"%@%@", PADDING_FOR_SELECTION_CELLS, [uniqueEntitiesArr objectAtIndex:indexPath.row]];
+    
 	return cell;
 }
 
@@ -90,7 +126,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.entitiesArr count];
+	return [uniqueEntitiesArr count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
