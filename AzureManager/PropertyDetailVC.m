@@ -1,19 +1,19 @@
 //
-//  PropertyListVC.m
+//  PropertyDetailVC.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/8/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "PropertyListVC.h"
+#import "PropertyDetailVC.h"
 #import "WATableEntity.h"
 
-@interface PropertyListVC ()
+@interface PropertyDetailVC ()
 
 @end
 
-@implementation PropertyListVC
+@implementation PropertyDetailVC
 
 @synthesize propKeyLbl = _propKeyLbl;
 @synthesize propValTextView = _propValTextView;
@@ -43,9 +43,9 @@
                                                                             target:nil
                                                                             action:nil];
     
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
-    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    //UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    //[infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 }
 
 - (void) infoBtnPressed {

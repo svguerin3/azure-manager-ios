@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */; };
-		8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B18E931155A0EF700E2DAA0 /* PropertyList.xib */; };
+		8B18E932155A0EF700E2DAA0 /* PropertyDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B18E930155A0EF700E2DAA0 /* PropertyDetailVC.m */; };
+		8B18E933155A0EF700E2DAA0 /* PropertyDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B18E931155A0EF700E2DAA0 /* PropertyDetail.xib */; };
 		8B3D22721552F36200CCBE25 /* AccountSelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */; };
 		8B3D22731552F36200CCBE25 /* AccountSelection_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */; };
 		8B3D22761552F39800CCBE25 /* AccountSelection_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3D22751552F39800CCBE25 /* AccountSelection_iPad.xib */; };
@@ -79,9 +79,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B18E92F155A0EF700E2DAA0 /* PropertyListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyListVC.h; sourceTree = "<group>"; };
-		8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyListVC.m; sourceTree = "<group>"; };
-		8B18E931155A0EF700E2DAA0 /* PropertyList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyList.xib; sourceTree = "<group>"; };
+		8B18E92F155A0EF700E2DAA0 /* PropertyDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PropertyDetailVC.h; sourceTree = "<group>"; };
+		8B18E930155A0EF700E2DAA0 /* PropertyDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDetailVC.m; sourceTree = "<group>"; };
+		8B18E931155A0EF700E2DAA0 /* PropertyDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyDetail.xib; sourceTree = "<group>"; };
 		8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectionVC.h; sourceTree = "<group>"; };
 		8B3D22701552F36200CCBE25 /* AccountSelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectionVC.m; sourceTree = "<group>"; };
 		8B3D22711552F36200CCBE25 /* AccountSelection_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountSelection_iPhone.xib; sourceTree = "<group>"; };
@@ -413,9 +413,9 @@
 				8BE91698155A00D000B48D92 /* EntityDetailVC.h */,
 				8BE91699155A00D000B48D92 /* EntityDetailVC.m */,
 				8BE9169A155A00D000B48D92 /* EntityDetail.xib */,
-				8B18E92F155A0EF700E2DAA0 /* PropertyListVC.h */,
-				8B18E930155A0EF700E2DAA0 /* PropertyListVC.m */,
-				8B18E931155A0EF700E2DAA0 /* PropertyList.xib */,
+				8B18E92F155A0EF700E2DAA0 /* PropertyDetailVC.h */,
+				8B18E930155A0EF700E2DAA0 /* PropertyDetailVC.m */,
+				8B18E931155A0EF700E2DAA0 /* PropertyDetail.xib */,
 				C167AA97155C057200D6564A /* Query Classes */,
 			);
 			name = Tables;
@@ -607,7 +607,7 @@
 				8B3D228D15530FF900CCBE25 /* NewAccount.xib in Resources */,
 				C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */,
 				8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */,
-				8B18E933155A0EF700E2DAA0 /* PropertyList.xib in Resources */,
+				8B18E933155A0EF700E2DAA0 /* PropertyDetail.xib in Resources */,
 				C167AA8B155C053A00D6564A /* SelectQuery.xib in Resources */,
 				C167AA96155C057000D6564A /* AddKeys.xib in Resources */,
 				C167AA9E155C13F000D6564A /* IsSelected.png in Resources */,
@@ -658,7 +658,7 @@
 				8B3D22941553173200CCBE25 /* WAConfig.m in Sources */,
 				8B3D22AD155329CE00CCBE25 /* EntityTableViewCell.m in Sources */,
 				8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */,
-				8B18E932155A0EF700E2DAA0 /* PropertyListVC.m in Sources */,
+				8B18E932155A0EF700E2DAA0 /* PropertyDetailVC.m in Sources */,
 				C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */,
 				C167AA95155C057000D6564A /* AddKeysVC.m in Sources */,
 				C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */,

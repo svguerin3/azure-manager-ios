@@ -8,7 +8,7 @@
 
 #import "EntityDetailVC.h"
 #import "WATableEntity.h"
-#import "PropertyListVC.h"
+#import "PropertyDetailVC.h"
 
 @interface EntityDetailVC ()
 
@@ -48,7 +48,8 @@
 }
 
 - (void) infoBtnPressed {
-    
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Properties for this Entity: %i", [self.currEntity.keys count]];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (IBAction)viewTypeFilterBtnPressed:(id)sender {
@@ -138,7 +139,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PropertyListVC *aController = [[PropertyListVC alloc] initWithNibName:@"PropertyList" bundle:nil];
+    PropertyDetailVC *aController = [[PropertyDetailVC alloc] initWithNibName:@"PropertyDetail" bundle:nil];
     aController.currEntity = self.currEntity;
     aController.propertyKeyStr = [self.currEntity.keys objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:aController animated:YES];

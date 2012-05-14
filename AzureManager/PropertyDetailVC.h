@@ -1,5 +1,5 @@
 //
-//  PropertyListVC.h
+//  PropertyDetailVC.h
 //  AzureManager
 //
 //  Created by Vincent Guerin on 5/8/12.
@@ -10,7 +10,7 @@
 
 @class WATableEntity;
 
-@interface PropertyListVC : UIViewController
+@interface PropertyDetailVC : UIViewController
 
 @property (nonatomic, retain) IBOutlet UILabel *propKeyLbl;
 @property (nonatomic, retain) IBOutlet UITextView *propValTextView;

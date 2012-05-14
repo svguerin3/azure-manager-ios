@@ -77,12 +77,13 @@
 }
 
 - (void) infoBtnPressed {
-    
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Tables: %i", [self.localStorageList count]];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (void)fetchData {
     [self showLoader:self.view];
-    [storageClient fetchTablesWithContinuation:self.resultContinuation];
+    [storageClient fetchTables];
 }
 
 - (void)viewDidUnload
@@ -186,7 +187,16 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables {
+    [self.localStorageList addObjectsFromArray:tables];
+    [self.tableSearchData addObjectsFromArray:tables];
+    
+	[self.mainTableView reloadData];
+    
+    [self hideLoader:self.view];
+}
+
+/*- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables withResultContinuation:(WAResultContinuation *)resultContinuation
 {
     if (resultContinuation.nextTableKey == nil && !_fetchedResults) {
         [self.localStorageList removeAllObjects];
@@ -202,7 +212,7 @@
 	[self.mainTableView reloadData];
     
     [self hideLoader:self.view];
-}
+} */
 
 
 @end

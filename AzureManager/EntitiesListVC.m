@@ -91,7 +91,8 @@
 }
 
 - (void) infoBtnPressed {
-    
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Entities for this Table: %i", [self.localStorageList count]];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (void) filterResultsBasedOnQuery {
