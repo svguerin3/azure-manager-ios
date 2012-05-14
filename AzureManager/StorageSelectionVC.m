@@ -47,10 +47,23 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
                                                                             action:nil];
+    
+    [self fetchData];
 }
 
 - (void)fetchData {
+    [self showLoader:self.view];
     
+    if (storageClient) {
+        storageClient.delegate = nil;
+	}
+    
+	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+	storageClient.delegate = self;
+    
+    [storageClient fetchTables];
+    [storageClient fetchBlobContainers];
+    [storageClient fetchQueues];
 }
 
 - (void)viewDidUnload
@@ -88,7 +101,15 @@
         }
     } else if (indexPath.row == 1) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = @"(statistics will go here)";
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        
+        if (indexPath.section == tablesSectionInd) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Total # of Tables: %i", countTables];
+        } else if (indexPath.section == blobsSectionInd) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Total # of Blob Containers: %i", countBlobContainers];
+        } else if (indexPath.section == queuesSectionInd) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Total # of Queues: %i", countQueues];
+        } 
     }
     
 	return cell;
@@ -99,6 +120,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1) { // ignore taps to the stats row
+        return;
+    }
+    
     if (indexPath.section == tablesSectionInd) {
         TablesListVC *aController = [[TablesListVC alloc] initWithNibName:@"TablesList" bundle:nil];
         [[self navigationController] pushViewController:aController animated:YES];
@@ -120,9 +145,44 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 1) {
-        return 75;
+        return 50;
     }
     return 40;
+}
+
+- (void) checkToRemoveSpinner {
+    if (fetchedBlobs && fetchedTables && fetchedQueues) {
+        [self.mainTableView reloadData];
+        [self hideLoader:self.view];
+    }
+}
+
+#pragma mark - WACloudStorageClientDelegate Methods
+
+- (void)storageClient:(WACloudStorageClient *)client didFailRequest:request withError:error
+{
+	[self showError:error];
+    [self hideLoader:self.view];
+}
+
+- (void)storageClient:(WACloudStorageClient *)client didFetchTables:(NSArray *)tables {
+    countTables = [tables count];
+    fetchedTables = YES;
+    [self checkToRemoveSpinner];
+}
+
+- (void)storageClient:(WACloudStorageClient *)client didFetchBlobContainers:(NSArray *)containers
+{
+    countBlobContainers = [containers count];
+    fetchedBlobs = YES;
+    [self checkToRemoveSpinner];
+}
+
+- (void)storageClient:(WACloudStorageClient *)client didFetchQueues:(NSArray *)queues 
+{
+    countQueues = [queues count];
+    fetchedQueues = YES;
+    [self checkToRemoveSpinner];
 }
 
 @end

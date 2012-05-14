@@ -23,9 +23,12 @@ typedef enum StorageSelectionInd {
     NSMutableArray *_localStorageList;
     WAResultContinuation *_resultContinuation;
     BOOL _fetchedResults;
+    BOOL fetchedBlobs, fetchedTables, fetchedQueues;
+    int countTables, countBlobContainers, countQueues;
 }
 
 - (void)fetchData;
+- (void) checkToRemoveSpinner;
 
 @property (nonatomic, retain) WAResultContinuation *resultContinuation;
 @property (nonatomic, retain) NSMutableArray *localStorageList;
