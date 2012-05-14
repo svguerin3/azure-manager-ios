@@ -67,6 +67,8 @@
         self.queryNameField.text = self.currQuery.queryName;
         self.filterTextView.text = self.currQuery.filterStr;
     }
+    
+    [self.mainTableView setEditing:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -178,13 +180,14 @@
     }*/
     
     UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    selBtn.frame = CGRectMake(19, 11, 25, 25);
     selBtn.tag = indexPath.row;
     [selBtn addTarget:self action:@selector(selectionBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     if (indexPath.row == 0) { // "All Keys" row
         cell.textLabel.text = [NSString stringWithFormat:@"%@ALL Keys", PADDING_FOR_SELECTION_CELLS];
         cell.backgroundColor = [UIColor colorWithRed:.92 green:.92 blue:.92 alpha:1];
+        
+        selBtn.frame = CGRectMake(19, 11, 25, 25);
         
         if ([self.currQuery.allKeysSelected boolValue]) {
             [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
@@ -204,6 +207,8 @@
         cell.textLabel.text = [NSString stringWithFormat:@"%@%@", PADDING_FOR_SELECTION_CELLS, currKey.keyText];
         [cell addSubview:selBtn];
         
+        selBtn.frame = CGRectMake(50, 11, 25, 25);
+        
         if ([currKey.keySelected boolValue]) {
             [selBtn setBackgroundImage:SELECTED_YES_CELL_IMAGE forState:UIControlStateNormal];
         } else {
@@ -222,7 +227,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self lowerKeyboard];
     
-    if (indexPath.row == (1 + 1 + [self.currQuery.listOfKeys count])-1) { // add key
+    if (indexPath.row == (1 + [self.currQuery.listOfKeys count])) { // add key
         AddKeysVC *aController = [[AddKeysVC alloc] initWithNibName:@"AddKeys" bundle:nil];
         aController.currQuery = self.currQuery;
         aController.entitiesArr = self.entitiesArr;
@@ -240,6 +245,45 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 45;
+}
+
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {	
+    WAQueryKey *currKey = [self.currQuery.listOfKeys objectAtIndex:fromIndexPath.row-1];
+	[self.currQuery.listOfKeys removeObjectAtIndex:fromIndexPath.row-1];
+	[self.currQuery.listOfKeys insertObject:currKey atIndex:toIndexPath.row-1];
+}
+
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row > 0 && indexPath.row != (1 + [self.currQuery.listOfKeys count])) {
+        return YES;
+    }
+    return NO;
+}
+
+// The editing style for a row is the kind of button displayed to the left of the cell when in editing mode.
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    if (indexPath.row > 0 && indexPath.row != (1 + [self.currQuery.listOfKeys count])) {
+        return YES;
+    }
+    return NO;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+    }    
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 @end
