@@ -199,9 +199,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = [NSString stringWithFormat:@"%@Add Keys", PADDING_FOR_SELECTION_CELLS];
         
-        UIImageView *addImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8, 40, 30)];
-        addImageView.image = [UIImage imageNamed:@"iphone-plus-sign-icon.jpg"];
-        [cell addSubview:addImageView];
+        UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        addBtn.frame = CGRectMake(10, 8, 40, 30);
+        [addBtn setBackgroundImage:[UIImage imageNamed:@"iphone-plus-sign-icon.jpg"] forState:UIControlStateNormal];
+        [addBtn addTarget:self action:@selector(addBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:addBtn];
     } else { // Custom key rows
         WAQueryKey *currKey = [self.currQuery.listOfKeys objectAtIndex:indexPath.row-1];
         cell.textLabel.text = [NSString stringWithFormat:@"%@%@", PADDING_FOR_SELECTION_CELLS, currKey.keyText];
@@ -227,15 +229,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self lowerKeyboard];
     
-    if (indexPath.row == (1 + [self.currQuery.listOfKeys count])) { // add key
-        AddKeysVC *aController = [[AddKeysVC alloc] initWithNibName:@"AddKeys" bundle:nil];
-        aController.currQuery = self.currQuery;
-        aController.entitiesArr = self.entitiesArr;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
-        [self presentModalViewController:navController animated:YES];
-    }
-    
     [self.mainTableView reloadData];
+}
+
+- (void) addBtnPressed {
+    [self lowerKeyboard];
+    
+    AddKeysVC *aController = [[AddKeysVC alloc] initWithNibName:@"AddKeys" bundle:nil];
+    aController.currQuery = self.currQuery;
+    aController.entitiesArr = self.entitiesArr;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aController];
+    [self presentModalViewController:navController animated:YES];
 }
 
 // Customize the number of rows in the table view.

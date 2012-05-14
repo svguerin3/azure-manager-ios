@@ -72,17 +72,14 @@
 {
     [super viewWillAppear:animated];
         
+    [self.localStorageList removeAllObjects];
+    
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
-        if ([self.localStorageList count] == 0) {
-            [self fetchData];
-        }
         AppDelegate *mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         currQuerySelected = [mainDel.queriesList objectAtIndex:[WAConfig sharedConfiguration].querySelectedIndex-1];
-        
         [self.queryBtn setTitle:currQuerySelected.queryName forState:UIControlStateNormal];
     } else { // use default query
         [self.queryBtn setTitle:@"Default Query" forState:UIControlStateNormal];
-        [self.localStorageList removeAllObjects];
         if (storageClient) {
             storageClient.delegate = nil;
         }
@@ -100,9 +97,7 @@
 - (void) filterResultsBasedOnQuery {
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
         NSMutableArray *newResultsArr = [[NSMutableArray alloc] init];
-        
-        NSLog(@"filterStr: %@", currQuerySelected.filterStr);
-        
+
         // first filter by query filterText on Properties
         NSMutableArray *filteredArr = [[NSMutableArray alloc] init];
         if ([currQuerySelected.filterStr length] > 0) {
@@ -117,12 +112,36 @@
         } else {
             filteredArr = [NSMutableArray arrayWithArray:self.localStorageList];
         }
-        
-        NSLog(@"filteredArr: %@", filteredArr);
-        
+
         // now either sort, or filter, based on which keys were selected
-        if ([currQuerySelected.allKeysSelected boolValue]) { // sort by keys
+        if ([currQuerySelected.allKeysSelected boolValue]) { // sort by keys if any were selected
+            BOOL otherKeysSelected = NO;
+            for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
+                if ([currKey.keySelected boolValue]) {
+                    otherKeysSelected = YES;
+                }
+            }
             
+            if (!otherKeysSelected) {
+                newResultsArr = [NSArray arrayWithArray:filteredArr]; // just show the list as is
+            } else {
+                // build sort key list
+                NSMutableArray *sortKeyArr = [[NSMutableArray alloc] init];
+                for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
+                    if ([currKey.keySelected boolValue] && ![sortKeyArr containsObject:currKey.keyText]) {
+                        [sortKeyArr addObject:currKey.keyText];
+                    }
+                }
+
+                // now add them in the proper order to the final array
+                for (NSString *currKeyStr in sortKeyArr) {
+                    for (WATableEntity *currEntity in filteredArr) {
+                        if ([currKeyStr isEqualToString:currEntity.partitionKey] && ![newResultsArr containsObject:currEntity]) {
+                            [newResultsArr addObject:currEntity];
+                        }
+                    }
+                }
+            }
         } else { // filter by keys
             for (WAQueryKey *currKey in currQuerySelected.listOfKeys) {
                 for (WATableEntity *currEntity in filteredArr) {
