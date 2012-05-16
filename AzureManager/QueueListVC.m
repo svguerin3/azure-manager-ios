@@ -78,7 +78,8 @@
 }
 
 - (void) infoBtnPressed {
-    
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Queues: %i", [self.localStorageList count]];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (void)fetchData {
