@@ -15,6 +15,8 @@
     NSMutableArray *_localStorageList;
     WAResultContinuation *_resultContinuation;
     BOOL _fetchedResults;
+    
+    int downloadedImgCount, totalImgCount;
 }
 
 - (void)fetchData;

@@ -61,7 +61,8 @@
 }
 
 - (void) infoBtnPressed {
-    
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Blob Containers: %i", [self.localStorageList count]];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,7 +83,8 @@
 
 - (void)fetchData {
     [self showLoader:self.view];
-    [storageClient fetchBlobContainersWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_CONTAINERS];
+    //[storageClient fetchBlobContainersWithContinuation:self.resultContinuation maxResult:MAXNUMROWS_CONTAINERS];
+    [storageClient fetchBlobContainers];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -145,7 +147,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) { 
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 	
@@ -153,6 +155,14 @@
 	
     WABlobContainer *currContainer = [self.localStorageList objectAtIndex:indexPath.row];
 	cell.textLabel.text = currContainer.name;
+    
+    [storageClient fetchBlobs:currContainer withCompletionHandler:^(NSArray *blobs, NSError *error) {
+        if (!error) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Total Blobs: %i", [blobs count] ];
+        } else {
+            [self showError:error];
+        }
+    }];
     
 	return cell;
 }
@@ -162,9 +172,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    BlobListVC *aController = [[BlobListVC alloc] initWithNibName:@"BlobList" bundle:nil];
-    aController.currContainer = [self.localStorageList objectAtIndex:indexPath.row];
-    [[self navigationController] pushViewController:aController animated:YES];
+    WABlobContainer *currContainer = [self.localStorageList objectAtIndex:indexPath.row];
+    
+    [self showLoader:self.view];
+    [storageClient fetchBlobs:currContainer withCompletionHandler:^(NSArray *blobs, NSError *error) {
+        if ([blobs count] > 0) {
+            BlobListVC *aController = [[BlobListVC alloc] initWithNibName:@"BlobList" bundle:nil];
+            aController.currContainer = [self.localStorageList objectAtIndex:indexPath.row];
+            [[self navigationController] pushViewController:aController animated:YES];
+        } else {
+            [self showGenericAlert:@"No Blobs found for this Container" withTitle:@""];
+        }
+        [self hideLoader:self.view];
+    }];
     
     [self.mainTableView reloadData];
 }
@@ -186,9 +206,9 @@
     [self hideLoader:self.view];
 }
 
-- (void)storageClient:(WACloudStorageClient *)client didFetchBlobContainers:(NSArray *)containers withResultContinuation:(WAResultContinuation *)resultContinuation
+- (void)storageClient:(WACloudStorageClient *)client didFetchBlobContainers:(NSArray *)containers
 {
-    self.resultContinuation = resultContinuation;
+    //self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:containers];
     [self.tableSearchData addObjectsFromArray:containers];
 	[self.mainTableView reloadData];

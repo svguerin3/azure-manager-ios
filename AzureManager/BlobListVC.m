@@ -52,6 +52,15 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
                                                                             action:nil];
+
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
+    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+}
+
+- (void) infoBtnPressed {
+    NSString *infoAlertStr = [NSString stringWithFormat:@"Total # of Blobs in this Container: %i\n\nTotal # of Images in this group of Blobs: %i", [self.localStorageList count], totalImgCount];
+    [self showGenericAlert:infoAlertStr withTitle:@"Info"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -105,6 +114,24 @@
 	
     WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
     cell.textLabel.text = currBlob.name;
+
+    if (downloadedImgCount <= totalImgCount) {
+        NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
+        if ([contentType hasPrefix:@"image"]) {
+            [storageClient fetchBlobData:currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
+                if (!error) {
+                    cell.imageView.image = [UIImage imageWithData:imgData];
+
+                    downloadedImgCount++;
+                    if (downloadedImgCount == totalImgCount) { // done downloading, need to refresh
+                        [self.mainTableView reloadData];
+                    }
+                } else {
+                    [self showError:error];
+                }
+            }];
+        }
+    }
     
 	return cell;
 }
@@ -143,6 +170,15 @@
     self.resultContinuation = resultContinuation;
     [self.localStorageList addObjectsFromArray:blobs];
 	[self.mainTableView reloadData];
+    
+    for (WABlob *currBlob in self.localStorageList) {
+        NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
+        if ([contentType hasPrefix:@"image"]) {
+            totalImgCount++;
+        }
+    }
+    NSLog(@"totalImgCount: %i", totalImgCount);
+    
     [self hideLoader:self.view];
 }
 
