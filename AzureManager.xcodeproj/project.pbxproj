@@ -79,7 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B18E92F155A0EF700E2DAA0 /* PropertyDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PropertyDetailVC.h; sourceTree = "<group>"; };
+		8B18E92F155A0EF700E2DAA0 /* PropertyDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyDetailVC.h; sourceTree = "<group>"; };
 		8B18E930155A0EF700E2DAA0 /* PropertyDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyDetailVC.m; sourceTree = "<group>"; };
 		8B18E931155A0EF700E2DAA0 /* PropertyDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyDetail.xib; sourceTree = "<group>"; };
 		8B3D226F1552F36200CCBE25 /* AccountSelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectionVC.h; sourceTree = "<group>"; };
@@ -687,7 +687,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aidan Murphy (RPD3PJSWHL)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -703,6 +703,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7464B92C-6EC7-4F8F-A28A-DF3ECDED8625";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7";
