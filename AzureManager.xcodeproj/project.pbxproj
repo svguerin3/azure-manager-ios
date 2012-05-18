@@ -75,6 +75,9 @@
 		C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AAC0155C26BC00D6564A /* WAQuery.m */; };
 		C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */; };
 		C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AACC155C4BF100D6564A /* WAQueryKey.m */; };
+		C184BD331566EDF30064DAB8 /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD321566EDF30064DAB8 /* MyButton.m */; };
+		C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD351566EE1C0064DAB8 /* buttonImage.png */; };
+		C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +207,10 @@
 		C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone-plus-sign-icon.jpg"; sourceTree = "<group>"; };
 		C167AACB155C4BF100D6564A /* WAQueryKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAQueryKey.h; sourceTree = "<group>"; };
 		C167AACC155C4BF100D6564A /* WAQueryKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAQueryKey.m; sourceTree = "<group>"; };
+		C184BD311566EDF30064DAB8 /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		C184BD321566EDF30064DAB8 /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		C184BD351566EE1C0064DAB8 /* buttonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonImage.png; sourceTree = "<group>"; };
+		C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonImage@2x.png"; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +234,8 @@
 		8B3D227E1552F6C000CCBE25 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				C184BD311566EDF30064DAB8 /* MyButton.h */,
+				C184BD321566EDF30064DAB8 /* MyButton.m */,
 				8B3D227B1552F6A300CCBE25 /* AccountData.h */,
 				8B3D227C1552F6A300CCBE25 /* AccountData.m */,
 				8B3D22AB155329CE00CCBE25 /* EntityTableViewCell.h */,
@@ -532,6 +541,8 @@
 		C1C0595615586D2900E2A6C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C184BD351566EE1C0064DAB8 /* buttonImage.png */,
+				C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */,
 				C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */,
 				C167AA9C155C13F000D6564A /* IsSelected.png */,
 				C167AA9D155C13F000D6564A /* NotSelected.png */,
@@ -614,6 +625,8 @@
 				C167AA9F155C13F000D6564A /* NotSelected.png in Resources */,
 				C167AAB2155C221400D6564A /* QueryDetails.xib in Resources */,
 				C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */,
+				C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */,
+				C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +677,7 @@
 				C167AAB1155C221400D6564A /* QueryDetailsVC.m in Sources */,
 				C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */,
 				C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */,
+				C184BD331566EDF30064DAB8 /* MyButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

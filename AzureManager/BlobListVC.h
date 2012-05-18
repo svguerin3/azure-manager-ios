@@ -16,7 +16,7 @@
     WAResultContinuation *_resultContinuation;
     BOOL _fetchedResults;
     
-    int downloadedImgCount, totalImgCount;
+    int totalImgCount;
 }
 
 - (void)fetchData;

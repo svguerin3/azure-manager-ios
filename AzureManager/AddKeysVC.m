@@ -43,6 +43,7 @@
     
     // group together keys
     uniqueEntitiesArr = [[NSMutableArray alloc] init];
+    //NSLog(@"entities count: %i", [self.entitiesArr count]);
     for (WATableEntity *currEntity in self.entitiesArr) {
         if (![uniqueEntitiesArr containsObject:currEntity.partitionKey]) {
             [uniqueEntitiesArr addObject:currEntity.partitionKey];

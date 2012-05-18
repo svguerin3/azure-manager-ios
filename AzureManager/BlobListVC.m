@@ -115,7 +115,7 @@
     WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
     cell.textLabel.text = currBlob.name;
 
-    if (downloadedImgCount <= totalImgCount) {
+    /*if (downloadedImgCount <= totalImgCount) {
         NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
         if ([contentType hasPrefix:@"image"]) {
             [storageClient fetchBlobData:currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
@@ -131,7 +131,7 @@
                 }
             }];
         }
-    }
+    } */
     
 	return cell;
 }
@@ -177,7 +177,6 @@
             totalImgCount++;
         }
     }
-    NSLog(@"totalImgCount: %i", totalImgCount);
     
     [self hideLoader:self.view];
 }
