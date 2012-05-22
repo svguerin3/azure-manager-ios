@@ -30,7 +30,7 @@
 @property (nonatomic, retain) WAResultContinuation *resultContinuation;
 @property (nonatomic, retain) NSMutableArray *localStorageList;
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
-@property (nonatomic, retain) NSString *tableName;
+@property (nonatomic, copy) NSString *tableName;
 @property (nonatomic, retain) IBOutlet UIButton *queryBtn;
 
 @end

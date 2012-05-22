@@ -10,7 +10,7 @@
 
 @interface AccountData : NSObject
 
-@property (nonatomic, retain) NSString *accountName;
-@property (nonatomic, retain) NSString *accessKey;
+@property (nonatomic, copy) NSString *accountName;
+@property (nonatomic, copy) NSString *accessKey;
 
 @end

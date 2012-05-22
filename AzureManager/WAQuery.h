@@ -11,8 +11,8 @@
 @interface WAQuery : NSObject
 
 @property (nonatomic, retain) NSMutableArray *listOfKeys;
-@property (nonatomic, retain) NSString *queryName;
+@property (nonatomic, copy) NSString *queryName;
 @property (nonatomic, retain) NSNumber *allKeysSelected;
-@property (nonatomic, retain) NSString *filterStr;
+@property (nonatomic, copy) NSString *filterStr;
 
 @end

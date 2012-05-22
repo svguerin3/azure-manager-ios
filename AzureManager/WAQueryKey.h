@@ -10,7 +10,7 @@
 
 @interface WAQueryKey : NSObject
 
-@property (nonatomic, retain) NSString *keyText;
+@property (nonatomic, copy) NSString *keyText;
 @property (nonatomic, retain) NSNumber *keySelected;
 
 @end

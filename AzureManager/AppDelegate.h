@@ -27,7 +27,7 @@
 // storage data
 @property (nonatomic, retain) NSMutableArray *accountsList;
 @property (nonatomic, retain) NSMutableArray *queriesList;
-@property (nonatomic, retain) NSString *dataFilePathToAccountsList;
-@property (nonatomic, retain) NSString *dataFilePathToQueriesList;
+@property (nonatomic, copy) NSString *dataFilePathToAccountsList;
+@property (nonatomic, copy) NSString *dataFilePathToQueriesList;
 
 @end

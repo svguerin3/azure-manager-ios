@@ -61,6 +61,7 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
+		8BC3F883156C01EE00AEFF3C /* WABlobVG.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC3F882156C01EE00AEFF3C /* WABlobVG.m */; };
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
 		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
@@ -187,6 +188,8 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		8BC3F881156C01EE00AEFF3C /* WABlobVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WABlobVG.h; sourceTree = "<group>"; };
+		8BC3F882156C01EE00AEFF3C /* WABlobVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WABlobVG.m; sourceTree = "<group>"; };
 		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
 		8BE91699155A00D000B48D92 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				C167AAC0155C26BC00D6564A /* WAQuery.m */,
 				C167AACB155C4BF100D6564A /* WAQueryKey.h */,
 				C167AACC155C4BF100D6564A /* WAQueryKey.m */,
+				8BC3F881156C01EE00AEFF3C /* WABlobVG.h */,
+				8BC3F882156C01EE00AEFF3C /* WABlobVG.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */,
 				C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */,
 				C184BD331566EDF30064DAB8 /* MyButton.m in Sources */,
+				8BC3F883156C01EE00AEFF3C /* WABlobVG.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,7 +42,7 @@
     
 	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
     
-    NSLog(@"blob desc: %@", self.currBlob.description);
+    //NSLog(@"blob desc: %@", self.currBlob.description);
     
     NSString *contentType = [self.currBlob.properties objectForKey:WABlobPropertyKeyContentType];
     if ([contentType hasPrefix:@"image"]) {

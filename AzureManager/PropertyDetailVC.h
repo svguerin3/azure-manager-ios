@@ -15,6 +15,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *propKeyLbl;
 @property (nonatomic, retain) IBOutlet UITextView *propValTextView;
 @property (nonatomic, retain) WATableEntity *currEntity;
-@property (nonatomic, retain) NSString *propertyKeyStr;
+@property (nonatomic, copy) NSString *propertyKeyStr;
 
 @end
