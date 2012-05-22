@@ -96,6 +96,17 @@
     self.resultContinuation = nil;
 }
 
+- (IBAction)viewTypeFilterBtnPressed:(id)sender {
+    UISegmentedControl *currControl = (UISegmentedControl *)sender;
+    
+    if (currControl.selectedSegmentIndex == listViewIndex) {
+        objViewSelected = NO;
+    } else if (currControl.selectedSegmentIndex == objViewIndex) {
+        objViewSelected = YES;
+    }
+    [self.mainTableView reloadData];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -110,10 +121,27 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 	
-    cell.textLabel.numberOfLines = 0;
-	
     WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
-    cell.textLabel.text = currBlob.name;
+    
+    if (objViewSelected) {
+        UITableViewCell *objCell = [tableView dequeueReusableCellWithIdentifier:@"ObjCell"];
+        if (objCell == nil) {
+            objCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ObjCell"];
+        }
+        objCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        objCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        objCell.textLabel.text = [NSString stringWithFormat:@"%@", [currBlob description]];
+        objCell.textLabel.font = [UIFont boldSystemFontOfSize:12];
+        objCell.textLabel.numberOfLines = 0;
+        return objCell;
+    } else {
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.text = currBlob.name;
+        
+        if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"image"]) {
+            cell.imageView.image = [UIImage imageNamed:@"Camera_icon.gif"];
+        }
+    }
 
     /*if (downloadedImgCount <= totalImgCount) {
         NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
@@ -153,8 +181,22 @@
 	return [self.localStorageList count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 40;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	int count = 0;
+	
+    if (objViewSelected) {
+        WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
+        NSString *objDataStr = [currBlob description];
+        CGSize labelSize = CGSizeMake(200.0, 20.0);
+        if ([objDataStr length] > 0) {
+            labelSize = [objDataStr sizeWithFont: [UIFont boldSystemFontOfSize: 12.0] constrainedToSize: CGSizeMake(labelSize.width, 1000) lineBreakMode: UILineBreakModeWordWrap];
+        }
+        return labelSize.height;
+    } else {
+        count = 42;
+	}
+    return count;
 }
 
 #pragma mark - WACloudStorageClientDelegate Methods

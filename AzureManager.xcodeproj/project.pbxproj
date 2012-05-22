@@ -61,6 +61,7 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
+		8BC3F8AB156C355000AEFF3C /* Camera_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */; };
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
 		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
@@ -187,6 +188,7 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Camera_icon.gif; sourceTree = "<group>"; };
 		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
 		8BE91699155A00D000B48D92 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 		C1C0595615586D2900E2A6C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */,
 				C184BD351566EE1C0064DAB8 /* buttonImage.png */,
 				C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */,
 				C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */,
@@ -627,6 +630,7 @@
 				C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */,
 				C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */,
 				C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */,
+				8BC3F8AB156C355000AEFF3C /* Camera_icon.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

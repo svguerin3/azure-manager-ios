@@ -17,9 +17,11 @@
     BOOL _fetchedResults;
     
     int totalImgCount;
+    BOOL objViewSelected;
 }
 
 - (void)fetchData;
+- (IBAction)viewTypeFilterBtnPressed:(id)sender;
 
 @property (nonatomic, retain) WAResultContinuation *resultContinuation;
 @property (nonatomic, retain) NSMutableArray *localStorageList;
