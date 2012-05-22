@@ -9,6 +9,7 @@
 #import "BlobListVC.h"
 #import "WAResultContinuation.h"
 #import "WABlob.h"
+#import "WABlobVG.h"
 #import "BlobImageViewVC.h"
 
 @interface BlobListVC ()
@@ -210,16 +211,15 @@
 - (void)storageClient:(WACloudStorageClient *)client didFetchBlobs:(NSArray *)blobs inContainer:(WABlobContainer *)container withResultContinuation:(WAResultContinuation *)resultContinuation
 {
     self.resultContinuation = resultContinuation;
-    [self.localStorageList addObjectsFromArray:blobs];
-	[self.mainTableView reloadData];
     
-    for (WABlob *currBlob in self.localStorageList) {
+    for (WABlob *currBlob in blobs) {
         NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
         if ([contentType hasPrefix:@"image"]) {
             totalImgCount++;
         }
     }
-    
+    [self.localStorageList addObjectsFromArray:blobs];
+	[self.mainTableView reloadData];   
     [self hideLoader:self.view];
 }
 
