@@ -9,7 +9,6 @@
 #import "BlobListVC.h"
 #import "WAResultContinuation.h"
 #import "WABlob.h"
-#import "WABlobVG.h"
 #import "BlobImageViewVC.h"
 
 @interface BlobListVC ()
@@ -138,6 +137,8 @@
     } else {
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.text = currBlob.name;
+        
+        NSLog(@"currBlobContentType: %@", [currBlob.properties objectForKey:WABlobPropertyKeyContentType]);
         
         if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"image"]) {
             cell.imageView.image = [UIImage imageNamed:@"Camera_icon.gif"];
