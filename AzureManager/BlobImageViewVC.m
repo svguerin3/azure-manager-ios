@@ -23,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"Blob Image Viewer";
     }
     return self;
 }
@@ -32,38 +33,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    storageClient = nil;
-    
-    [self showLoader:self.view];
-
-	if (storageClient) {
-        storageClient.delegate = nil;
-	}
-    
-	storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
-    
-    //NSLog(@"blob desc: %@", self.currBlob.description);
-    
-    NSString *contentType = [self.currBlob.properties objectForKey:WABlobPropertyKeyContentType];
-    if ([contentType hasPrefix:@"image"]) {
-        self.title = @"Blob Image";
-        
-        [storageClient fetchBlobData:self.currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
-			UIImage *blobImage = [UIImage imageWithData:imgData];
-			self.blobImgView.image = blobImage;
-            
-            if (error) {
-                [self showError:error];
-            }
-            
-            [self hideLoader:self.view];
-		}];
-	}
-    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
                                                                             action:nil];
+    
+    [self showLoader:self.view];
+
+    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+
+    [storageClient fetchBlobData:self.currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
+        NSLog(@"imgData length: %i", [imgData length]);
+        UIImage *blobImage = [UIImage imageWithData:imgData];
+        self.blobImgView.image = blobImage;
+            
+        if (error) {
+            [self showError:error];
+        }
+        [self hideLoader:self.view];
+    }];
 }
 
 - (void)viewDidUnload

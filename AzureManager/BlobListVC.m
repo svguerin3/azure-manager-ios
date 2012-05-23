@@ -10,6 +10,7 @@
 #import "WAResultContinuation.h"
 #import "WABlob.h"
 #import "BlobImageViewVC.h"
+#import "BlobWebViewVC.h"
 
 @interface BlobListVC ()
 
@@ -138,10 +139,16 @@
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.text = currBlob.name;
         
-        NSLog(@"currBlobContentType: %@", [currBlob.properties objectForKey:WABlobPropertyKeyContentType]);
+        //NSLog(@"currBlobContentType: %@", [currBlob.properties objectForKey:WABlobPropertyKeyContentType]);
         
         if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"image"]) {
-            cell.imageView.image = [UIImage imageNamed:@"Camera_icon.gif"];
+            cell.imageView.image = [UIImage imageNamed:@"camera-icon.jpg"];
+        } else if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] isEqualToString:@"application/pdf"]) {
+            cell.imageView.image = [UIImage imageNamed:@"pdf_icon.jpg"];
+        } else if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] isEqualToString:@"application/vnd.openxmlformats-officedocument.wordprocessingml.document"]) {
+            cell.imageView.image = [UIImage imageNamed:@"worddoc_icon.jpg"];
+        } else {
+            cell.imageView.image = [UIImage imageNamed:@"question_icon.jpg"];
         }
     }
 
@@ -171,9 +178,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    BlobImageViewVC *aController = [[BlobImageViewVC alloc] initWithNibName:@"BlobImageView" bundle:nil];
-    aController.currBlob = [self.localStorageList objectAtIndex:indexPath.row];
-    [[self navigationController] pushViewController:aController animated:YES];
+    WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
+    
+    if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"image"]) {
+        BlobImageViewVC *aController = [[BlobImageViewVC alloc] initWithNibName:@"BlobImageView" bundle:nil];
+        aController.currBlob = currBlob;
+        [[self navigationController] pushViewController:aController animated:YES];
+    } else {
+        BlobWebViewVC *aController = [[BlobWebViewVC alloc] initWithNibName:@"BlobWebView" bundle:nil];
+        aController.currBlob = currBlob;
+        [[self navigationController] pushViewController:aController animated:YES];
+    }
     
     [self.mainTableView reloadData];
 }

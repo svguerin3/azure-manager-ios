@@ -61,9 +61,14 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
-		8BC3F8AB156C355000AEFF3C /* Camera_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */; };
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
+		C150E8A4156D6E2C00DD2B06 /* question_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8A3156D6E2C00DD2B06 /* question_icon.jpg */; };
+		C150E8A6156D6E5700DD2B06 /* pdf_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8A5156D6E5700DD2B06 /* pdf_icon.jpg */; };
+		C150E8AA156D6ECF00DD2B06 /* BlobWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C150E8A8156D6ECF00DD2B06 /* BlobWebViewVC.m */; };
+		C150E8AB156D6ECF00DD2B06 /* BlobWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C150E8A9156D6ECF00DD2B06 /* BlobWebView.xib */; };
+		C150E8D8156D7CEB00DD2B06 /* worddoc_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8D7156D7CEB00DD2B06 /* worddoc_icon.jpg */; };
+		C150E8DA156D7DC600DD2B06 /* camera-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8D9156D7DC600DD2B06 /* camera-icon.jpg */; };
 		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
 		C167AA8B155C053A00D6564A /* SelectQuery.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA89155C053A00D6564A /* SelectQuery.xib */; };
 		C167AA95155C057000D6564A /* AddKeysVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA93155C057000D6564A /* AddKeysVC.m */; };
@@ -188,10 +193,16 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Camera_icon.gif; sourceTree = "<group>"; };
 		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
 		8BE91699155A00D000B48D92 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		8BE9169A155A00D000B48D92 /* EntityDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityDetail.xib; sourceTree = "<group>"; };
+		C150E8A3156D6E2C00DD2B06 /* question_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = question_icon.jpg; sourceTree = "<group>"; };
+		C150E8A5156D6E5700DD2B06 /* pdf_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pdf_icon.jpg; sourceTree = "<group>"; };
+		C150E8A7156D6ECF00DD2B06 /* BlobWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobWebViewVC.h; sourceTree = "<group>"; };
+		C150E8A8156D6ECF00DD2B06 /* BlobWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobWebViewVC.m; sourceTree = "<group>"; };
+		C150E8A9156D6ECF00DD2B06 /* BlobWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobWebView.xib; sourceTree = "<group>"; };
+		C150E8D7156D7CEB00DD2B06 /* worddoc_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = worddoc_icon.jpg; sourceTree = "<group>"; };
+		C150E8D9156D7DC600DD2B06 /* camera-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "camera-icon.jpg"; sourceTree = "<group>"; };
 		C167AA87155C053A00D6564A /* SelectQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectQueryVC.h; sourceTree = "<group>"; };
 		C167AA88155C053A00D6564A /* SelectQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectQueryVC.m; sourceTree = "<group>"; };
 		C167AA89155C053A00D6564A /* SelectQuery.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectQuery.xib; sourceTree = "<group>"; };
@@ -457,6 +468,9 @@
 				8B7C16D515518A44007D5A8C /* BlobImageViewVC.h */,
 				8B7C16D615518A44007D5A8C /* BlobImageViewVC.m */,
 				8B7C16D715518A45007D5A8C /* BlobImageView.xib */,
+				C150E8A7156D6ECF00DD2B06 /* BlobWebViewVC.h */,
+				C150E8A8156D6ECF00DD2B06 /* BlobWebViewVC.m */,
+				C150E8A9156D6ECF00DD2B06 /* BlobWebView.xib */,
 			);
 			name = Blobs;
 			sourceTree = "<group>";
@@ -543,7 +557,10 @@
 		C1C0595615586D2900E2A6C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8BC3F8AA156C355000AEFF3C /* Camera_icon.gif */,
+				C150E8D9156D7DC600DD2B06 /* camera-icon.jpg */,
+				C150E8D7156D7CEB00DD2B06 /* worddoc_icon.jpg */,
+				C150E8A5156D6E5700DD2B06 /* pdf_icon.jpg */,
+				C150E8A3156D6E2C00DD2B06 /* question_icon.jpg */,
 				C184BD351566EE1C0064DAB8 /* buttonImage.png */,
 				C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */,
 				C167AAC5155C27DF00D6564A /* iphone-plus-sign-icon.jpg */,
@@ -630,7 +647,11 @@
 				C167AAC6155C27DF00D6564A /* iphone-plus-sign-icon.jpg in Resources */,
 				C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */,
 				C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */,
-				8BC3F8AB156C355000AEFF3C /* Camera_icon.gif in Resources */,
+				C150E8A4156D6E2C00DD2B06 /* question_icon.jpg in Resources */,
+				C150E8A6156D6E5700DD2B06 /* pdf_icon.jpg in Resources */,
+				C150E8AB156D6ECF00DD2B06 /* BlobWebView.xib in Resources */,
+				C150E8D8156D7CEB00DD2B06 /* worddoc_icon.jpg in Resources */,
+				C150E8DA156D7DC600DD2B06 /* camera-icon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +703,7 @@
 				C167AAC1155C26BC00D6564A /* WAQuery.m in Sources */,
 				C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */,
 				C184BD331566EDF30064DAB8 /* MyButton.m in Sources */,
+				C150E8AA156D6ECF00DD2B06 /* BlobWebViewVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
