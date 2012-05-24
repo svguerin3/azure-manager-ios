@@ -11,6 +11,7 @@
 #import "WABlob.h"
 #import "BlobImageViewVC.h"
 #import "BlobWebViewVC.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface BlobListVC ()
 
@@ -120,6 +121,10 @@
     if (cell == nil) { 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        // rounded corners
+        cell.imageView.layer.masksToBounds = YES;
+        cell.imageView.layer.cornerRadius = 5.0;
     }
 	
     WABlob *currBlob = [self.localStorageList objectAtIndex:indexPath.row];
@@ -139,7 +144,7 @@
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.text = currBlob.name;
         
-        //NSLog(@"currBlobContentType: %@", [currBlob.properties objectForKey:WABlobPropertyKeyContentType]);
+        NSLog(@"currBlobContentType: %@", [currBlob.properties objectForKey:WABlobPropertyKeyContentType]);
         
         if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"image"]) {
             cell.imageView.image = [UIImage imageNamed:@"camera-icon.jpg"];
@@ -147,28 +152,12 @@
             cell.imageView.image = [UIImage imageNamed:@"pdf_icon.jpg"];
         } else if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] isEqualToString:@"application/vnd.openxmlformats-officedocument.wordprocessingml.document"]) {
             cell.imageView.image = [UIImage imageNamed:@"worddoc_icon.jpg"];
+        } else if ([[currBlob.properties objectForKey:WABlobPropertyKeyContentType] hasPrefix:@"video"]) {
+            cell.imageView.image = [UIImage imageNamed:@"movie_icon.png"];
         } else {
             cell.imageView.image = [UIImage imageNamed:@"question_icon.jpg"];
         }
     }
-
-    /*if (downloadedImgCount <= totalImgCount) {
-        NSString *contentType = [currBlob.properties objectForKey:WABlobPropertyKeyContentType];
-        if ([contentType hasPrefix:@"image"]) {
-            [storageClient fetchBlobData:currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
-                if (!error) {
-                    cell.imageView.image = [UIImage imageWithData:imgData];
-
-                    downloadedImgCount++;
-                    if (downloadedImgCount == totalImgCount) { // done downloading, need to refresh
-                        [self.mainTableView reloadData];
-                    }
-                } else {
-                    [self showError:error];
-                }
-            }];
-        }
-    } */
     
 	return cell;
 }
