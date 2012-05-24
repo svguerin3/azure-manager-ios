@@ -25,7 +25,7 @@ typedef enum ListTypeSelInd {
 
 #define PADDING_FOR_SELECTION_CELLS     @"       "
 
-#define SELECTED_YES_CELL_IMAGE     [UIImage imageNamed:@"isSelected.png"]
+#define SELECTED_YES_CELL_IMAGE     [UIImage imageNamed:@"IsSelected.png"]
 #define SELECTED_NO_CELL_IMAGE      [UIImage imageNamed:@"NotSelected.png"]
 
 // notifs
