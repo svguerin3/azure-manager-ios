@@ -46,7 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     
     storageClient = nil;
-    _localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_TABLES];
+    self.localStorageList = [[NSMutableArray alloc] initWithCapacity:MAXNUMROWS_TABLES];
     
     // Tableview init code
     self.mainTableView.dataSource = self;
@@ -74,18 +74,19 @@
         
     [self.localStorageList removeAllObjects];
     
+    if (storageClient) {
+        storageClient.delegate = nil;
+    }
+    
+    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+    storageClient.delegate = self; 
+    
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
         AppDelegate *mainDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         currQuerySelected = [mainDel.queriesList objectAtIndex:[WAConfig sharedConfiguration].querySelectedIndex-1];
         [self.queryBtn setTitle:currQuerySelected.queryName forState:UIControlStateNormal];
     } else { // use default query
         [self.queryBtn setTitle:@"Default Query" forState:UIControlStateNormal];
-        if (storageClient) {
-            storageClient.delegate = nil;
-        }
-        
-        storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
-        storageClient.delegate = self;  
     }
     [self fetchData];
 }
@@ -99,13 +100,15 @@
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {
         NSMutableArray *newResultsArr = [[NSMutableArray alloc] init];
 
-        // first filter by query filterText on Properties
+        // first filter by query filterText on Properties (keys AND values)
         NSMutableArray *filteredArr = [[NSMutableArray alloc] init];
         if ([currQuerySelected.filterStr length] > 0) {
             for (WATableEntity *currEntity in self.localStorageList) {
                 for (NSString *currPropertyKey in currEntity.keys) {
                     NSRange range = [[currPropertyKey uppercaseString] rangeOfString:[currQuerySelected.filterStr uppercaseString]];
-                    if (range.location != NSNotFound && ![newResultsArr containsObject:currEntity]) {
+                    NSRange range2 = [[[currEntity objectForKey:currPropertyKey] uppercaseString] rangeOfString:[currQuerySelected.filterStr uppercaseString]];
+                    
+                    if ((range.location != NSNotFound || range2.location != NSNotFound) && ![newResultsArr containsObject:currEntity]) {
                         [filteredArr addObject:currEntity];
                     }
                 }
@@ -332,7 +335,7 @@
 	[self.mainTableView reloadData];
     
     [self hideLoader:self.view];
-    
+
     [self filterResultsBasedOnQuery];
 }
 
