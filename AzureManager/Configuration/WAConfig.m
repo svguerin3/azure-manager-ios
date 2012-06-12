@@ -11,7 +11,7 @@
 
 @implementation WAConfig
 
-@synthesize authenticationCredential;
+@synthesize storageAuthCred;
 @synthesize querySelectedIndex;
 
 + (WAConfig*)sharedConfiguration
@@ -30,8 +30,8 @@
     return self;
 }
 
-- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey {
-    self.authenticationCredential = [WAAuthenticationCredential credentialWithAzureServiceAccount:accountName 
+- (void) initStorageCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey {
+    self.storageAuthCred = [WAAuthenticationCredential credentialWithAzureServiceAccount:accountName 
                                                         accessKey:accessKey];
 }
 

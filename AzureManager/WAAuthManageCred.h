@@ -1,5 +1,5 @@
 //
-//  WAAuthCredExt.h
+//  WAAuthManageCred.h
 //  AzureManager
 //
 //  Created by Vincent Guerin on 6/12/12.
@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WAAuthCredExt : NSObject
-
-@property (nonatomic, retain) WAAuthenticationCredential *credential;
+@interface WAAuthManageCred : NSObject
 
 @end

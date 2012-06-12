@@ -78,7 +78,7 @@
         storageClient.delegate = nil;
     }
     
-    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].storageAuthCred];
     storageClient.delegate = self; 
     
     if ([WAConfig sharedConfiguration].querySelectedIndex > 0) {

@@ -40,7 +40,7 @@
     
     [self showLoader:self.view];
 
-    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].authenticationCredential];
+    storageClient = [WACloudStorageClient storageClientWithCredential:[WAConfig sharedConfiguration].storageAuthCred];
 
     [storageClient fetchBlobData:self.currBlob withCompletionHandler:^(NSData *imgData, NSError *error) {
         NSLog(@"imgData length: %i", [imgData length]);

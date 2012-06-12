@@ -13,10 +13,10 @@
 @interface WAConfig : NSObject
 
 + (WAConfig *)sharedConfiguration;
-- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
+- (void) initStorageCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
   
 // session vars
-@property (nonatomic, retain) WAAuthenticationCredential *authenticationCredential;
+@property (nonatomic, retain) WAAuthenticationCredential *storageAuthCred;
 @property int querySelectedIndex;
 
 @end
