@@ -8,6 +8,8 @@
 
 #import "MainMenuVC.h"
 #import "StorageSelectionVC.h"
+#import "WACloudManageClient.h"
+#import "HostedServicesListVC.h"
 
 @interface MainMenuVC ()
 
@@ -46,7 +48,8 @@
 }
 
 - (IBAction) managementBtnPressed {
-    
+    HostedServicesListVC *aController = [[HostedServicesListVC alloc] initWithNibName:@"HostedServicesList" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)viewDidUnload

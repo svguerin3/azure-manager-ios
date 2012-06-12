@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WAAuthManageCred.h"
+#import "WACloudManageClientDelegate.h"
+
 
 @protocol WACloudManageClientDelegate;
 
@@ -15,7 +18,8 @@
  */
 @interface WACloudManageClient : NSObject {
 @private
-	WAAuthenticationCredential* _credential;
+	WAAuthManageCred* _credential;
+    __unsafe_unretained id<WACloudManageClientDelegate> _delegate;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -23,8 +27,22 @@
 ///---------------------------------------------------------------------------------------
 
 /**
- The delegate is sent messages when content is loaded or errors occur from Windows Azure storage.
+ The delegate is sent messages when content is loaded or errors occur
  */
 @property (assign) id<WACloudManageClientDelegate> delegate;
+
+/**
+ Fetch a list of hosted services asynchronously. 
+ */
+- (void)fetchListOfHostedServices:(void (^)(NSArray *, NSError *))block;
+
+/**
+ Create a storage client initialized with the given credential.
+ 
+ @param credential The credentials for Windows Azure storage. 
+ 
+ @returns The newly initialized WACloudStorageClient object.
+ */
++ (WACloudManageClient *)manageClientWithCredential:(WAAuthManageCred *)credential;
 
 @end

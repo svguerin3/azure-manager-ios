@@ -9,14 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class WAAuthenticationCredential;
+@class WAAuthManageCred;
 
 @interface WAConfig : NSObject
 
 + (WAConfig *)sharedConfiguration;
-- (void) initStorageCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
+- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
   
 // session vars
 @property (nonatomic, retain) WAAuthenticationCredential *storageAuthCred;
+@property (nonatomic, retain) WAAuthManageCred *manageAuthCred;
 @property int querySelectedIndex;
 
 @end

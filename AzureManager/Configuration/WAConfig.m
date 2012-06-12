@@ -8,10 +8,12 @@
 
 #import "WAConfig.h"
 #import "WAAuthenticationCredential.h"
+#import "WAAuthManageCred.h"
 
 @implementation WAConfig
 
 @synthesize storageAuthCred;
+@synthesize manageAuthCred;
 @synthesize querySelectedIndex;
 
 + (WAConfig*)sharedConfiguration
@@ -30,9 +32,11 @@
     return self;
 }
 
-- (void) initStorageCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey {
+- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey {
     self.storageAuthCred = [WAAuthenticationCredential credentialWithAzureServiceAccount:accountName 
                                                         accessKey:accessKey];
+    self.manageAuthCred = [WAAuthManageCred credentialWithAzureServiceAccount:accountName 
+                                                                    accessKey:accessKey];
 }
 
 @end

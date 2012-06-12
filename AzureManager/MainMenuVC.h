@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WACloudManageClientDelegate.h"
 
-@interface MainMenuVC : UIViewController
+@interface MainMenuVC : UIViewController <WACloudManageClientDelegate>
 
 - (IBAction) storageBtnPressed;
 - (IBAction) monitoringBtnPressed;

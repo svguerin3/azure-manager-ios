@@ -61,6 +61,8 @@
 		8B7D252A155028ED002370D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D2529155028ED002370D1 /* main.m */; };
 		8B7D252E155028ED002370D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D252D155028ED002370D1 /* AppDelegate.m */; };
 		8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7D256C15503879002370D1 /* libxml2.2.dylib */; };
+		8B9D1FB11587F71100566708 /* HostedServicesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9D1FAF1587F71100566708 /* HostedServicesListVC.m */; };
+		8B9D1FB21587F71100566708 /* HostedServicesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9D1FB01587F71100566708 /* HostedServicesList.xib */; };
 		8BB346181587E188001E8924 /* WAAuthManageCred.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB346171587E188001E8924 /* WAAuthManageCred.m */; };
 		8BE9169B155A00D000B48D92 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE91699155A00D000B48D92 /* EntityDetailVC.m */; };
 		8BE9169C155A00D000B48D92 /* EntityDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE9169A155A00D000B48D92 /* EntityDetail.xib */; };
@@ -196,6 +198,10 @@
 		8B7D252C155028ED002370D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B7D252D155028ED002370D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8B7D256C15503879002370D1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		8B9D1FA71587EECB00566708 /* WACloudManageClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudManageClientDelegate.h; sourceTree = "<group>"; };
+		8B9D1FAE1587F71000566708 /* HostedServicesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostedServicesListVC.h; sourceTree = "<group>"; };
+		8B9D1FAF1587F71100566708 /* HostedServicesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostedServicesListVC.m; sourceTree = "<group>"; };
+		8B9D1FB01587F71100566708 /* HostedServicesList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostedServicesList.xib; sourceTree = "<group>"; };
 		8BB346161587E188001E8924 /* WAAuthManageCred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthManageCred.h; sourceTree = "<group>"; };
 		8BB346171587E188001E8924 /* WAAuthManageCred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAuthManageCred.m; sourceTree = "<group>"; };
 		8BE91698155A00D000B48D92 /* EntityDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityDetailVC.h; sourceTree = "<group>"; };
@@ -308,6 +314,9 @@
 			isa = PBXGroup;
 			children = (
 				C1DFF40E1587A6B700B15CFE /* Client */,
+				8B9D1FAE1587F71000566708 /* HostedServicesListVC.h */,
+				8B9D1FAF1587F71100566708 /* HostedServicesListVC.m */,
+				8B9D1FB01587F71100566708 /* HostedServicesList.xib */,
 			);
 			name = "Management Classes";
 			sourceTree = "<group>";
@@ -592,6 +601,7 @@
 		C1DFF40E1587A6B700B15CFE /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				8B9D1FA71587EECB00566708 /* WACloudManageClientDelegate.h */,
 				8BB346161587E188001E8924 /* WAAuthManageCred.h */,
 				8BB346171587E188001E8924 /* WAAuthManageCred.m */,
 				C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */,
@@ -682,6 +692,7 @@
 				C150E8D8156D7CEB00DD2B06 /* worddoc_icon.jpg in Resources */,
 				C150E8DA156D7DC600DD2B06 /* camera-icon.jpg in Resources */,
 				C150E8F6156E80F000DD2B06 /* movie_icon.png in Resources */,
+				8B9D1FB21587F71100566708 /* HostedServicesList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +747,7 @@
 				C150E8AA156D6ECF00DD2B06 /* BlobWebViewVC.m in Sources */,
 				C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */,
 				8BB346181587E188001E8924 /* WAAuthManageCred.m in Sources */,
+				8B9D1FB11587F71100566708 /* HostedServicesListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
