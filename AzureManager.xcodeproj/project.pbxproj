@@ -86,6 +86,8 @@
 		C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD351566EE1C0064DAB8 /* buttonImage.png */; };
 		C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
+		C1DFF4141587A6C200B15CFE /* WAAuthCredExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFF4111587A6C200B15CFE /* WAAuthCredExt.m */; };
+		C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +229,10 @@
 		C184BD351566EE1C0064DAB8 /* buttonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonImage.png; sourceTree = "<group>"; };
 		C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonImage@2x.png"; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
+		C1DFF4101587A6C200B15CFE /* WAAuthCredExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAuthCredExt.h; sourceTree = "<group>"; };
+		C1DFF4111587A6C200B15CFE /* WAAuthCredExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAuthCredExt.m; sourceTree = "<group>"; };
+		C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudManageClient.h; sourceTree = "<group>"; };
+		C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudManageClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +306,7 @@
 		8B5E8DA115505C5200E74CC7 /* Management Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1DFF40E1587A6B700B15CFE /* Client */,
 			);
 			name = "Management Classes";
 			sourceTree = "<group>";
@@ -574,6 +581,17 @@
 			path = Images;
 			sourceTree = SOURCE_ROOT;
 		};
+		C1DFF40E1587A6B700B15CFE /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				C1DFF4101587A6C200B15CFE /* WAAuthCredExt.h */,
+				C1DFF4111587A6C200B15CFE /* WAAuthCredExt.m */,
+				C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */,
+				C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -708,6 +726,8 @@
 				C167AACD155C4BF100D6564A /* WAQueryKey.m in Sources */,
 				C184BD331566EDF30064DAB8 /* MyButton.m in Sources */,
 				C150E8AA156D6ECF00DD2B06 /* BlobWebViewVC.m in Sources */,
+				C1DFF4141587A6C200B15CFE /* WAAuthCredExt.m in Sources */,
+				C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
