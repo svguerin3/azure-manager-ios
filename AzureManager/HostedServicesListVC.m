@@ -110,6 +110,8 @@
     NSLog(@"got into didFetchHostedServices");
     servicesArr = [services mutableCopy];
     [self.mainTableView reloadData];
+    
+    [self hideLoader:self.view];
 }
 
 @end

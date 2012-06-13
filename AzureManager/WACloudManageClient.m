@@ -46,12 +46,20 @@
     NSLog(@"got into connectionDidFinishLoading");
     
     NSString *responseStr = [[NSString alloc] initWithData:_data encoding: NSUTF8StringEncoding];
-    NSLog(@"responseStr: %@", responseStr);
+    NSLog(@"data length: %i | responseStr: %@", [_data length], responseStr);
+    
+    if ([_delegate respondsToSelector:@selector(storageClient:didFetchHostedServices:)]) {
+        [_delegate storageClient:self didFetchHostedServices:nil];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"got into didFailWithError");
+    
+    if ([_delegate respondsToSelector:@selector(storageClient:didFailRequest:withError:)]) {
+        [_delegate storageClient:self didFailRequest:nil withError:error];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
