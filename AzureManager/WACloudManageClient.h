@@ -20,6 +20,7 @@
 @private
 	WAAuthManageCred* _credential;
     __unsafe_unretained id<WACloudManageClientDelegate> _delegate;
+    NSMutableData *_data;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@
 /**
  Fetch a list of hosted services asynchronously. 
  */
-- (void)fetchListOfHostedServices:(void (^)(NSArray *, NSError *))block;
+- (void)fetchListOfHostedServices;
 
 /**
  Create a storage client initialized with the given credential.

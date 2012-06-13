@@ -27,14 +27,46 @@
 	return [[self alloc] initWithCredential:credential];
 }
 
-- (void)fetchListOfHostedServices:(void (^)(NSArray *, NSError *))block {
-    NSArray *myRetArr = [NSArray arrayWithObjects:@"1", @"2", nil];
+- (void)fetchListOfHostedServices {
     
-    if (block) {
+    NSMutableURLRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_HOSTED_SERVICES];
+    NSURLConnection *myConn = [[NSURLConnection alloc] initWithRequest:myReq delegate:self startImmediately:YES];    
+    [myConn start];
+                            
+    /*if (block) {
         block(myRetArr, nil);
     } else if ([_delegate respondsToSelector:@selector(storageClient:didFetchHostedServices:)]) {
         [_delegate storageClient:self didFetchHostedServices:myRetArr];
-    }    
+    } */   
+}
+
+#pragma mark - NSURLRequest Delegate Methods
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"got into connectionDidFinishLoading");
+    
+    NSString *responseStr = [[NSString alloc] initWithData:_data encoding: NSUTF8StringEncoding];
+    NSLog(@"responseStr: %@", responseStr);
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"got into didFailWithError");
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"got into didReceiveResponse");
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"did receive data");
+	if (!_data) {
+		_data = [data mutableCopy];
+	} else {
+		[_data appendData:data];
+	}
 }
 
 @end

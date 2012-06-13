@@ -47,12 +47,7 @@
     newClient.delegate = self;
     
     [self showLoader:self.view];
-    [newClient fetchListOfHostedServices:^(NSArray *retArr, NSError *error) {
-        servicesArr = [retArr mutableCopy];
-        [self.mainTableView reloadData];
-        
-        [self hideLoader:self.view];
-    }];
+    [newClient fetchListOfHostedServices];
 }
 
 - (void)viewDidUnload
