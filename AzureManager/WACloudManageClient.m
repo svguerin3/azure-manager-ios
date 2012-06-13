@@ -28,16 +28,26 @@
 }
 
 - (void)fetchListOfHostedServices {
-    
     NSMutableURLRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_HOSTED_SERVICES];
-    NSURLConnection *myConn = [[NSURLConnection alloc] initWithRequest:myReq delegate:self startImmediately:YES];    
-    [myConn start];
-                            
-    /*if (block) {
-        block(myRetArr, nil);
-    } else if ([_delegate respondsToSelector:@selector(storageClient:didFetchHostedServices:)]) {
-        [_delegate storageClient:self didFetchHostedServices:myRetArr];
-    } */   
+    NSURLConnection *myConn = [[NSURLConnection alloc] initWithRequest:myReq delegate:self startImmediately:YES];
+    [myConn start]; 
+    
+    
+}
+
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+    NSLog(@"got into canAuth, method: %@", protectionSpace.authenticationMethod);
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSLog(@"got into didReceiveAuthChallenge, host: %@", challenge.protectionSpace.host);
+    NSArray *trustedHosts = [NSArray arrayWithObject:@"management.core.windows.net"];
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
+        if ([trustedHosts containsObject:challenge.protectionSpace.host]) {
+            [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+        }
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
 
 #pragma mark - NSURLRequest Delegate Methods
