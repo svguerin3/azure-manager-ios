@@ -89,6 +89,7 @@
 		C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD351566EE1C0064DAB8 /* buttonImage.png */; };
 		C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
+		C1C8FAFB1589212A00BB2539 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C8FAFA1589212A00BB2539 /* Security.framework */; };
 		C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +238,7 @@
 		C184BD351566EE1C0064DAB8 /* buttonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonImage.png; sourceTree = "<group>"; };
 		C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonImage@2x.png"; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
+		C1C8FAFA1589212A00BB2539 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudManageClient.h; sourceTree = "<group>"; };
 		C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudManageClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C8FAFB1589212A00BB2539 /* Security.framework in Frameworks */,
 				C167AAB8155C23D900D6564A /* QuartzCore.framework in Frameworks */,
 				8B7D256D15503879002370D1 /* libxml2.2.dylib in Frameworks */,
 				8B7D251E155028ED002370D1 /* UIKit.framework in Frameworks */,
@@ -508,6 +511,7 @@
 		8B7D251C155028ED002370D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1C8FAFA1589212A00BB2539 /* Security.framework */,
 				C167AAB7155C23D900D6564A /* QuartzCore.framework */,
 				8B7D256C15503879002370D1 /* libxml2.2.dylib */,
 				8B7D251D155028ED002370D1 /* UIKit.framework */,
