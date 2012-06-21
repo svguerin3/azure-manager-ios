@@ -1,29 +1,25 @@
 //
-//  MainMenuVC.m
+//  MonitoringSelVC.m
 //  AzureManager
 //
-//  Created by Vincent Guerin on 5/1/12.
-//  Copyright (c) 2012 Neudesic. All rights reserved.
+//  Created by Vincent Guerin on 6/21/12.
+//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "MainMenuVC.h"
-#import "StorageSelectionVC.h"
-#import "WACloudManageClient.h"
-#import "HostedServicesListVC.h"
 #import "MonitoringSelVC.h"
 
-@interface MainMenuVC ()
+@interface MonitoringSelVC ()
 
 @end
 
-@implementation MainMenuVC
+@implementation MonitoringSelVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Main Menu";
+        self.title = @"Please Select an Option";
     }
     return self;
 }
@@ -39,19 +35,8 @@
                                                                             action:nil];
 }
 
-- (IBAction) storageBtnPressed {
-    StorageSelectionVC *aController = [[StorageSelectionVC alloc] initWithNibName:@"StorageSelection" bundle:nil];
-    [[self navigationController] pushViewController:aController animated:YES];
-}
-
-- (IBAction) monitoringBtnPressed {
-    MonitoringSelVC *aController = [[MonitoringSelVC alloc] initWithNibName:@"MonitoringSel" bundle:nil];
-    [[self navigationController] pushViewController:aController animated:YES];
-}
-
-- (IBAction) managementBtnPressed {
-    HostedServicesListVC *aController = [[HostedServicesListVC alloc] initWithNibName:@"HostedServicesList" bundle:nil];
-    [[self navigationController] pushViewController:aController animated:YES];
+- (IBAction) blobServicesBtnPressed {
+    
 }
 
 - (void)viewDidUnload
