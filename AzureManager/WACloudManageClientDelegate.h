@@ -17,5 +17,6 @@
 
 - (void)storageClient:(WACloudManageClient *)client didFailRequest:(NSURLRequest*)request withError:(NSError *)error;
 - (void)storageClient:(WACloudManageClient *)client didFetchHostedServices:(NSArray *)services;
+- (void)storageClient:(WACloudManageClient *)client didFetchBlobProperties:(NSString *)returnXMLStr;
 
 @end

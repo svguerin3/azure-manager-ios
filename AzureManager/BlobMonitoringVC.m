@@ -7,6 +7,8 @@
 //
 
 #import "BlobMonitoringVC.h"
+#import "WACloudManageClient.h"
+#import "TBXML.h"
 
 @interface BlobMonitoringVC ()
 
@@ -47,18 +49,26 @@
     mySwitchIncludeAPIs = [[UISwitch alloc] initWithFrame:switchFieldRect];
     mySwitchMetricsRetentionEnabled = [[UISwitch alloc] initWithFrame:switchFieldRect];
     
-    [mySwitchDelete addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
+    /*[mySwitchDelete addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchRead addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchWrite addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchLoggingRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchMetricsEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchIncludeAPIs addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
-    [mySwitchMetricsRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
+    [mySwitchMetricsRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged]; */
     
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] 
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                 target:self action:@selector(saveBtnPressed)] ;
 	self.navigationItem.rightBarButtonItem = saveBtn;  
+    
+    [self fetchData];
+}
+
+- (void) fetchData {
+    WACloudManageClient *newClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
+    [self showLoader:self.view];
+    [newClient fetchBlobPropertiesWithCallBack:self];
 }
 
 - (void) saveBtnPressed {
@@ -80,7 +90,7 @@
 }
 
 - (void) switchTriggered:(id)sender {
-    NSLog(@"switchTriggered");
+    
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -209,6 +219,76 @@
     }
     
 	return 0;
+}
+
+- (NSString *) removeBadCharacters:(NSString *)myStr {
+	myStr = [myStr stringByReplacingOccurrencesOfString:@"ï" withString:@""];
+	myStr = [myStr stringByReplacingOccurrencesOfString:@"»" withString:@""];
+	myStr = [myStr stringByReplacingOccurrencesOfString:@"¿" withString:@""];
+    
+	return myStr;
+}
+
+#pragma mark - WACloudStorageClientDelegate Methods
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSString *cleanResponseStr = [self removeBadCharacters:[request responseString]];
+    NSLog(@"got into didFetchBlobProperties, result: %@", cleanResponseStr);
+    
+    TBXML *tbxml = [TBXML tbxmlWithXMLString:cleanResponseStr];
+    TBXMLElement *root = tbxml.rootXMLElement;
+    
+    TBXMLElement *baseLoggingElem = [TBXML childElementNamed:@"Logging" parentElement:root];
+    TBXMLElement *baseMetricsElem = [TBXML childElementNamed:@"Metrics" parentElement:root];
+    
+    if (baseLoggingElem) {
+        TBXMLElement *deleteElem = [TBXML childElementNamed:@"Delete" parentElement:baseLoggingElem];
+        [mySwitchDelete setOn:[[TBXML textForElement:deleteElem] boolValue] animated:YES];
+        
+        TBXMLElement *readElem = [TBXML childElementNamed:@"Read" parentElement:baseLoggingElem];
+        [mySwitchRead setOn:[[TBXML textForElement:readElem] boolValue] animated:YES];
+        
+        TBXMLElement *writeElem = [TBXML childElementNamed:@"Write" parentElement:baseLoggingElem];
+        [mySwitchWrite setOn:[[TBXML textForElement:writeElem] boolValue] animated:YES];
+        
+        TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseLoggingElem];
+        TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
+        [mySwitchLoggingRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
+        
+        if ([[TBXML textForElement:retEnabled] boolValue]) {
+            TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
+            loggingRetentionDaysField.text = [TBXML textForElement:retDays];
+        }
+    }
+    if (baseMetricsElem) {
+        TBXMLElement *enabledElem = [TBXML childElementNamed:@"Enabled" parentElement:baseMetricsElem];
+        [mySwitchMetricsEnabled setOn:[[TBXML textForElement:enabledElem] boolValue] animated:YES];
+        
+        TBXMLElement *includeAPIsElem = [TBXML childElementNamed:@"IncludeAPIs" parentElement:baseMetricsElem];
+        if (includeAPIsElem) {
+            [mySwitchIncludeAPIs setOn:[[TBXML textForElement:includeAPIsElem] boolValue] animated:YES];
+        }
+        
+        TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseMetricsElem];
+        TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
+        [mySwitchMetricsRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
+        
+        if ([[TBXML textForElement:retEnabled] boolValue]) {
+            TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
+            metricsRetentionDaysField.text = [TBXML textForElement:retDays];
+        }
+    }
+    
+    //[self.mainTableView reloadData];
+    [self hideLoader:self.view];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"got into didFailReq");
+    [self showError:[request error]];
+    [self hideLoader:self.view];
 }
 
 @end

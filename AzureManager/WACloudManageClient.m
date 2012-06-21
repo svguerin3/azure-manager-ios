@@ -34,41 +34,10 @@
     //[myConn start]; 
 }
 
-#pragma mark - NSURLRequest Delegate Methods
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"got into connectionDidFinishLoading");
-    
-    NSString *responseStr = [[NSString alloc] initWithData:_data encoding: NSUTF8StringEncoding];
-    NSLog(@"data length: %i | responseStr: %@", [_data length], responseStr);
-    
-    if ([_delegate respondsToSelector:@selector(storageClient:didFetchHostedServices:)]) {
-        [_delegate storageClient:self didFetchHostedServices:nil];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"got into didFailWithError");
-    
-    if ([_delegate respondsToSelector:@selector(storageClient:didFailRequest:withError:)]) {
-        [_delegate storageClient:self didFailRequest:nil withError:error];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"got into didReceiveResponse");
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"did receive data");
-	if (!_data) {
-		_data = [data mutableCopy];
-	} else {
-		[_data appendData:data];
-	}
+- (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_BLOB_PROPERTIES];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
 }
 
 @end

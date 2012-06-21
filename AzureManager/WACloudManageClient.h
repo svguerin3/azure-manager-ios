@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WAAuthManageCred.h"
 #import "WACloudManageClientDelegate.h"
-
+#import "ASIHTTPRequest.h"
 
 @protocol WACloudManageClientDelegate;
 
@@ -20,7 +20,6 @@
 @private
 	WAAuthManageCred* _credential;
     __unsafe_unretained id<WACloudManageClientDelegate> _delegate;
-    NSMutableData *_data;
 }
 
 ///---------------------------------------------------------------------------------------
@@ -37,6 +36,11 @@
  */
 - (void)fetchListOfHostedServices;
 
+/**
+ Fetch Blob properties asynchronously. 
+ */
+- (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC;
+    
 /**
  Create a storage client initialized with the given credential.
  

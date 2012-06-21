@@ -18,6 +18,7 @@
 
 - (void) shiftView:(int)yCoord;
 - (void) lowerKeyboard;
+- (NSString *) removeBadCharacters:(NSString *)myStr;
 
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 
