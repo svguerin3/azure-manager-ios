@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WACloudAccessToken.h"
+#import "ASIHTTPRequest.h"
 
 @interface WAAuthManageCred : NSObject
 {
@@ -25,6 +26,6 @@
 
 + (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey;
 - (NSURL *)URLWithType:(NSString *)typeStr;
-- (NSMutableURLRequest *)authenticatedRequestForType:(NSString *)typeStr;
+- (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr;
 
 @end

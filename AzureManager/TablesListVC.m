@@ -53,10 +53,6 @@
                                                                             target:nil
                                                                             action:nil];
     
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; 
-    [infoButton addTarget:self action:@selector(infoBtnPressed) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    
     self.tableSearchData = [[NSMutableArray alloc] init];
 }
 

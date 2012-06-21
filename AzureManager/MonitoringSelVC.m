@@ -7,6 +7,7 @@
 //
 
 #import "MonitoringSelVC.h"
+#import "BlobMonitoringVC.h"
 
 @interface MonitoringSelVC ()
 
@@ -36,7 +37,8 @@
 }
 
 - (IBAction) blobServicesBtnPressed {
-    
+    BlobMonitoringVC *aController = [[BlobMonitoringVC alloc] initWithNibName:@"BlobMonitoring" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)viewDidUnload
