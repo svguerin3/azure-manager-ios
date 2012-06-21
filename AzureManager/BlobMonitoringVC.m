@@ -49,19 +49,21 @@
     mySwitchIncludeAPIs = [[UISwitch alloc] initWithFrame:switchFieldRect];
     mySwitchMetricsRetentionEnabled = [[UISwitch alloc] initWithFrame:switchFieldRect];
     
-    /*[mySwitchDelete addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
+    [mySwitchDelete addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchRead addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchWrite addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchLoggingRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchMetricsEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     [mySwitchIncludeAPIs addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
-    [mySwitchMetricsRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged]; */
+    [mySwitchMetricsRetentionEnabled addTarget:self action:@selector(switchTriggered:) forControlEvents:UIControlEventValueChanged];
     
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] 
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                 target:self action:@selector(saveBtnPressed)] ;
 	self.navigationItem.rightBarButtonItem = saveBtn;  
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [self fetchData];
 }
 
@@ -72,7 +74,111 @@
 }
 
 - (void) saveBtnPressed {
+    [self lowerKeyboard];
     
+    if ((mySwitchLoggingRetentionEnabled.on && ([loggingRetentionDaysField.text length] == 0 || [loggingRetentionDaysField.text isEqualToString:@"0"])) ||
+        (mySwitchMetricsRetentionEnabled.on && ([metricsRetentionDaysField.text length] == 0 || [metricsRetentionDaysField.text isEqualToString:@"0"]))) {
+        
+        [self showGenericAlert:@"Retention days must be numeric, greater than 0, and less than or equal to 365 days." withTitle:@"Error"];
+        return;
+    }
+    
+    if (!mySwitchMetricsEnabled.on && mySwitchIncludeAPIs.on) {
+        [self showGenericAlert:@"Include APIs option is only expected when Metrics is enabled." withTitle:@"Error"];
+        return;
+    }
+    
+    NSString *dataStr = [self getPayloadString];
+    NSLog(@"dataStr to send: %@", dataStr);
+    
+    WACloudManageClient *newClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
+    [self showLoader:self.view];
+    [newClient setBlobServiceProperties:dataStr withCallback:self];
+}
+
+- (NSString *) getPayloadString {    
+    NSMutableString *requestStr =[NSMutableString stringWithString: @"<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Delete>"];
+    
+    if (mySwitchDelete.on) {
+        [requestStr appendString:@"true"];
+    } else {
+        [requestStr appendString:@"false"];
+    }
+    
+    [requestStr appendString:@"</Delete><Read>"];
+    
+    if (mySwitchRead.on) {
+        [requestStr appendString:@"true"];
+    } else {
+        [requestStr appendString:@"false"];
+    }
+    
+    [requestStr appendString:@"</Read><Write>"];
+    
+    if (mySwitchWrite.on) {
+        [requestStr appendString:@"true"];
+    } else {
+        [requestStr appendString:@"false"];
+    }
+    
+    [requestStr appendString:@"</Write><RetentionPolicy><Enabled>"];
+    
+    if (mySwitchLoggingRetentionEnabled.on) {
+        [requestStr appendString:@"true"];
+        
+        [requestStr appendString:@"</Enabled><Days>"];
+
+        [requestStr appendString:loggingRetentionDaysField.text];
+        
+        [requestStr appendString:@"</Days>"];
+    } else {
+        [requestStr appendString:@"false"];
+        
+        [requestStr appendString:@"</Enabled>"];
+    }
+    
+    [requestStr appendString:@"</RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>"];
+
+    if (mySwitchMetricsEnabled.on) {
+        [requestStr appendString:@"true"];
+    } else {
+        [requestStr appendString:@"false"];
+    }
+    
+    [requestStr appendString:@"</Enabled>"];
+    
+    if (mySwitchMetricsEnabled.on) {
+        [requestStr appendString:@"<IncludeAPIs>"];
+        
+        if (mySwitchIncludeAPIs.on) {
+            [requestStr appendString:@"true"];
+        } else {
+            [requestStr appendString:@"false"];
+        }
+        
+        [requestStr appendString:@"</IncludeAPIs>"];
+    }
+    
+    
+    [requestStr appendString:@"<RetentionPolicy><Enabled>"];
+    
+    if (mySwitchMetricsRetentionEnabled.on) {
+        [requestStr appendString:@"true"];
+        
+        [requestStr appendString:@"</Enabled><Days>"];
+
+        [requestStr appendString:metricsRetentionDaysField.text];
+        
+        [requestStr appendString:@"</Days></RetentionPolicy></Metrics><StorageServiceProperties>"];
+    } else {
+        [requestStr appendString:@"false"];
+        
+        [requestStr appendString:@"</Enabled>"];
+    }
+
+    [requestStr appendString:@"</RetentionPolicy></Metrics></StorageServiceProperties>"];
+    
+    return [requestStr mutableCopy];
 }
 
 - (void)viewDidUnload
@@ -90,7 +196,7 @@
 }
 
 - (void) switchTriggered:(id)sender {
-    
+    [self lowerKeyboard];
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -151,8 +257,7 @@
 			loggingRetentionDaysField.backgroundColor = [UIColor clearColor];
 			loggingRetentionDaysField.font = [UIFont boldSystemFontOfSize:17];
 			loggingRetentionDaysField.userInteractionEnabled = YES;
-			loggingRetentionDaysField.keyboardType = UIKeyboardTypeDefault;
-			loggingRetentionDaysField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+			loggingRetentionDaysField.keyboardType = UIKeyboardTypeNumberPad;
 			loggingRetentionDaysField.textAlignment = UITextAlignmentRight;
 			loggingRetentionDaysField.delegate = self;
 			loggingRetentionDaysField.placeholder = @"0";
@@ -177,8 +282,7 @@
 			metricsRetentionDaysField.backgroundColor = [UIColor clearColor];
 			metricsRetentionDaysField.font = [UIFont boldSystemFontOfSize:17];
 			metricsRetentionDaysField.userInteractionEnabled = YES;
-			metricsRetentionDaysField.keyboardType = UIKeyboardTypeDefault;
-			metricsRetentionDaysField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+			metricsRetentionDaysField.keyboardType = UIKeyboardTypeNumberPad;
 			metricsRetentionDaysField.textAlignment = UITextAlignmentRight;
 			metricsRetentionDaysField.delegate = self;
 			metricsRetentionDaysField.placeholder = @"0";
@@ -234,53 +338,62 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSString *cleanResponseStr = [self removeBadCharacters:[request responseString]];
-    NSLog(@"got into didFetchBlobProperties, result: %@", cleanResponseStr);
+    NSLog(@"got into requestFinished, result: %@", cleanResponseStr);
+    
+    if ([request tag] == 2) { // was a SET
+        if ([[request responseString] length] == 0) {
+            [self showGenericAlert:@"Your Blob Properties were updated successfully!  Please give it 30 seconds to propogate the change."  withTitle:@"Success!"];
+        }
+    }
     
     TBXML *tbxml = [TBXML tbxmlWithXMLString:cleanResponseStr];
     TBXMLElement *root = tbxml.rootXMLElement;
     
-    TBXMLElement *baseLoggingElem = [TBXML childElementNamed:@"Logging" parentElement:root];
-    TBXMLElement *baseMetricsElem = [TBXML childElementNamed:@"Metrics" parentElement:root];
-    
-    if (baseLoggingElem) {
-        TBXMLElement *deleteElem = [TBXML childElementNamed:@"Delete" parentElement:baseLoggingElem];
-        [mySwitchDelete setOn:[[TBXML textForElement:deleteElem] boolValue] animated:YES];
-        
-        TBXMLElement *readElem = [TBXML childElementNamed:@"Read" parentElement:baseLoggingElem];
-        [mySwitchRead setOn:[[TBXML textForElement:readElem] boolValue] animated:YES];
-        
-        TBXMLElement *writeElem = [TBXML childElementNamed:@"Write" parentElement:baseLoggingElem];
-        [mySwitchWrite setOn:[[TBXML textForElement:writeElem] boolValue] animated:YES];
-        
-        TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseLoggingElem];
-        TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
-        [mySwitchLoggingRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
-        
-        if ([[TBXML textForElement:retEnabled] boolValue]) {
-            TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
-            loggingRetentionDaysField.text = [TBXML textForElement:retDays];
+    if (root) {
+        if ([request tag] == 1) { // was a GET
+            TBXMLElement *baseLoggingElem = [TBXML childElementNamed:@"Logging" parentElement:root];
+            TBXMLElement *baseMetricsElem = [TBXML childElementNamed:@"Metrics" parentElement:root];
+            
+            if (baseLoggingElem) {
+                TBXMLElement *deleteElem = [TBXML childElementNamed:@"Delete" parentElement:baseLoggingElem];
+                [mySwitchDelete setOn:[[TBXML textForElement:deleteElem] boolValue] animated:YES];
+                
+                TBXMLElement *readElem = [TBXML childElementNamed:@"Read" parentElement:baseLoggingElem];
+                [mySwitchRead setOn:[[TBXML textForElement:readElem] boolValue] animated:YES];
+                
+                TBXMLElement *writeElem = [TBXML childElementNamed:@"Write" parentElement:baseLoggingElem];
+                [mySwitchWrite setOn:[[TBXML textForElement:writeElem] boolValue] animated:YES];
+                
+                TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseLoggingElem];
+                TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
+                [mySwitchLoggingRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
+                
+                if ([[TBXML textForElement:retEnabled] boolValue]) {
+                    TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
+                    loggingRetentionDaysField.text = [TBXML textForElement:retDays];
+                }
+            }
+            if (baseMetricsElem) {
+                TBXMLElement *enabledElem = [TBXML childElementNamed:@"Enabled" parentElement:baseMetricsElem];
+                [mySwitchMetricsEnabled setOn:[[TBXML textForElement:enabledElem] boolValue] animated:YES];
+                
+                TBXMLElement *includeAPIsElem = [TBXML childElementNamed:@"IncludeAPIs" parentElement:baseMetricsElem];
+                if (includeAPIsElem) {
+                    [mySwitchIncludeAPIs setOn:[[TBXML textForElement:includeAPIsElem] boolValue] animated:YES];
+                }
+                
+                TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseMetricsElem];
+                TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
+                [mySwitchMetricsRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
+                
+                if ([[TBXML textForElement:retEnabled] boolValue]) {
+                    TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
+                    metricsRetentionDaysField.text = [TBXML textForElement:retDays];
+                }
+            }
         }
     }
-    if (baseMetricsElem) {
-        TBXMLElement *enabledElem = [TBXML childElementNamed:@"Enabled" parentElement:baseMetricsElem];
-        [mySwitchMetricsEnabled setOn:[[TBXML textForElement:enabledElem] boolValue] animated:YES];
-        
-        TBXMLElement *includeAPIsElem = [TBXML childElementNamed:@"IncludeAPIs" parentElement:baseMetricsElem];
-        if (includeAPIsElem) {
-            [mySwitchIncludeAPIs setOn:[[TBXML textForElement:includeAPIsElem] boolValue] animated:YES];
-        }
-        
-        TBXMLElement *retentionPolicy = [TBXML childElementNamed:@"RetentionPolicy" parentElement:baseMetricsElem];
-        TBXMLElement *retEnabled = [TBXML childElementNamed:@"Enabled" parentElement:retentionPolicy];
-        [mySwitchMetricsRetentionEnabled setOn:[[TBXML textForElement:retEnabled] boolValue]];
-        
-        if ([[TBXML textForElement:retEnabled] boolValue]) {
-            TBXMLElement *retDays = [TBXML childElementNamed:@"Days" parentElement:retentionPolicy];
-            metricsRetentionDaysField.text = [TBXML textForElement:retDays];
-        }
-    }
-    
-    //[self.mainTableView reloadData];
+
     [self hideLoader:self.view];
 }
 

@@ -40,6 +40,11 @@
  Fetch Blob properties asynchronously. 
  */
 - (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC;
+   
+/**
+ Set Blob properties asynchronously. 
+ */
+- (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC;
     
 /**
  Create a storage client initialized with the given credential.

@@ -368,7 +368,6 @@
 		8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C1FC3D29159381650050E146 /* Client */,
 				C15840C615936A70002D2B7F /* MonitoringSelVC.h */,
 				C15840C715936A70002D2B7F /* MonitoringSelVC.m */,
 				C15840C815936A70002D2B7F /* MonitoringSel.xib */,
@@ -732,13 +731,6 @@
 			children = (
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		C1FC3D29159381650050E146 /* Client */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

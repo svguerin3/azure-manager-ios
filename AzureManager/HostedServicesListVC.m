@@ -46,7 +46,7 @@
     WACloudManageClient *newClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
     newClient.delegate = self;
     
-    [self showLoader:self.view];
+    //[self showLoader:self.view];
     [newClient fetchListOfHostedServices];
 }
 

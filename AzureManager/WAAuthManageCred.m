@@ -36,7 +36,7 @@
     NSString *urlString = @"";
     if ([typeStr isEqualToString:TYPE_LIST_HOSTED_SERVICES]) {
         urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/hostedservices", _accountName];
-    } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES]) {
+    } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.blob.core.windows.net/?restype=service&comp=properties", _accountName];
     }
     
@@ -44,13 +44,17 @@
     return [NSURL URLWithString:urlString];
 }
 
-- (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr
+- (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr withReqBody:(NSString *)dataStr 
 {
     NSURL *serviceURL = [self URLWithType:typeStr];    
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
-    if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES]) {
+    if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
         NSString *reqType = @"GET";
+        
+        if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
+            reqType = @"PUT";
+        }
         
         // Construct the date in the right format
         NSDate *date = [NSDate date];
@@ -71,8 +75,33 @@
         NSMutableString *requestString;
         const NSData *cKey  = [_accessKey dataWithBase64DecodedString];
             
-        requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n\n%@\n\n\n\n\n\n\n%@\n/%@/", 
+        if ([reqType isEqualToString:@"PUT"]) {
+            NSData *contentData = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *contentLength = contentData ? [NSString stringWithFormat:@"%d", contentData.length] : @"";
+            
+            NSString *contentMD5;
+            
+            if (contentData) {
+                const NSData *cKey  = [_accountName dataWithBase64DecodedString];
+                void* buffer = malloc(CC_SHA256_DIGEST_LENGTH);
+                CCHmac(kCCHmacAlgSHA256, [cKey bytes], [cKey length], [contentData bytes], [contentData length], buffer);
+                NSData *encodedData = [NSData dataWithBytesNoCopy:buffer length:CC_SHA256_DIGEST_LENGTH freeWhenDone:NO];
+                contentMD5 = [encodedData stringWithBase64EncodedData];
+                free(buffer);
+                
+                [authenticatedRequest appendPostData:contentData];
+                [authenticatedRequest addRequestHeader:@"content-md5" value:contentMD5]; // wish this was in the documentation as required..
+                [authenticatedRequest setRequestMethod:@"PUT"];
+            } else {
+                contentMD5 = @"";
+            }
+            
+            requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n%@\n%@\n\n\n\n\n\n\n%@\n/%@/", 
+                             reqType, contentLength, contentMD5, @"", headerString, _accountName];
+        } else { // GET request
+            requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n\n%@\n\n\n\n\n\n\n%@\n/%@/", 
                              reqType, @"", @"", headerString, _accountName];
+        }
         
         NSString *query = [serviceURL query];
         if (query && query.length > 0) {

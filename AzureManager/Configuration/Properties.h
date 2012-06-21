@@ -29,8 +29,10 @@ typedef enum ListTypeSelInd {
 #define SELECTED_NO_CELL_IMAGE      [UIImage imageNamed:@"NotSelected.png"]
 
 // Azure Management properties
-#define TYPE_LIST_HOSTED_SERVICES   @"TYPE_LIST_HOSTED_SERVICES"
-#define TYPE_GET_BLOB_PROPERTIES   @"TYPE_GET_BLOB_PROPERTIES"
+#define TYPE_LIST_HOSTED_SERVICES           @"TYPE_LIST_HOSTED_SERVICES"
+#define TYPE_GET_BLOB_PROPERTIES            @"TYPE_GET_BLOB_PROPERTIES"
+#define TYPE_SET_BLOB_SERVICE_PROPERTIES    @"TYPE_SET_BLOB_SERVICE_PROPERTIES"
+
 #define X_MS_VERSION_DATE           @"2012-06-12"
 
 // notifs

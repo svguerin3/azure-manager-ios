@@ -26,6 +26,6 @@
 
 + (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey;
 - (NSURL *)URLWithType:(NSString *)typeStr;
-- (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr;
+- (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr withReqBody:(NSString *)dataStr;
 
 @end

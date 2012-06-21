@@ -35,7 +35,15 @@
 }
 
 - (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC {
-    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_BLOB_PROPERTIES];
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_BLOB_PROPERTIES withReqBody:@""];
+    [myReq setTag:1];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
+}
+
+- (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_BLOB_SERVICE_PROPERTIES withReqBody:bodyPayload];
+    [myReq setTag:2];
     [myReq setDelegate:callbackVC];
     [myReq startAsynchronous];
 }
