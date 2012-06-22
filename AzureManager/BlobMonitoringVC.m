@@ -79,12 +79,12 @@
     if ((mySwitchLoggingRetentionEnabled.on && ([loggingRetentionDaysField.text length] == 0 || [loggingRetentionDaysField.text isEqualToString:@"0"])) ||
         (mySwitchMetricsRetentionEnabled.on && ([metricsRetentionDaysField.text length] == 0 || [metricsRetentionDaysField.text isEqualToString:@"0"]))) {
         
-        [self showGenericAlert:@"Retention days must be numeric, greater than 0, and less than or equal to 365 days." withTitle:@"Error"];
+        [self showGenericAlert:@"If Retention is on, Retention Days must be numeric, greater than 0, and less than or equal to 365 days." withTitle:@"Error"];
         return;
     }
     
     if (!mySwitchMetricsEnabled.on && mySwitchIncludeAPIs.on) {
-        [self showGenericAlert:@"Include APIs option is only expected when Metrics is enabled." withTitle:@"Error"];
+        [self showGenericAlert:@"Include APIs option is only expected when Metrics are enabled." withTitle:@"Error"];
         return;
     }
     
@@ -169,7 +169,7 @@
 
         [requestStr appendString:metricsRetentionDaysField.text];
         
-        [requestStr appendString:@"</Days></RetentionPolicy></Metrics><StorageServiceProperties>"];
+        [requestStr appendString:@"</Days>"];
     } else {
         [requestStr appendString:@"false"];
         
@@ -341,8 +341,10 @@
     NSLog(@"got into requestFinished, result: %@", cleanResponseStr);
     
     if ([request tag] == 2) { // was a SET
-        if ([[request responseString] length] == 0) {
+        if ([request responseStatusCode] == 202) { // success code (I couldn't find an enum for this status-code in iOS libs or ASI's)
             [self showGenericAlert:@"Your Blob Properties were updated successfully!  Please give it 30 seconds to propogate the change."  withTitle:@"Success!"];
+        } else {
+            [self showGenericAlert:@"An error occurred processing this request, please try again" withTitle:@"Error"];
         }
     }
     
