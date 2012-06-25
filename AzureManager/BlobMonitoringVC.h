@@ -20,6 +20,7 @@
 - (void) lowerKeyboard;
 - (NSString *) removeBadCharacters:(NSString *)myStr;
 - (NSString *) getPayloadString;
+- (void) refreshEnabledFields;
 
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
 

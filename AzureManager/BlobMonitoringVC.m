@@ -60,7 +60,9 @@
     UIBarButtonItem *saveBtn = [[UIBarButtonItem alloc] 
                                 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                 target:self action:@selector(saveBtnPressed)] ;
-	self.navigationItem.rightBarButtonItem = saveBtn;  
+	self.navigationItem.rightBarButtonItem = saveBtn; 
+    
+    [self refreshEnabledFields];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -195,8 +197,33 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) refreshEnabledFields {
+    if (mySwitchMetricsEnabled.on) {
+        mySwitchIncludeAPIs.enabled = YES;
+    } else {
+        mySwitchIncludeAPIs.enabled = NO;
+        [mySwitchIncludeAPIs setOn:NO animated:YES];
+    }
+    
+    if (mySwitchLoggingRetentionEnabled.on) {
+        loggingRetentionDaysField.enabled = YES;
+    } else {
+        loggingRetentionDaysField.text = @"";
+        loggingRetentionDaysField.enabled = NO;
+    }
+    
+    if (mySwitchMetricsRetentionEnabled.on) {
+         metricsRetentionDaysField.enabled = YES;
+    } else {
+        metricsRetentionDaysField.text = @"";
+        metricsRetentionDaysField.enabled = NO;
+    }
+}
+
 - (void) switchTriggered:(id)sender {
     [self lowerKeyboard];
+    
+    [self refreshEnabledFields];
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
