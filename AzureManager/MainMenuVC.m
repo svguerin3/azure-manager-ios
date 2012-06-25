@@ -10,7 +10,7 @@
 #import "StorageSelectionVC.h"
 #import "WACloudManageClient.h"
 #import "HostedServicesListVC.h"
-#import "MonitoringSelVC.h"
+#import "MonitoringTypeSelVC.h"
 
 @interface MainMenuVC ()
 
@@ -45,7 +45,7 @@
 }
 
 - (IBAction) monitoringBtnPressed {
-    MonitoringSelVC *aController = [[MonitoringSelVC alloc] initWithNibName:@"MonitoringSel" bundle:nil];
+    MonitoringTypeSelVC *aController = [[MonitoringTypeSelVC alloc] initWithNibName:@"MonitoringTypeSel" bundle:nil];
     [[self navigationController] pushViewController:aController animated:YES];
 }
 

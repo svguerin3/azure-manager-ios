@@ -1,5 +1,5 @@
 //
-//  MonitoringSelVC.h
+//  MonitoringTypeSelVC.h
 //  AzureManager
 //
 //  Created by Vincent Guerin on 6/21/12.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MonitoringSelVC : UIViewController
+@interface MonitoringTypeSelVC : UIViewController
 
 - (IBAction) blobServicesBtnPressed;
 - (IBAction) tableServicesBtnPressed;
+- (IBAction) queueServicesBtnPressed;
 
 @end

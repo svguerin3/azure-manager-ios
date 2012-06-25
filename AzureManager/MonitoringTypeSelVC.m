@@ -1,20 +1,19 @@
 //
-//  MonitoringSelVC.m
+//  MonitoringTypeSelVC.m
 //  AzureManager
 //
 //  Created by Vincent Guerin on 6/21/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "MonitoringSelVC.h"
-#import "BlobMonitoringVC.h"
-#import "TableMonitoringVC.h"
+#import "MonitoringTypeSelVC.h"
+#import "MonitoringSettingsVC.h"
 
-@interface MonitoringSelVC ()
+@interface MonitoringTypeSelVC ()
 
 @end
 
-@implementation MonitoringSelVC
+@implementation MonitoringTypeSelVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,13 +37,21 @@
 }
 
 - (IBAction) blobServicesBtnPressed {
-    BlobMonitoringVC *aController = [[BlobMonitoringVC alloc] initWithNibName:@"BlobMonitoring" bundle:nil];
+    MonitoringSettingsVC *aController = [[MonitoringSettingsVC alloc] initWithNibName:@"MonitoringSettings" bundle:nil];
+    aController.monitoringSelTypeStr = TYPE_GET_BLOB_PROPERTIES;
     [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (IBAction) tableServicesBtnPressed {
-    TableMonitoringVC *aController = [[TableMonitoringVC alloc] initWithNibName:@"TableMonitoring" bundle:nil];
+    MonitoringSettingsVC *aController = [[MonitoringSettingsVC alloc] initWithNibName:@"MonitoringSettings" bundle:nil];
+    aController.monitoringSelTypeStr = TYPE_GET_TABLE_PROPERTIES;
     [[self navigationController] pushViewController:aController animated:YES];
+}
+
+- (IBAction) queueServicesBtnPressed {
+    MonitoringSettingsVC *aController = [[MonitoringSettingsVC alloc] initWithNibName:@"MonitoringSettings" bundle:nil];
+    aController.monitoringSelTypeStr = TYPE_GET_QUEUE_PROPERTIES;
+    //[[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)viewDidUnload

@@ -73,8 +73,8 @@
 		C150E8D8156D7CEB00DD2B06 /* worddoc_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8D7156D7CEB00DD2B06 /* worddoc_icon.jpg */; };
 		C150E8DA156D7DC600DD2B06 /* camera-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C150E8D9156D7DC600DD2B06 /* camera-icon.jpg */; };
 		C150E8F6156E80F000DD2B06 /* movie_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C150E8F5156E80F000DD2B06 /* movie_icon.png */; };
-		C15840C915936A70002D2B7F /* MonitoringSelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C15840C715936A70002D2B7F /* MonitoringSelVC.m */; };
-		C15840CA15936A70002D2B7F /* MonitoringSel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15840C815936A70002D2B7F /* MonitoringSel.xib */; };
+		C15840C915936A70002D2B7F /* MonitoringTypeSelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C15840C715936A70002D2B7F /* MonitoringTypeSelVC.m */; };
+		C15840CA15936A70002D2B7F /* MonitoringTypeSel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15840C815936A70002D2B7F /* MonitoringTypeSel.xib */; };
 		C167AA8A155C053A00D6564A /* SelectQueryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA88155C053A00D6564A /* SelectQueryVC.m */; };
 		C167AA8B155C053A00D6564A /* SelectQuery.xib in Resources */ = {isa = PBXBuildFile; fileRef = C167AA89155C053A00D6564A /* SelectQuery.xib */; };
 		C167AA95155C057000D6564A /* AddKeysVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C167AA93155C057000D6564A /* AddKeysVC.m */; };
@@ -93,8 +93,6 @@
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 		C1C8FAFB1589212A00BB2539 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C8FAFA1589212A00BB2539 /* Security.framework */; };
 		C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */; };
-		C1FC3CDB15936FD10050E146 /* BlobMonitoringVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3CD915936FD10050E146 /* BlobMonitoringVC.m */; };
-		C1FC3CDC15936FD10050E146 /* BlobMonitoring.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC3CDA15936FD10050E146 /* BlobMonitoring.xib */; };
 		C1FC3CF515937D670050E146 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3CF215937D670050E146 /* NSDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1FC3CF615937D670050E146 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3CF415937D670050E146 /* TBXML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1FC3CF815937D810050E146 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC3CF715937D810050E146 /* libz.dylib */; };
@@ -110,8 +108,8 @@
 		C1FC3D1F15937E240050E146 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC3D1E15937E240050E146 /* MobileCoreServices.framework */; };
 		C1FC3D2115937E2D0050E146 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC3D2015937E2D0050E146 /* SystemConfiguration.framework */; };
 		C1FC3D2315937E350050E146 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC3D2215937E350050E146 /* CFNetwork.framework */; };
-		C1FC3D541598AF990050E146 /* TableMonitoringVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3D521598AF980050E146 /* TableMonitoringVC.m */; };
-		C1FC3D551598AF990050E146 /* TableMonitoring.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC3D531598AF980050E146 /* TableMonitoring.xib */; };
+		C1FC3D5A1598B6160050E146 /* MonitoringSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3D581598B6150050E146 /* MonitoringSettingsVC.m */; };
+		C1FC3D5B1598B6160050E146 /* MonitoringSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC3D591598B6160050E146 /* MonitoringSettings.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -237,9 +235,9 @@
 		C150E8D7156D7CEB00DD2B06 /* worddoc_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = worddoc_icon.jpg; sourceTree = "<group>"; };
 		C150E8D9156D7DC600DD2B06 /* camera-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "camera-icon.jpg"; sourceTree = "<group>"; };
 		C150E8F5156E80F000DD2B06 /* movie_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie_icon.png; sourceTree = "<group>"; };
-		C15840C615936A70002D2B7F /* MonitoringSelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringSelVC.h; sourceTree = "<group>"; };
-		C15840C715936A70002D2B7F /* MonitoringSelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringSelVC.m; sourceTree = "<group>"; };
-		C15840C815936A70002D2B7F /* MonitoringSel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitoringSel.xib; sourceTree = "<group>"; };
+		C15840C615936A70002D2B7F /* MonitoringTypeSelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringTypeSelVC.h; sourceTree = "<group>"; };
+		C15840C715936A70002D2B7F /* MonitoringTypeSelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringTypeSelVC.m; sourceTree = "<group>"; };
+		C15840C815936A70002D2B7F /* MonitoringTypeSel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitoringTypeSel.xib; sourceTree = "<group>"; };
 		C167AA87155C053A00D6564A /* SelectQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectQueryVC.h; sourceTree = "<group>"; };
 		C167AA88155C053A00D6564A /* SelectQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectQueryVC.m; sourceTree = "<group>"; };
 		C167AA89155C053A00D6564A /* SelectQuery.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectQuery.xib; sourceTree = "<group>"; };
@@ -265,9 +263,6 @@
 		C1C8FAFA1589212A00BB2539 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudManageClient.h; sourceTree = "<group>"; };
 		C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WACloudManageClient.m; sourceTree = "<group>"; };
-		C1FC3CD815936FD10050E146 /* BlobMonitoringVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobMonitoringVC.h; sourceTree = "<group>"; };
-		C1FC3CD915936FD10050E146 /* BlobMonitoringVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobMonitoringVC.m; sourceTree = "<group>"; };
-		C1FC3CDA15936FD10050E146 /* BlobMonitoring.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobMonitoring.xib; sourceTree = "<group>"; };
 		C1FC3CF115937D670050E146 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		C1FC3CF215937D670050E146 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		C1FC3CF315937D670050E146 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
@@ -298,9 +293,9 @@
 		C1FC3D1E15937E240050E146 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C1FC3D2015937E2D0050E146 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C1FC3D2215937E350050E146 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		C1FC3D511598AF980050E146 /* TableMonitoringVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableMonitoringVC.h; sourceTree = "<group>"; };
-		C1FC3D521598AF980050E146 /* TableMonitoringVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableMonitoringVC.m; sourceTree = "<group>"; };
-		C1FC3D531598AF980050E146 /* TableMonitoring.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableMonitoring.xib; sourceTree = "<group>"; };
+		C1FC3D571598B6150050E146 /* MonitoringSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringSettingsVC.h; sourceTree = "<group>"; };
+		C1FC3D581598B6150050E146 /* MonitoringSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringSettingsVC.m; sourceTree = "<group>"; };
+		C1FC3D591598B6160050E146 /* MonitoringSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitoringSettings.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,15 +368,12 @@
 		8B5E8DA015505C4C00E74CC7 /* Monitoring Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C15840C615936A70002D2B7F /* MonitoringSelVC.h */,
-				C15840C715936A70002D2B7F /* MonitoringSelVC.m */,
-				C15840C815936A70002D2B7F /* MonitoringSel.xib */,
-				C1FC3CD815936FD10050E146 /* BlobMonitoringVC.h */,
-				C1FC3CD915936FD10050E146 /* BlobMonitoringVC.m */,
-				C1FC3CDA15936FD10050E146 /* BlobMonitoring.xib */,
-				C1FC3D511598AF980050E146 /* TableMonitoringVC.h */,
-				C1FC3D521598AF980050E146 /* TableMonitoringVC.m */,
-				C1FC3D531598AF980050E146 /* TableMonitoring.xib */,
+				C15840C615936A70002D2B7F /* MonitoringTypeSelVC.h */,
+				C15840C715936A70002D2B7F /* MonitoringTypeSelVC.m */,
+				C15840C815936A70002D2B7F /* MonitoringTypeSel.xib */,
+				C1FC3D571598B6150050E146 /* MonitoringSettingsVC.h */,
+				C1FC3D581598B6150050E146 /* MonitoringSettingsVC.m */,
+				C1FC3D591598B6160050E146 /* MonitoringSettings.xib */,
 			);
 			name = "Monitoring Classes";
 			sourceTree = "<group>";
@@ -824,9 +816,8 @@
 				C150E8DA156D7DC600DD2B06 /* camera-icon.jpg in Resources */,
 				C150E8F6156E80F000DD2B06 /* movie_icon.png in Resources */,
 				8B9D1FB21587F71100566708 /* HostedServicesList.xib in Resources */,
-				C15840CA15936A70002D2B7F /* MonitoringSel.xib in Resources */,
-				C1FC3CDC15936FD10050E146 /* BlobMonitoring.xib in Resources */,
-				C1FC3D551598AF990050E146 /* TableMonitoring.xib in Resources */,
+				C15840CA15936A70002D2B7F /* MonitoringTypeSel.xib in Resources */,
+				C1FC3D5B1598B6160050E146 /* MonitoringSettings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,8 +873,7 @@
 				C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */,
 				8BB346181587E188001E8924 /* WAAuthManageCred.m in Sources */,
 				8B9D1FB11587F71100566708 /* HostedServicesListVC.m in Sources */,
-				C15840C915936A70002D2B7F /* MonitoringSelVC.m in Sources */,
-				C1FC3CDB15936FD10050E146 /* BlobMonitoringVC.m in Sources */,
+				C15840C915936A70002D2B7F /* MonitoringTypeSelVC.m in Sources */,
 				C1FC3CF515937D670050E146 /* NSDataAdditions.m in Sources */,
 				C1FC3CF615937D670050E146 /* TBXML.m in Sources */,
 				C1FC3D1515937E010050E146 /* ASIAuthenticationDialog.m in Sources */,
@@ -895,7 +885,7 @@
 				C1FC3D1B15937E010050E146 /* ASIInputStream.m in Sources */,
 				C1FC3D1C15937E010050E146 /* ASINetworkQueue.m in Sources */,
 				C1FC3D1D15937E010050E146 /* Reachability.m in Sources */,
-				C1FC3D541598AF990050E146 /* TableMonitoringVC.m in Sources */,
+				C1FC3D5A1598B6160050E146 /* MonitoringSettingsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
