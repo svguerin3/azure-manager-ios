@@ -52,6 +52,16 @@
 - (void) fetchTablePropertiesWithCallBack:(UIViewController *)callbackVC;
     
 /**
+ Fetch Queue properties asynchronously. 
+ */
+- (void) fetchQueuePropertiesWithCallBack:(UIViewController *)callbackVC;
+
+/**
+ Set Queue properties asynchronously. 
+ */
+- (void) setQueueServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC;
+
+/**
  Create a storage client initialized with the given credential.
  
  @param credential The credentials for Windows Azure storage. 

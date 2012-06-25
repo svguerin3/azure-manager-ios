@@ -51,7 +51,7 @@
 - (IBAction) queueServicesBtnPressed {
     MonitoringSettingsVC *aController = [[MonitoringSettingsVC alloc] initWithNibName:@"MonitoringSettings" bundle:nil];
     aController.monitoringSelTypeStr = TYPE_GET_QUEUE_PROPERTIES;
-    //[[self navigationController] pushViewController:aController animated:YES];
+    [[self navigationController] pushViewController:aController animated:YES];
 }
 
 - (void)viewDidUnload

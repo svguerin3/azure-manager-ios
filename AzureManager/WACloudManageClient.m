@@ -48,8 +48,22 @@
     [myReq startAsynchronous];
 }
 
+- (void) fetchQueuePropertiesWithCallBack:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_QUEUE_PROPERTIES withReqBody:@""];
+    [myReq setTag:1];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
+}
+
 - (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_BLOB_SERVICE_PROPERTIES withReqBody:bodyPayload];
+    [myReq setTag:2];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
+}
+
+- (void) setQueueServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_QUEUE_SERVICE_PROPERTIES withReqBody:bodyPayload];
     [myReq setTag:2];
     [myReq setDelegate:callbackVC];
     [myReq startAsynchronous];

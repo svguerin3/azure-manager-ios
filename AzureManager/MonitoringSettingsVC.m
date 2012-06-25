@@ -86,7 +86,7 @@
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES]) {
         [newClient fetchBlobPropertiesWithCallBack:self];
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES]) {
-        
+        [newClient fetchQueuePropertiesWithCallBack:self];
     }
 }
 
@@ -116,7 +116,7 @@
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES]) {
         [newClient setBlobServiceProperties:dataStr withCallback:self];
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES]) {
-        
+        [newClient setQueueServiceProperties:dataStr withCallback:self];
     }
 }
 

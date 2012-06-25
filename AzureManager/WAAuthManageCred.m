@@ -40,6 +40,8 @@
         urlString = [NSString stringWithFormat:@"http://%@.blob.core.windows.net/?restype=service&comp=properties", _accountName];
     } else if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.table.core.windows.net/?restype=service&comp=properties", _accountName];
+    } else if ([typeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
+        urlString = [NSString stringWithFormat:@"http://%@.queue.core.windows.net/?restype=service&comp=properties", _accountName];
     }
     
     NSLog(@"urlStr: %@", urlString);
@@ -52,10 +54,11 @@
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
     if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] ||
-        [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
+        [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] ||
+        [typeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
         NSString *reqType = @"GET";
         
-        if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
+        if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
             reqType = @"PUT";
         }
         
