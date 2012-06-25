@@ -112,7 +112,7 @@
     [self showLoader:self.view];
     
     if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
-        
+        [newClient setTableServiceProperties:dataStr withCallback:self];
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES]) {
         [newClient setBlobServiceProperties:dataStr withCallback:self];
     } else if ([self.monitoringSelTypeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES]) {

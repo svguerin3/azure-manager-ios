@@ -69,4 +69,11 @@
     [myReq startAsynchronous];
 }
 
+- (void) setTableServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_TABLE_SERVICE_PROPERTIES withReqBody:bodyPayload];
+    [myReq setTag:2];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
+}
+
 @end

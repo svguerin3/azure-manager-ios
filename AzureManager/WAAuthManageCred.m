@@ -38,7 +38,7 @@
         urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/hostedservices", _accountName];
     } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.blob.core.windows.net/?restype=service&comp=properties", _accountName];
-    } else if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
+    } else if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.table.core.windows.net/?restype=service&comp=properties", _accountName];
     } else if ([typeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.queue.core.windows.net/?restype=service&comp=properties", _accountName];
@@ -54,11 +54,13 @@
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
     if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] ||
-        [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] ||
+        [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES] ||
         [typeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
         NSString *reqType = @"GET";
         
-        if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
+        if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] || 
+            [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES] ||
+            [typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
             reqType = @"PUT";
         }
         
@@ -102,11 +104,18 @@
                 contentMD5 = @"";
             }
             
-            requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n%@\n%@\n\n\n\n\n\n\n%@\n/%@/", 
+            // different Auth parameter strings for different APIs
+            if ([typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
+                requestString = [NSMutableString stringWithFormat:@"%@\n%@\n%@\n%@\n/%@/?comp=properties", 
+                                 reqType, @"", @"", dateString, _accountName];
+            } else {
+                requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n%@\n%@\n\n\n\n\n\n\n%@\n/%@/", 
                              reqType, contentLength, contentMD5, @"", headerString, _accountName];
+            }
         } else { // GET request
+            // different Auth parameter strings for different APIs
             if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
-                requestString = [NSMutableString stringWithFormat:@"%@\n%@\n%@\n%@\n/%@/", 
+                requestString = [NSMutableString stringWithFormat:@"%@\n%@\n%@\n%@\n/%@/?comp=properties", 
                                  reqType, @"", @"", dateString, _accountName];
             } else {
                 requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n\n%@\n\n\n\n\n\n\n%@\n/%@/", 
@@ -114,22 +123,25 @@
             }
         }
         
-        NSString *query = [serviceURL query];
-        if (query && query.length > 0) {
-            NSArray *args = [query componentsSeparatedByString:@"&"];
-            
-            NSMutableString* q = [NSMutableString stringWithCapacity:100];
-            
-            for (NSString *arg in [args sortedArrayUsingSelector:@selector(compare:)]) {
-                [q appendString:@"\n"];
-                [q appendString:[arg stringByReplacingOccurrencesOfString:@"=" withString:@":"]];
+        // non Table-based APIs need the query parms at the end
+        if (![typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] && ![typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
+            NSString *query = [serviceURL query];
+            if (query && query.length > 0) {
+                NSArray *args = [query componentsSeparatedByString:@"&"];
+                
+                NSMutableString* q = [NSMutableString stringWithCapacity:100];
+                
+                for (NSString *arg in [args sortedArrayUsingSelector:@selector(compare:)]) {
+                    [q appendString:@"\n"];
+                    [q appendString:[arg stringByReplacingOccurrencesOfString:@"=" withString:@":"]];
+                }
+                
+                query = q;
             }
             
-            query = q;
-        }
-        
-        if (query) {
-            [requestString appendString:query];
+            if (query) {
+                [requestString appendString:query];
+            }
         }
         
         NSLog(@"reqStr: %@", requestString);
