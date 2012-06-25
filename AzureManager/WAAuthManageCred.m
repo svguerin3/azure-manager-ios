@@ -38,6 +38,8 @@
         urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/hostedservices", _accountName];
     } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.blob.core.windows.net/?restype=service&comp=properties", _accountName];
+    } else if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
+        urlString = [NSString stringWithFormat:@"http://%@.table.core.windows.net/?restype=service&comp=properties", _accountName];
     }
     
     NSLog(@"urlStr: %@", urlString);
@@ -49,7 +51,8 @@
     NSURL *serviceURL = [self URLWithType:typeStr];    
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
-    if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
+    if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] ||
+        [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
         NSString *reqType = @"GET";
         
         if ([typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
@@ -90,7 +93,7 @@
                 free(buffer);
                 
                 [authenticatedRequest appendPostData:contentData];
-                [authenticatedRequest addRequestHeader:@"content-md5" value:contentMD5]; // wish this was in the documentation as required..
+                [authenticatedRequest addRequestHeader:@"content-md5" value:contentMD5];
                 [authenticatedRequest setRequestMethod:@"PUT"];
             } else {
                 contentMD5 = @"";
@@ -99,8 +102,13 @@
             requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n%@\n%@\n\n\n\n\n\n\n%@\n/%@/", 
                              reqType, contentLength, contentMD5, @"", headerString, _accountName];
         } else { // GET request
-            requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n\n%@\n\n\n\n\n\n\n%@\n/%@/", 
-                             reqType, @"", @"", headerString, _accountName];
+            if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
+                requestString = [NSMutableString stringWithFormat:@"%@\n%@\n%@\n%@\n/%@/", 
+                                 reqType, @"", @"", dateString, _accountName];
+            } else {
+                requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n\n%@\n\n\n\n\n\n\n%@\n/%@/", 
+                                 reqType, @"", @"", headerString, _accountName];
+            }
         }
         
         NSString *query = [serviceURL query];
@@ -138,6 +146,11 @@
         [authenticatedRequest addRequestHeader:@"Authorization" value:authHeader];
         [authenticatedRequest addRequestHeader:@"x-ms-version" value:@"2009-09-19"];
         [authenticatedRequest addRequestHeader:@"x-ms-date" value:dateString];
+        
+        if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES]) {
+            [authenticatedRequest addRequestHeader:@"DataServiceVersion" value:@"1.0;NetFx"];
+            [authenticatedRequest addRequestHeader:@"MaxDataServiceVersion" value:@"1.0;NetFx"];
+        }
     }
     
     return authenticatedRequest;

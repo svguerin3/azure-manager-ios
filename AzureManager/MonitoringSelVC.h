@@ -11,5 +11,6 @@
 @interface MonitoringSelVC : UIViewController
 
 - (IBAction) blobServicesBtnPressed;
+- (IBAction) tableServicesBtnPressed;
 
 @end

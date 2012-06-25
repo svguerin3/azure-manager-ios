@@ -1,20 +1,20 @@
 //
-//  BlobMonitoringVC.m
+//  TableMonitoringVC.m
 //  AzureManager
 //
-//  Created by Vincent Guerin on 6/21/12.
+//  Created by Vincent Guerin on 6/25/12.
 //  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "BlobMonitoringVC.h"
+#import "TableMonitoringVC.h"
 #import "WACloudManageClient.h"
 #import "TBXML.h"
 
-@interface BlobMonitoringVC ()
+@interface TableMonitoringVC ()
 
 @end
 
-@implementation BlobMonitoringVC
+@implementation TableMonitoringVC
 
 @synthesize mainTableView = _mainTableView;
 
@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Blob Monitoring";
+        self.title = @"Table Monitoring";
     }
     return self;
 }
@@ -40,7 +40,7 @@
     
     loggingRetentionDaysField = [[UITextField alloc] initWithFrame:inputFieldRect];
     metricsRetentionDaysField = [[UITextField alloc] initWithFrame:inputFieldRect];
-
+    
     mySwitchDelete = [[UISwitch alloc] initWithFrame:switchFieldRect];
     mySwitchRead = [[UISwitch alloc] initWithFrame:switchFieldRect];
     mySwitchWrite = [[UISwitch alloc] initWithFrame:switchFieldRect];
@@ -72,7 +72,7 @@
 - (void) fetchData {
     WACloudManageClient *newClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
     [self showLoader:self.view];
-    [newClient fetchBlobPropertiesWithCallBack:self];
+    [newClient fetchTablePropertiesWithCallBack:self];
 }
 
 - (void) saveBtnPressed {
@@ -129,7 +129,7 @@
         [requestStr appendString:@"true"];
         
         [requestStr appendString:@"</Enabled><Days>"];
-
+        
         [requestStr appendString:loggingRetentionDaysField.text];
         
         [requestStr appendString:@"</Days>"];
@@ -140,7 +140,7 @@
     }
     
     [requestStr appendString:@"</RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>"];
-
+    
     if (mySwitchMetricsEnabled.on) {
         [requestStr appendString:@"true"];
     } else {
@@ -168,7 +168,7 @@
         [requestStr appendString:@"true"];
         
         [requestStr appendString:@"</Enabled><Days>"];
-
+        
         [requestStr appendString:metricsRetentionDaysField.text];
         
         [requestStr appendString:@"</Days>"];
@@ -177,7 +177,7 @@
         
         [requestStr appendString:@"</Enabled>"];
     }
-
+    
     [requestStr appendString:@"</RetentionPolicy></Metrics></StorageServiceProperties>"];
     
     return [requestStr mutableCopy];
@@ -213,7 +213,7 @@
     }
     
     if (mySwitchMetricsRetentionEnabled.on) {
-         metricsRetentionDaysField.enabled = YES;
+        metricsRetentionDaysField.enabled = YES;
     } else {
         metricsRetentionDaysField.text = @"";
         metricsRetentionDaysField.enabled = NO;
@@ -264,7 +264,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-
+    
     if (indexPath.section == 0) { // Logging
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Delete";
@@ -370,7 +370,7 @@
     
     if ([request tag] == 2) { // was a SET
         if ([request responseStatusCode] == 202) { // success code (I couldn't find an enum for this status-code in iOS libs or ASI's)
-            [self showGenericAlert:@"Your Blob Properties were updated successfully!  Please give it 30 seconds to propogate the change."  withTitle:@"Success!"];
+            [self showGenericAlert:@"Your Table Properties were updated successfully!  Please give it 30 seconds to propogate the change."  withTitle:@"Success!"];
         } else {
             [self showGenericAlert:@"An error occurred processing this request, please try again" withTitle:@"Error"];
         }
@@ -423,7 +423,7 @@
             }
         }
     }
-
+    
     [self hideLoader:self.view];
 }
 

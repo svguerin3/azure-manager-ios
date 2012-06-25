@@ -47,6 +47,11 @@
 - (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC;
     
 /**
+ Fetch Table properties asynchronously. 
+ */
+- (void) fetchTablePropertiesWithCallBack:(UIViewController *)callbackVC;
+    
+/**
  Create a storage client initialized with the given credential.
  
  @param credential The credentials for Windows Azure storage. 

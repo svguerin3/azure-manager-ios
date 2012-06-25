@@ -8,6 +8,7 @@
 
 #import "MonitoringSelVC.h"
 #import "BlobMonitoringVC.h"
+#import "TableMonitoringVC.h"
 
 @interface MonitoringSelVC ()
 
@@ -38,6 +39,11 @@
 
 - (IBAction) blobServicesBtnPressed {
     BlobMonitoringVC *aController = [[BlobMonitoringVC alloc] initWithNibName:@"BlobMonitoring" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES];
+}
+
+- (IBAction) tableServicesBtnPressed {
+    TableMonitoringVC *aController = [[TableMonitoringVC alloc] initWithNibName:@"TableMonitoring" bundle:nil];
     [[self navigationController] pushViewController:aController animated:YES];
 }
 

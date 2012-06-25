@@ -41,6 +41,13 @@
     [myReq startAsynchronous];
 }
 
+- (void) fetchTablePropertiesWithCallBack:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_TABLE_PROPERTIES withReqBody:@""];
+    [myReq setTag:1];
+    [myReq setDelegate:callbackVC];
+    [myReq startAsynchronous];
+}
+
 - (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_BLOB_SERVICE_PROPERTIES withReqBody:bodyPayload];
     [myReq setTag:2];
