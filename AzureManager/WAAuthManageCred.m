@@ -107,7 +107,7 @@
             // different Auth parameter strings for different APIs
             if ([typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
                 requestString = [NSMutableString stringWithFormat:@"%@\n%@\n%@\n%@\n/%@/?comp=properties", 
-                                 reqType, @"", @"", dateString, _accountName];
+                                 reqType, contentMD5, @"", dateString, _accountName];
             } else {
                 requestString = [NSMutableString stringWithFormat:@"%@\n\n\n%@\n%@\n%@\n\n\n\n\n\n\n%@\n/%@/", 
                              reqType, contentLength, contentMD5, @"", headerString, _accountName];
