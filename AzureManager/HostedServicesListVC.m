@@ -3,7 +3,7 @@
 //  AzureManager
 //
 //  Created by Vincent Guerin on 6/12/12.
-//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
+//  Copyright (c) 2012 Neudesic. All rights reserved.
 //
 
 #import "HostedServicesListVC.h"
