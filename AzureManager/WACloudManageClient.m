@@ -28,7 +28,9 @@
 	return [[self alloc] initWithCredential:credential];
 }
 
-- (void)fetchListOfHostedServicesWithCallBack:(UIViewController *)callbackVC {
+- (void)fetchListOfHostedServicesWithCallBack:(UIViewController *)callbackVC withCertPW:(NSString *)certPW {
+    [_credential setMyCertPW:certPW];
+    
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_HOSTED_SERVICES withReqBody:@""];
     if (myReq) {
         [myReq setTag:1];

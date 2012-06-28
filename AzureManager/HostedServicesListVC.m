@@ -39,15 +39,54 @@
                                                                             target:nil
                                                                             action:nil];
     
-    [self fetchData];
+    currClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
+    
+    [self showCertPWAlert];
+}
+
+- (void) showCertPWAlert {
+    certPWAlert = [[UIAlertView alloc] initWithTitle:@"Certificate Password:" message:@"\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    
+    certPWField = [[UITextField alloc] initWithFrame:CGRectMake(25, 43, 236, 28)];
+    certPWField.borderStyle = UITextBorderStyleRoundedRect;
+    certPWField.font = [UIFont systemFontOfSize:14.0];
+    certPWField.autocorrectionType = UITextAutocorrectionTypeNo;
+    certPWField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    certPWField.returnKeyType = UIReturnKeyDone;
+    certPWField.delegate = self;
+    certPWField.clearsOnBeginEditing = NO;
+    certPWField.secureTextEntry = YES;
+    
+    [certPWAlert addSubview:certPWField];
+    [certPWAlert show];
+    
+    [certPWField becomeFirstResponder];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        if ([certPWField.text length] > 0) {
+            [self fetchData];
+        } else {
+            [self showCertPWAlert];
+        }
+    }
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if ([certPWField.text length] > 0) {
+        [textField resignFirstResponder];
+        [self fetchData];
+    }  
+    
+    return YES;
 }
 
 - (void) fetchData {
-    WACloudManageClient *newClient = [WACloudManageClient manageClientWithCredential:[WAConfig sharedConfiguration].manageAuthCred];
-    newClient.delegate = self;
+    currClient.delegate = self;
     
     [self showLoader:self.view];
-    [newClient fetchListOfHostedServicesWithCallBack:self];
+    [currClient fetchListOfHostedServicesWithCallBack:self withCertPW:certPWField.text];
 }
 
 - (void)viewDidUnload

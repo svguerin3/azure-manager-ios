@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "WACloudManageClientDelegate.h"
 
-@interface HostedServicesListVC : UIViewController <WACloudManageClientDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface HostedServicesListVC : UIViewController <WACloudManageClientDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UITextFieldDelegate> {
     NSMutableArray *servicesArr;
+    
+    UIAlertView *certPWAlert;
+    UITextField *certPWField;
+    
+    WACloudManageClient *currClient;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *mainTableView;
