@@ -110,6 +110,8 @@
 		C1FC3D2315937E350050E146 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC3D2215937E350050E146 /* CFNetwork.framework */; };
 		C1FC3D5A1598B6160050E146 /* MonitoringSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3D581598B6150050E146 /* MonitoringSettingsVC.m */; };
 		C1FC3D5B1598B6160050E146 /* MonitoringSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC3D591598B6160050E146 /* MonitoringSettings.xib */; };
+		C1FC3D91159CBAF50050E146 /* ManagementSelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FC3D8F159CBAF50050E146 /* ManagementSelVC.m */; };
+		C1FC3D92159CBAF50050E146 /* ManagementSel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FC3D90159CBAF50050E146 /* ManagementSel.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -296,6 +298,9 @@
 		C1FC3D571598B6150050E146 /* MonitoringSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitoringSettingsVC.h; sourceTree = "<group>"; };
 		C1FC3D581598B6150050E146 /* MonitoringSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonitoringSettingsVC.m; sourceTree = "<group>"; };
 		C1FC3D591598B6160050E146 /* MonitoringSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitoringSettings.xib; sourceTree = "<group>"; };
+		C1FC3D8E159CBAF50050E146 /* ManagementSelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagementSelVC.h; sourceTree = "<group>"; };
+		C1FC3D8F159CBAF50050E146 /* ManagementSelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagementSelVC.m; sourceTree = "<group>"; };
+		C1FC3D90159CBAF50050E146 /* ManagementSel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagementSel.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				C1DFF40E1587A6B700B15CFE /* Client */,
+				C1FC3D8E159CBAF50050E146 /* ManagementSelVC.h */,
+				C1FC3D8F159CBAF50050E146 /* ManagementSelVC.m */,
+				C1FC3D90159CBAF50050E146 /* ManagementSel.xib */,
 				8B9D1FAE1587F71000566708 /* HostedServicesListVC.h */,
 				8B9D1FAF1587F71100566708 /* HostedServicesListVC.m */,
 				8B9D1FB01587F71100566708 /* HostedServicesList.xib */,
@@ -818,6 +826,7 @@
 				8B9D1FB21587F71100566708 /* HostedServicesList.xib in Resources */,
 				C15840CA15936A70002D2B7F /* MonitoringTypeSel.xib in Resources */,
 				C1FC3D5B1598B6160050E146 /* MonitoringSettings.xib in Resources */,
+				C1FC3D92159CBAF50050E146 /* ManagementSel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,6 +895,7 @@
 				C1FC3D1C15937E010050E146 /* ASINetworkQueue.m in Sources */,
 				C1FC3D1D15937E010050E146 /* Reachability.m in Sources */,
 				C1FC3D5A1598B6160050E146 /* MonitoringSettingsVC.m in Sources */,
+				C1FC3D91159CBAF50050E146 /* ManagementSelVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
