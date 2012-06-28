@@ -19,13 +19,16 @@
 	NSString *_token;
 	NSString *_accountName;
 	NSString *_accessKey;
+    NSString *_subID;
 	NSString *_username;
 	NSString *_password;
+    NSString *_certPW;
 	WACloudAccessToken *_accessToken;
 }
 
-+ (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey;
++ (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey subID:(NSString *)subID;
 - (NSURL *)URLWithType:(NSString *)typeStr;
 - (ASIHTTPRequest *)authenticatedRequestForType:(NSString *)typeStr withReqBody:(NSString *)dataStr;
+- (void) setMyCertPW:(NSString *)certPW;
 
 @end

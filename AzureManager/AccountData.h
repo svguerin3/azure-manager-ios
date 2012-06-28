@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *accountName;
 @property (nonatomic, copy) NSString *accessKey;
+@property (nonatomic, copy) NSString *subscriptionID;
 
 @end

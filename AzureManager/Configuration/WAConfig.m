@@ -32,11 +32,10 @@
     return self;
 }
 
-- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey {
+- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey withSubID:(NSString *)subID {
     self.storageAuthCred = [WAAuthenticationCredential credentialWithAzureServiceAccount:accountName 
                                                         accessKey:accessKey];
-    self.manageAuthCred = [WAAuthManageCred credentialWithAzureServiceAccount:accountName 
-                                                                    accessKey:accessKey];
+    self.manageAuthCred = [WAAuthManageCred credentialWithAzureServiceAccount:accountName accessKey:accessKey subID:subID];
 }
 
 @end

@@ -34,7 +34,7 @@
 /**
  Fetch a list of hosted services asynchronously. 
  */
-- (void)fetchListOfHostedServices;
+- (void)fetchListOfHostedServicesWithCallBack:(UIViewController *)callbackVC;
 
 /**
  Fetch Blob properties asynchronously. 

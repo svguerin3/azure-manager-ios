@@ -14,7 +14,7 @@
 @interface WAConfig : NSObject
 
 + (WAConfig *)sharedConfiguration;
-- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey;
+- (void) initCredentialsWithAccountName:(NSString *)accountName withAccessKey:(NSString *)accessKey withSubID:(NSString *)subID;
   
 // session vars
 @property (nonatomic, retain) WAAuthenticationCredential *storageAuthCred;

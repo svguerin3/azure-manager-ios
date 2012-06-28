@@ -22,6 +22,7 @@ typedef enum ListTypeSelInd {
 // HARD-CODED (Temporary) ACCOUNT INFO
 #define TEMP_ACCOUNTNAME        @"neudesictestvg1"
 #define TEMP_ACCESSKEY          @"6PTagAWDBktbI96HQFUVHxyPMM3D/3MksJVlTNIIGKspEx4GOFAugGG3iyvdrzldbeFPftfN/pVPxdVvU+AIKw=="
+#define TEMP_SUBSCRIPTION_ID    @"d6a70616-55c7-41de-981b-5b10fdda81c9"
 
 #define PADDING_FOR_SELECTION_CELLS     @"       "
 

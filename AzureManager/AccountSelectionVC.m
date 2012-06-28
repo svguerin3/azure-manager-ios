@@ -116,7 +116,7 @@
     }
     // END TESTING
     
-    [[WAConfig sharedConfiguration] initCredentialsWithAccountName:currAcct.accountName withAccessKey:currAcct.accessKey];
+    [[WAConfig sharedConfiguration] initCredentialsWithAccountName:currAcct.accountName withAccessKey:currAcct.accessKey withSubID:currAcct.subscriptionID];
     
     MainMenuVC *aController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

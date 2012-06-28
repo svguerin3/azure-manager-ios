@@ -28,52 +28,67 @@
 	return [[self alloc] initWithCredential:credential];
 }
 
-- (void)fetchListOfHostedServices {
-    //NSMutableURLRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_HOSTED_SERVICES];
-    //NSURLConnection *myConn = [[NSURLConnection alloc] initWithRequest:myReq delegate:self startImmediately:YES];
-    //[myConn start]; 
+- (void)fetchListOfHostedServicesWithCallBack:(UIViewController *)callbackVC {
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_HOSTED_SERVICES withReqBody:@""];
+    if (myReq) {
+        [myReq setTag:1];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_BLOB_PROPERTIES withReqBody:@""];
-    [myReq setTag:1];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:1];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) fetchTablePropertiesWithCallBack:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_TABLE_PROPERTIES withReqBody:@""];
-    [myReq setTag:1];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:1];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) fetchQueuePropertiesWithCallBack:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_QUEUE_PROPERTIES withReqBody:@""];
-    [myReq setTag:1];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:1];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) setBlobServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_BLOB_SERVICE_PROPERTIES withReqBody:bodyPayload];
-    [myReq setTag:2];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:2];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) setQueueServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_QUEUE_SERVICE_PROPERTIES withReqBody:bodyPayload];
-    [myReq setTag:2];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:2];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 - (void) setTableServiceProperties:(NSString *)bodyPayload withCallback:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_SET_TABLE_SERVICE_PROPERTIES withReqBody:bodyPayload];
-    [myReq setTag:2];
-    [myReq setDelegate:callbackVC];
-    [myReq startAsynchronous];
+    if (myReq) {
+        [myReq setTag:2];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
 }
 
 @end

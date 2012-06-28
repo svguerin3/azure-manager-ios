@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) IBOutlet UITextField *acctNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *accessKeyTextField;
+@property (nonatomic, retain) IBOutlet UITextField *subIDTextField;
 
 @end

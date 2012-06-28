@@ -15,20 +15,25 @@
 
 @implementation WAAuthManageCred
 
-- (id)initWithAzureServiceAccount:(NSString*)name accessKey:(NSString*)key
+- (id)initWithAzureServiceAccount:(NSString*)name accessKey:(NSString*)key subID:(NSString *)subID
 {	
 	if ((self = [super init]) != nil) {
 		_usesProxy = NO;
 		_accountName = [name copy];
 		_accessKey = [key copy];
+        _subID = [subID copy];
 	}
 	
 	return self;
 }
 
-+ (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey
++ (WAAuthManageCred *)credentialWithAzureServiceAccount:(NSString*)accountName accessKey:(NSString*)accessKey subID:(NSString *)mySubID 
 {
-	return [[self alloc] initWithAzureServiceAccount:accountName accessKey:accessKey];
+	return [[self alloc] initWithAzureServiceAccount:accountName accessKey:accessKey subID:mySubID];
+}
+
+- (void) setMyCertPW:(NSString *)certPW {
+    _certPW = [certPW copy];
 }
 
 - (NSURL *)URLWithType:(NSString *)typeStr
@@ -53,7 +58,29 @@
     NSURL *serviceURL = [self URLWithType:typeStr];    
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
-    if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] ||
+    if ([typeStr isEqualToString:TYPE_LIST_HOSTED_SERVICES]) {
+        NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"azure-cert.pfx"];
+        NSData *PKCS12Data = [[NSData alloc] initWithContentsOfFile:appFile];
+        
+        if ([PKCS12Data length] > 0) {
+            SecIdentityRef certIdentity = [self getIdentity:PKCS12Data];
+
+            // set header(s)
+            [authenticatedRequest addRequestHeader:@"x-ms-version" value:@"2012-03-01"];
+            
+            // set cert
+            [authenticatedRequest setClientCertificateIdentity:certIdentity];
+
+            return authenticatedRequest;
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"We're sorry" 
+                                                            message:@"The azure-cert.pfx file was not found. Please use iTunes File Sharing to drag it in for use.  It must be named 'azure-cert.pfx' to work properly in the app." delegate:self cancelButtonTitle:@"OK" 
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return nil;
+        }
+    } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES] ||
         [typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES] ||
         [typeStr isEqualToString:TYPE_GET_QUEUE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_QUEUE_SERVICE_PROPERTIES]) {
         NSString *reqType = @"GET";
@@ -169,6 +196,49 @@
     }
     
     return authenticatedRequest;
+}
+
+- (SecIdentityRef) getIdentity:(NSData *)certData {
+    CFDataRef dataRef = (__bridge CFDataRef)certData;
+    
+    SecIdentityRef myIdentity = NULL;
+    SecTrustRef myTrust = NULL;
+    
+    extractIdentityAndTrust(dataRef, (__bridge CFStringRef)_certPW, &myIdentity, &myTrust);
+    
+    return myIdentity;
+}
+
+OSStatus extractIdentityAndTrust(CFDataRef inCertData, CFStringRef certPW, SecIdentityRef *identity, SecTrustRef *trust)
+{
+    OSStatus securityError = errSecSuccess;
+
+    const void *keys[] = { kSecImportExportPassphrase };
+    const void *values[] = { certPW };
+    
+    CFDictionaryRef options = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
+    
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    securityError = SecPKCS12Import(inCertData, options, &items);
+    
+    if (securityError == 0) {
+        NSLog(@"success on validation of certificate!");
+        CFDictionaryRef myIdentityAndTrust = CFArrayGetValueAtIndex(items, 0);
+        const void *tempIdentity = NULL;
+        tempIdentity = CFDictionaryGetValue(myIdentityAndTrust, kSecImportItemIdentity);
+        *identity = (SecIdentityRef)tempIdentity;
+        const void *tempTrust = NULL;
+        tempTrust = CFDictionaryGetValue(myIdentityAndTrust, kSecImportItemTrust);
+        *trust = (SecTrustRef)tempTrust;
+    } else {
+        NSLog(@"failed to validate certificate");
+    }
+    
+    if (options) {
+        CFRelease(options);
+    }
+    
+    return securityError;
 }
 
 @end

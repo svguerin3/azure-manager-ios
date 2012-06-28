@@ -18,6 +18,7 @@
 
 @synthesize acctNameTextField = _acctNameTextField;
 @synthesize accessKeyTextField = _accessKeyTextField;
+@synthesize subIDTextField = _subIDTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +50,7 @@
         AccountData *newData = [[AccountData alloc] init];
         newData.accountName = self.acctNameTextField.text;
         newData.accessKey = self.accessKeyTextField.text;
+        newData.subscriptionID = self.subIDTextField.text;
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.accountsList addObject:newData];
@@ -66,6 +68,7 @@
     
     self.accessKeyTextField = nil;
     self.acctNameTextField = nil;
+    self.subIDTextField = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
