@@ -8,6 +8,7 @@
 
 #import "ManagementSelVC.h"
 #import "HostedServicesListVC.h"
+#import "StorageServicesListVC.h"
 
 @interface ManagementSelVC ()
 
@@ -39,6 +40,11 @@
 - (IBAction) listHostedServicesBtnPressed {
     HostedServicesListVC *aController = [[HostedServicesListVC alloc] initWithNibName:@"HostedServicesList" bundle:nil];
     [[self navigationController] pushViewController:aController animated:YES];
+}
+
+- (IBAction) listStorageServicesBtnPressed {
+    StorageServicesListVC *aController = [[StorageServicesListVC alloc] initWithNibName:@"StorageServicesList" bundle:nil];
+    [[self navigationController] pushViewController:aController animated:YES]; 
 }
 
 - (void)viewDidUnload

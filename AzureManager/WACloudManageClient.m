@@ -39,6 +39,17 @@
     }
 }
 
+- (void)fetchListOfStorageServicesWithCallBack:(UIViewController *)callbackVC withCertPW:(NSString *)certPW {
+    [_credential setMyCertPW:certPW];
+    
+    ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_LIST_STORAGE_SERVICES withReqBody:@""];
+    if (myReq) {
+        [myReq setTag:1];
+        [myReq setDelegate:callbackVC];
+        [myReq startAsynchronous];
+    }
+}
+
 - (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC {
     ASIHTTPRequest *myReq = [_credential authenticatedRequestForType:TYPE_GET_BLOB_PROPERTIES withReqBody:@""];
     if (myReq) {

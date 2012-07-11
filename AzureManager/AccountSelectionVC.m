@@ -111,6 +111,7 @@
     if (indexPath.row == 0) {
         currAcct.accountName = TEMP_ACCOUNTNAME;
         currAcct.accessKey = TEMP_ACCESSKEY;
+        currAcct.subscriptionID = TEMP_SUBSCRIPTION_ID;
     } else {
         currAcct = [mainDel.accountsList objectAtIndex:indexPath.row-1];
     }

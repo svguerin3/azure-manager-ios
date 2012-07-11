@@ -37,6 +37,11 @@
 - (void)fetchListOfHostedServicesWithCallBack:(UIViewController *)callbackVC withCertPW:(NSString *)certPW;
 
 /**
+ Fetch a list of storage services asynchronously. 
+ */
+- (void)fetchListOfStorageServicesWithCallBack:(UIViewController *)callbackVC withCertPW:(NSString *)certPW;
+
+/**
  Fetch Blob properties asynchronously. 
  */
 - (void) fetchBlobPropertiesWithCallBack:(UIViewController *)callbackVC;

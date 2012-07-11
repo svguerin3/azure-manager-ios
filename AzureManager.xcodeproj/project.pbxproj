@@ -90,6 +90,8 @@
 		C184BD331566EDF30064DAB8 /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD321566EDF30064DAB8 /* MyButton.m */; };
 		C184BD371566EE1C0064DAB8 /* buttonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD351566EE1C0064DAB8 /* buttonImage.png */; };
 		C184BD381566EE1C0064DAB8 /* buttonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */; };
+		C1A98F7915ADCBFE00322006 /* StorageServicesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A98F7715ADCBFD00322006 /* StorageServicesListVC.m */; };
+		C1A98F7A15ADCBFE00322006 /* StorageServicesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A98F7815ADCBFE00322006 /* StorageServicesList.xib */; };
 		C1C0595815586D2900E2A6C4 /* BtnBG_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C0595715586D2900E2A6C4 /* BtnBG_03.png */; };
 		C1C8FAFB1589212A00BB2539 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C8FAFA1589212A00BB2539 /* Security.framework */; };
 		C1DFF4151587A6C200B15CFE /* WACloudManageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DFF4131587A6C200B15CFE /* WACloudManageClient.m */; };
@@ -261,6 +263,9 @@
 		C184BD321566EDF30064DAB8 /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		C184BD351566EE1C0064DAB8 /* buttonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonImage.png; sourceTree = "<group>"; };
 		C184BD361566EE1C0064DAB8 /* buttonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonImage@2x.png"; sourceTree = "<group>"; };
+		C1A98F7615ADCBFD00322006 /* StorageServicesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageServicesListVC.h; sourceTree = "<group>"; };
+		C1A98F7715ADCBFD00322006 /* StorageServicesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageServicesListVC.m; sourceTree = "<group>"; };
+		C1A98F7815ADCBFE00322006 /* StorageServicesList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorageServicesList.xib; sourceTree = "<group>"; };
 		C1C0595715586D2900E2A6C4 /* BtnBG_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BtnBG_03.png; sourceTree = "<group>"; };
 		C1C8FAFA1589212A00BB2539 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C1DFF4121587A6C200B15CFE /* WACloudManageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WACloudManageClient.h; sourceTree = "<group>"; };
@@ -393,6 +398,9 @@
 				8B9D1FAE1587F71000566708 /* HostedServicesListVC.h */,
 				8B9D1FAF1587F71100566708 /* HostedServicesListVC.m */,
 				8B9D1FB01587F71100566708 /* HostedServicesList.xib */,
+				C1A98F7615ADCBFD00322006 /* StorageServicesListVC.h */,
+				C1A98F7715ADCBFD00322006 /* StorageServicesListVC.m */,
+				C1A98F7815ADCBFE00322006 /* StorageServicesList.xib */,
 			);
 			name = "Management Classes";
 			sourceTree = "<group>";
@@ -827,6 +835,7 @@
 				C15840CA15936A70002D2B7F /* MonitoringTypeSel.xib in Resources */,
 				C1FC3D5B1598B6160050E146 /* MonitoringSettings.xib in Resources */,
 				C1FC3D92159CBAF50050E146 /* ManagementSel.xib in Resources */,
+				C1A98F7A15ADCBFE00322006 /* StorageServicesList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +905,7 @@
 				C1FC3D1D15937E010050E146 /* Reachability.m in Sources */,
 				C1FC3D5A1598B6160050E146 /* MonitoringSettingsVC.m in Sources */,
 				C1FC3D91159CBAF50050E146 /* ManagementSelVC.m in Sources */,
+				C1A98F7915ADCBFE00322006 /* StorageServicesListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

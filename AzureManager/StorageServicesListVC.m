@@ -1,28 +1,27 @@
 //
-//  HostedServicesListVC.m
+//  StorageServicesListVC.m
 //  AzureManager
 //
-//  Created by Vincent Guerin on 6/12/12.
-//  Copyright (c) 2012 Neudesic. All rights reserved.
+//  Created by Vincent Guerin on 7/11/12.
+//  Copyright (c) 2012 Vurgood Apps. All rights reserved.
 //
 
-#import "HostedServicesListVC.h"
-#import "WACloudManageClient.h"
+#import "StorageServicesListVC.h"
 
-@interface HostedServicesListVC ()
+@interface StorageServicesListVC ()
 
 @end
 
-@implementation HostedServicesListVC
+@implementation StorageServicesListVC
 
-@synthesize mainTableView;
+@synthesize mainTableView = _mainTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Hosted Services";
+        self.title = @"Storage Services";
     }
     return self;
 }
@@ -33,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     
     servicesArr = [[NSMutableArray alloc] init];
-
+    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
@@ -86,21 +85,7 @@
     currClient.delegate = self;
     
     [self showLoader:self.view];
-    [currClient fetchListOfHostedServicesWithCallBack:self withCertPW:certPWField.text];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
-    self.mainTableView = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [currClient fetchListOfStorageServicesWithCallBack:self withCertPW:certPWField.text];
 }
 
 #pragma mark - TableView delegate methods
@@ -113,7 +98,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-	    
+    
 	return cell;
 }
 

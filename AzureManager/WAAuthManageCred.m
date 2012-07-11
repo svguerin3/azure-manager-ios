@@ -40,7 +40,9 @@
 {
     NSString *urlString = @"";
     if ([typeStr isEqualToString:TYPE_LIST_HOSTED_SERVICES]) {
-        urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/hostedservices", _accountName];
+        urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/hostedservices", _subID];
+    } else if ([typeStr isEqualToString:TYPE_LIST_STORAGE_SERVICES]) {
+        urlString = [NSString stringWithFormat:@"https://management.core.windows.net/%@/services/storageservices", _subID];
     } else if ([typeStr isEqualToString:TYPE_GET_BLOB_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_BLOB_SERVICE_PROPERTIES]) {
         urlString = [NSString stringWithFormat:@"http://%@.blob.core.windows.net/?restype=service&comp=properties", _accountName];
     } else if ([typeStr isEqualToString:TYPE_GET_TABLE_PROPERTIES] || [typeStr isEqualToString:TYPE_SET_TABLE_SERVICE_PROPERTIES]) {
@@ -58,7 +60,7 @@
     NSURL *serviceURL = [self URLWithType:typeStr];    
     ASIHTTPRequest *authenticatedRequest = [ASIHTTPRequest requestWithURL:serviceURL];
     
-    if ([typeStr isEqualToString:TYPE_LIST_HOSTED_SERVICES]) {
+    if ([typeStr isEqualToString:TYPE_LIST_HOSTED_SERVICES] || [typeStr isEqualToString:TYPE_LIST_STORAGE_SERVICES]) {
         NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
         NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"azure-cert.pfx"];
         NSData *PKCS12Data = [[NSData alloc] initWithContentsOfFile:appFile];

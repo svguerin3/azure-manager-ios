@@ -384,7 +384,7 @@
 	return myStr;
 }
 
-#pragma mark - WACloudStorageClientDelegate Methods
+#pragma mark - Async Request Methods
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {

@@ -11,5 +11,6 @@
 @interface ManagementSelVC : UIViewController
 
 - (IBAction) listHostedServicesBtnPressed;
+- (IBAction) listStorageServicesBtnPressed;
 
 @end
